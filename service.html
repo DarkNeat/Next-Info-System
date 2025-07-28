@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Startup - Services</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="Free HTML Templates" name="keywords" />
+  <meta content="Free HTML Templates" name="description" />
+  <link href="img/favicon.ico" rel="icon" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Icon Fonts -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Libraries -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/animate/animate.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Custom Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+
+  <style>
+    /* Navbar styling - transparent with position */
+    nav.navbar {
+      background: transparent !important;
+      position: absolute;
+      width: 100%;
+      z-index: 1030;
+    }
+
+    /* Cart Sidebar */
+    #side-cart {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      max-width: 90vw;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+      transition: right 0.3s ease;
+      z-index: 1050;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    #side-cart.open {
+      right: 0;
+    }
+
+    #side-cart header {
+      padding: 1rem 1.5rem;
+      background: #f8f9fa;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #0d6efd;
+    }
+
+    #side-cart header button {
+      font-size: 1.5rem;
+      background: transparent;
+      border: none;
+      color: #0d6efd;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    #cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    #cart-items .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 0.5rem 0;
+    }
+
+    #cart-items .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    #side-cart footer {
+      padding: 1rem 1.5rem;
+      background: #0d6efd;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    #side-cart footer .total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    #side-cart footer button {
+      padding: 0.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    #side-cart footer button.checkout {
+      background-color: #fff;
+      color: #0d6efd;
+    }
+
+    #side-cart footer button.continue {
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
+    /* Overlay behind cart */
+    #cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1040;
+      display: none;
+    }
+
+    /* Services grid and styling */
+    #servicesGrid article.service-box {
+      cursor: pointer;
+      border-radius: 12px;
+      background: #f8f9fa;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      padding: 2rem 1rem 1rem;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      outline-offset: 4px;
+    }
+
+    #servicesGrid article.service-box:hover,
+    #servicesGrid article.service-box:focus-visible {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      transform: translateY(-6px);
+      outline: none;
+      background-color: #ffffff;
+    }
+
+    #servicesGrid article.service-box h5 {
+      margin-top: 0.5rem;
+      font-weight: 600;
+      color: #0d6efd;
+    }
+
+    /* Detail panel */
+    #serviceDetail {
+      display: none;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      background: #fff;
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      #serviceDetail {
+        padding: 1rem;
+      }
+    }
+
+    #serviceDetail h3 {
+      font-weight: 700;
+      color: #0d6efd;
+      margin-bottom: 1rem;
+    }
+
+    #serviceDetail p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    /* Carousel images */
+    #serviceCarousel .carousel-item img {
+      width: 100%;
+      object-fit: cover;
+      max-height: 300px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar Start -->
+  <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <div class="row gx-0">
+      <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+        <div class="d-inline-flex align-items-center" style="height: 45px;">
+          <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+          <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+          <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center text-lg-end">
+        <div class="d-inline-flex align-items-center" style="height: 45px;">
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Topbar End -->
+
+  <!-- Navbar Start -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+      <a href="index.html" class="navbar-brand"><h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+          <a href="index.html" class="nav-item nav-link">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <a href="service.html" class="nav-item nav-link active" aria-current="page">Services</a>
+           <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+              >Products</a
+            >
+            <div class="dropdown-menu m-0">
+              <a href="product.html" class="dropdown-item">ALL</a>
+              <a href="#" class="dropdown-item">Category 1</a>
+              <a href="#" class="dropdown-item">Category 2</a>
+              <a href="#" class="dropdown-item">Category 3</a>
+              <a href="#" class="dropdown-item">Category 4</a>
+              <a href="#" class="dropdown-item">Category 5</a>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+
+        <!-- Search button -->
+        <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Search">
+          <i class="fa fa-search"></i>
+        </button>
+
+     <!-- Cart display -->
+        <div class="d-flex align-items-center ms-3">
+          <span id="cart-amount" class="me-2">Amount: $0</span>
+          <span id="cart-count" class="me-2">0</span>
+          <button
+            id="cart-btn"
+            class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
+            aria-label="Open cart"
+          >
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Banner -->
+    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+      <div class="row py-5">
+        <div class="col-12 text-center">
+          <h1 class="display-4 text-white animated zoomIn">Services</h1>
+          <a href="index.html" class="h5 text-white">Home</a>
+          <i class="far fa-circle text-white px-2"></i>
+          <a href="service.html" class="h5 text-white">Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar End -->
+
+  <!-- Modal Search -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true" aria-labelledby="searchModalLabel">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content" style="background: rgba(9, 30, 62, 0.7);">
+        <div class="modal-header border-0">
+          <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close search"></button>
+        </div>
+        <div class="modal-body d-flex align-items-center justify-content-center">
+          <div class="input-group" style="max-width: 600px;">
+            <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type your search keyword" aria-label="Search input" />
+            <button class="btn btn-primary px-4" aria-label="Search">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal Search -->
+
+<!-- What Sets Us Apart Section Start -->
+<section aria-label="What Sets Us Apart" 
+         style="
+           padding: 4rem 1rem; 
+           max-width: 1140px; 
+           margin: 0 auto; 
+           font-family: 'Nunito', sans-serif; 
+           color: #212529;
+         ">
+  <div style="text-align: center; margin-bottom: 2.5rem;">
+    <h2 style="
+      font-weight: 700; 
+      font-size: 2.5rem; 
+      letter-spacing: 0.05em; 
+      margin-bottom: 0.5rem; 
+      text-transform: uppercase; 
+      color: #6ea8fe;
+    ">What Sets Us Apart</h2>
+    <p style="
+      color: #6c757d; 
+      font-size: 1.125rem; 
+      max-width: 600px; 
+      margin: 0 auto;
+    ">
+      The pillars that drive our commitment and deliver exceptional results.
+    </p>
+  </div>
+
+  <div style="
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 2rem; 
+    justify-content: center;
+  ">
+    <!-- Feature Box 1 -->
+    <article tabindex="0" role="button" aria-pressed="false" 
+        style="
+          flex: 0 1 calc(33.333% - 2rem);
+          max-width: 240px; 
+          background: #fff; 
+          border-radius: 16px;
+          box-shadow: 0 8px 20px rgba(110, 168, 254, 0.15);
+          padding: 2rem 1rem 1.5rem;
+          text-align: center;
+          cursor: default;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          outline-offset: 4px;
+          user-select: none;
+          margin: 0 auto;
+        "
+        onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 16px 40px rgba(110, 168, 254, 0.3)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(110, 168, 254, 0.15)';"
+    >
+      <div aria-hidden="true" 
+          style="
+            width: 110px; 
+            height: 110px; 
+            border-radius: 50%; 
+            background-color: #6ea8fe; 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 1.25rem auto; 
+            font-size: 3rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+          ">
+        <i class="fas fa-industry"></i>
+      </div>
+      <h5 style="
+        font-weight: 700; 
+        font-size: 1.2rem; 
+        line-height: 1.2; 
+        letter-spacing: 0.02em; 
+        color: #6ea8fe; 
+        margin: 0;
+      ">Industry Expertise</h5>
+    </article>
+
+    <!-- Feature Box 2 -->
+    <article tabindex="0" role="button" aria-pressed="false" 
+        style="
+          flex: 0 1 calc(33.333% - 2rem);
+          max-width: 240px; 
+          background: #fff; 
+          border-radius: 16px;
+          box-shadow: 0 8px 20px rgba(110, 168, 254, 0.15);
+          padding: 2rem 1rem 1.5rem;
+          text-align: center;
+          cursor: default;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          outline-offset: 4px;
+          user-select: none;
+          margin: 0 auto;
+        "
+        onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 16px 40px rgba(110, 168, 254, 0.3)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(110, 168, 254, 0.15)';"
+    >
+      <div aria-hidden="true" 
+          style="
+            width: 110px; 
+            height: 110px; 
+            border-radius: 50%; 
+            background-color: #6ea8fe; 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 1.25rem auto; 
+            font-size: 3rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+          ">
+        <i class="fas fa-cogs"></i>
+      </div>
+      <h5 style="
+        font-weight: 700; 
+        font-size: 1.2rem; 
+        line-height: 1.2; 
+        letter-spacing: 0.02em; 
+        color: #6ea8fe; 
+        margin: 0;
+      ">Comprehensive Solution</h5>
+    </article>
+
+    <!-- Feature Box 3 -->
+    <article tabindex="0" role="button" aria-pressed="false" 
+        style="
+          flex: 0 1 calc(33.333% - 2rem);
+          max-width: 240px; 
+          background: #fff; 
+          border-radius: 16px;
+          box-shadow: 0 8px 20px rgba(110, 168, 254, 0.15);
+          padding: 2rem 1rem 1.5rem;
+          text-align: center;
+          cursor: default;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          outline-offset: 4px;
+          user-select: none;
+          margin: 0 auto;
+        "
+        onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 16px 40px rgba(110, 168, 254, 0.3)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(110, 168, 254, 0.15)';"
+    >
+      <div aria-hidden="true" 
+          style="
+            width: 110px; 
+            height: 110px; 
+            border-radius: 50%; 
+            background-color: #6ea8fe; 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 1.25rem auto; 
+            font-size: 3rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+          ">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h5 style="
+        font-weight: 700; 
+        font-size: 1.2rem; 
+        line-height: 1.2; 
+        letter-spacing: 0.02em; 
+        color: #6ea8fe; 
+        margin: 0;
+      ">Proven Track Record</h5>
+    </article>
+
+    <!-- Feature Box 4 -->
+    <article tabindex="0" role="button" aria-pressed="false" 
+        style="
+          flex: 0 1 calc(33.333% - 2rem);
+          max-width: 240px; 
+          background: #fff; 
+          border-radius: 16px;
+          box-shadow: 0 8px 20px rgba(110, 168, 254, 0.15);
+          padding: 2rem 1rem 1.5rem;
+          text-align: center;
+          cursor: default;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          outline-offset: 4px;
+          user-select: none;
+          margin: 0 auto;
+        "
+        onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 16px 40px rgba(110, 168, 254, 0.3)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(110, 168, 254, 0.15)';"
+    >
+      <div aria-hidden="true" 
+          style="
+            width: 110px; 
+            height: 110px; 
+            border-radius: 50%; 
+            background-color: #6ea8fe; 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 1.25rem auto; 
+            font-size: 3rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+          ">
+        <i class="fas fa-headset"></i>
+      </div>
+      <h5 style="
+        font-weight: 700; 
+        font-size: 1.2rem; 
+        line-height: 1.2; 
+        letter-spacing: 0.02em; 
+        color: #6ea8fe; 
+        margin: 0;
+      ">Reliable 24/7 Support</h5>
+    </article>
+    
+  </div>
+</section>
+<!-- What Sets Us Apart Section End -->
+
+
+
+
+  <!-- Our Services Section -->
+  <section class="container py-5" aria-label="Our Services">
+    <div class="section-title text-center mx-auto" style="max-width: 600px; margin-bottom: 60px;">
+      <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
+      <h1 class="mb-0">Custom IT Solutions for Your Successful Business</h1>
+    </div>
+
+    <div class="row g-5" id="servicesGrid" role="list">
+      <!-- Service boxes -->
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="0" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc0" aria-label="Cyber Security service">
+        <i class="fa fa-shield-alt fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>Cyber Security</h5>
+      </article>
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="1" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc1" aria-label="Data Analytics service">
+        <i class="fa fa-chart-pie fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>Data Analytics</h5>
+      </article>
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="2" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc2" aria-label="Web Development service">
+        <i class="fa fa-code fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>Web Development</h5>
+      </article>
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="3" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc3" aria-label="Apps Development service">
+        <i class="fab fa-android fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>Apps Development</h5>
+      </article>
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="4" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc4" aria-label="SEO Optimization service">
+        <i class="fa fa-search fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>SEO Optimization</h5>
+      </article>
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="5" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc5" aria-label="Cloud Services service">
+        <i class="fa fa-cloud fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>Cloud Services</h5>
+      </article>
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="6" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc6" aria-label="IT Consultancy service">
+        <i class="fa fa-laptop fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>IT Consultancy</h5>
+      </article>
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="7" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc7" aria-label="Mobile Marketing service">
+        <i class="fa fa-mobile-alt fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>Mobile Marketing</h5>
+      </article>
+      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="8" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc8" aria-label="Customer Support service">
+        <i class="fa fa-headset fa-4x mb-3 text-primary" aria-hidden="true"></i>
+        <h5>Customer Support</h5>
+      </article>
+    </div>
+
+    <!-- Detailed Panel (hidden initially) -->
+    <section id="serviceDetail" class="mt-5 p-4 border rounded shadow-sm" role="region" aria-live="polite" aria-atomic="true" aria-label="Service details" aria-hidden="true">
+      <h3 id="serviceDetailTitle" class="text-primary fw-bold mb-3"></h3>
+
+      <div id="serviceCarousel" class="carousel slide mb-3" data-bs-ride="carousel" aria-label="Service images carousel">
+        <div class="carousel-inner"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#serviceCarousel" data-bs-slide="prev" aria-label="Previous image">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#serviceCarousel" data-bs-slide="next" aria-label="Next image">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <p id="serviceDetailDescription" class="mb-0"></p>
+    </section>
+  </section>
+
+  <!-- Footer Start -->
+  <div class="container-fluid bg-dark text-white mt-5">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <a href="index.html" class="navbar-brand d-block mb-3">
+            <h1 class="text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+          </a>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <form class="d-flex">
+            <input class="form-control me-2" type="email" placeholder="Your email" aria-label="Email subscription" />
+            <button class="btn btn-primary" type="submit" aria-label="Subscribe">Subscribe</button>
+          </form>
+        </div>
+        <div class="col-lg-8 col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <h5>Contact Us</h5>
+              <p>123 Street, New York, USA</p>
+              <p>info@example.com</p>
+              <p>+012 345 6789</p>
+              <div class="d-flex mt-3">
+                <a href="#" class="me-2 text-white"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="me-2 text-white"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Home</a></li>
+                <li><a href="#" class="text-white">About Us</a></li>
+                <li><a href="#" class="text-white">Services</a></li>
+                <li><a href="#" class="text-white">Contact</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h5>Popular Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Team</a></li>
+                <li><a href="#" class="text-white">Testimonials</a></li>
+                <li><a href="#" class="text-white">Pricing</a></li>
+                <li><a href="#" class="text-white">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer End -->
+
+  <!-- Back to top -->
+  <a href="#" class="btn btn-primary back-to-top rounded-circle" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" tabindex="-1" aria-hidden="true"></div>
+
+  <!-- Cart Sidebar -->
+  <div id="side-cart" aria-label="Shopping cart" role="dialog" aria-modal="true" tabindex="-1">
+    <header>
+      Your Cart
+      <button id="close-cart" aria-label="Close cart">&times;</button>
+    </header>
+    <div id="cart-items">
+      <p class="text-muted">Your cart is empty.</p>
+    </div>
+    <footer>
+      <div class="total">
+        <span>Total:</span>
+        <span id="cart-total">$0</span>
+      </div>
+      <button class="checkout btn btn-light w-100">Checkout</button>
+      <button class="continue btn btn-outline-light w-100 mt-2" id="continue-shopping-btn">Continue Shopping</button>
+    </footer>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+
+  <!-- Your custom JS -->
+  <script src="js/main.js"></script>
+
+  <script>
+    // Cart functionality
+    const sideCart = document.getElementById("side-cart");
+    const cartBtn = document.getElementById("cart-btn");
+    const closeCartBtn = document.getElementById("close-cart");
+    const cartOverlay = document.getElementById("cart-overlay");
+    const continueShoppingBtn = document.getElementById("continue-shopping-btn");
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function updateCartDisplay() {
+      let totalAmount = 0;
+      let totalItems = 0;
+      const cartItemsDiv = document.getElementById("cart-items");
+      cartItemsDiv.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+      } else {
+        cart.forEach((item, index) => {
+          totalAmount += (item.price || 0) * (item.qty || 1);
+          totalItems += item.qty || 1;
+
+          const div = document.createElement("div");
+          div.className = "cart-item";
+          div.innerHTML = `
+            <div class="item-info">
+              <div class="item-name">${item.name || "Unnamed Item"}</div>
+              <div class="item-qty">Quantity: ${item.qty || 1}</div>
+            </div>
+            <div class="item-price">$${((item.price || 0) * (item.qty || 1)).toFixed(2)}</div>
+            <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}" title="Remove item">&times;</button>
+          `;
+          cartItemsDiv.appendChild(div);
+        });
+      }
+
+      document.getElementById("cart-amount").textContent = "Amount: $" + totalAmount.toFixed(2);
+      document.getElementById("cart-count").textContent = totalItems;
+      document.getElementById("cart-total").textContent = "$" + totalAmount.toFixed(2);
+
+      document.querySelectorAll(".remove-item").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const idx = parseInt(e.target.getAttribute("data-index"));
+          cart.splice(idx, 1);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartDisplay();
+        });
+      });
+    }
+
+    function openCart() {
+      sideCart.classList.add("open");
+      cartOverlay.style.display = "block";
+      sideCart.setAttribute("aria-hidden", "false");
+    }
+
+    function closeCart() {
+      sideCart.classList.remove("open");
+      cartOverlay.style.display = "none";
+      sideCart.setAttribute("aria-hidden", "true");
+    }
+
+    cartBtn.addEventListener("click", openCart);
+    closeCartBtn.addEventListener("click", closeCart);
+    cartOverlay.addEventListener("click", closeCart);
+    continueShoppingBtn.addEventListener("click", closeCart);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCartDisplay();
+    });
+
+    // Services detail panel functionality
+    const services = [
+      {
+        title: "Cyber Security",
+        description:
+          "Protect your business with cutting-edge cybersecurity solutions to safeguard your data and network.",
+        images: ["img/services/cybersec1.jpg", "img/services/cybersec2.jpg", "img/services/cybersec3.jpg"],
+      },
+      {
+        title: "Data Analytics",
+        description:
+          "Harness your data potential to drive better decision-making and business growth through analytics.",
+        images: ["img/services/data1.jpg", "img/services/data2.jpg", "img/services/data3.jpg"],
+      },
+      {
+        title: "Web Development",
+        description:
+          "Create responsive, SEO-friendly, and engaging websites tailored for your needs.",
+        images: ["img/services/webdev1.jpg", "img/services/webdev2.jpg", "img/services/webdev3.jpg"],
+      },
+      {
+        title: "Apps Development",
+        description:
+          "Develop stunning and functional mobile apps on Android and iOS platforms.",
+        images: ["img/services/apps1.jpg", "img/services/apps2.jpg", "img/services/apps3.jpg"],
+      },
+      {
+        title: "SEO Optimization",
+        description:
+          "Boost your online presence and improve search rankings with our SEO strategies.",
+        images: ["img/services/seo1.jpg", "img/services/seo2.jpg", "img/services/seo3.jpg"],
+      },
+      {
+        title: "Cloud Services",
+        description:
+          "Scale with reliable and secure cloud computing services customized for your business.",
+        images: ["img/services/cloud1.jpg", "img/services/cloud2.jpg", "img/services/cloud3.jpg"],
+      },
+      {
+        title: "IT Consultancy",
+        description:
+          "Expert advice to optimize your IT infrastructure and strategy.",
+        images: ["img/services/consultancy1.jpg", "img/services/consultancy2.jpg", "img/services/consultancy3.jpg"],
+      },
+      {
+        title: "Mobile Marketing",
+        description:
+          "Engage customers effectively with targeted mobile marketing campaigns.",
+        images: ["img/services/marketing1.jpg", "img/services/marketing2.jpg", "img/services/marketing3.jpg"],
+      },
+      {
+        title: "Customer Support",
+        description:
+          "Provide excellent 24/7 customer support tailored to your business operations.",
+        images: ["img/services/support1.jpg", "img/services/support2.jpg", "img/services/support3.jpg"],
+      },
+    ];
+
+    const serviceBoxes = document.querySelectorAll("#servicesGrid article.service-box");
+    const detailPanel = document.getElementById("serviceDetail");
+    const detailTitle = document.getElementById("serviceDetailTitle");
+    const detailDescription = document.getElementById("serviceDetailDescription");
+    const carouselInner = document.querySelector("#serviceCarousel .carousel-inner");
+
+    serviceBoxes.forEach((box) => {
+      box.addEventListener("click", () => {
+        const idx = parseInt(box.getAttribute("data-index"), 10);
+        if (detailPanel.classList.contains("d-none") || detailPanel.getAttribute("data-current") != idx) {
+          showDetail(idx);
+        } else {
+          hideDetail();
+        }
+      });
+      box.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          box.click();
+        }
+      });
+    });
+
+    function showDetail(index) {
+      const service = services[index];
+      detailTitle.textContent = service.title;
+      detailDescription.textContent = service.description;
+      detailPanel.setAttribute("data-current", index);
+      detailPanel.classList.remove("d-none");
+      detailPanel.setAttribute("aria-hidden", "false");
+
+      // Build carousel items
+      carouselInner.innerHTML = "";
+      service.images.forEach((src, i) => {
+        const div = document.createElement("div");
+        div.className = "carousel-item" + (i === 0 ? " active" : "");
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `${service.title} image ${i + 1}`;
+        div.appendChild(img);
+        carouselInner.appendChild(div);
+      });
+
+      // Reset carousel to first slide
+      const bsCarousel = bootstrap.Carousel.getInstance(document.getElementById("serviceCarousel"));
+      if (bsCarousel) bsCarousel.to(0);
+    }
+
+    function hideDetail() {
+      detailPanel.classList.add("d-none");
+      detailPanel.removeAttribute("data-current");
+      detailPanel.setAttribute("aria-hidden", "true");
+    }
+  </script>
+</body>
+
+</html>

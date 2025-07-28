@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Startup - Products</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Free HTML Templates" name="keywords" />
+  <meta content="Free HTML Templates" name="description" />
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon" />
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/animate/animate.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+
+  <style>
+    /* Cart Sidebar */
+    #side-cart {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      max-width: 90vw;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+      transition: right 0.3s ease;
+      z-index: 1050;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    #side-cart.open {
+      right: 0;
+    }
+
+    #side-cart header {
+      padding: 1rem 1.5rem;
+      background: #0d6efd;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #side-cart header button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    #cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    #cart-items .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 0.5rem 0;
+    }
+
+    #cart-items .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    #side-cart footer {
+      padding: 1rem 1.5rem;
+      background: #0d6efd;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    #side-cart footer .total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    #side-cart footer button {
+      padding: 0.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    #side-cart footer button.checkout {
+      background-color: #fff;
+      color: #0d6efd;
+    }
+
+    #side-cart footer button.continue {
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
+    /* Overlay behind cart */
+    #cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1040;
+      display: none;
+    }
+
+    /* Product Cards */
+    .card-product {
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+    }
+
+    .card-product:hover,
+    .card-product:focus {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(13, 110, 253, 0.3);
+      outline: none;
+    }
+
+    .card-product img {
+      border-radius: 16px 16px 0 0;
+      max-height: 180px;
+      object-fit: cover;
+    }
+
+    /* Sidebar category list */
+    .list-group-item.active {
+      background-color: #0d6efd !important;
+      border-color: #0d6efd !important;
+      color: #fff;
+    }
+
+    /* Cart amount and count container in navbar */
+    .navbar-cart {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      gap: 0.75rem;
+    }
+
+    /* Cart count badge */
+    #cart-count-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      font-size: 0.7rem;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 1px 6px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar Start -->
+  <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <div class="row gx-0">
+      <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+        <div class="d-inline-flex align-items-center" style="height: 45px;">
+          <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+          <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+          <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center text-lg-end">
+        <div class="d-inline-flex align-items-center" style="height: 45px;">
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+              class="fab fa-twitter fw-normal"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+              class="fab fa-facebook-f fw-normal"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+              class="fab fa-linkedin-in fw-normal"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+              class="fab fa-instagram fw-normal"></i></a>
+          <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i
+              class="fab fa-youtube fw-normal"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Topbar End -->
+
+  <!-- Navbar Start -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+      <a href="index.html" class="navbar-brand p-0">
+        <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+          <a href="index.html" class="nav-item nav-link">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <a href="service.html" class="nav-item nav-link">Services</a>
+
+          <div class="nav-item dropdown">
+            <a href="product.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu m-0">
+              <li><a class="dropdown-item" href="#">Category 1</a></li>
+              <li><a class="dropdown-item" href="#">Category 2</a></li>
+              <li><a class="dropdown-item" href="#">Category 3</a></li>
+              <li><a class="dropdown-item" href="#">Category 4</a></li>
+              <li><a class="dropdown-item" href="#">Category 5</a></li>
+            </ul>
+          </div>
+
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+
+        <!-- Cart area - amount display, button, count badge -->
+        <div class="navbar-cart">
+          <span id="cart-amount">Amount: $0.00</span>
+          <button id="cart-btn" aria-label="Open shopping cart"
+            class="btn btn-outline-light btn-sm btn-square rounded-circle position-relative">
+            <i class="fa fa-shopping-cart"></i>
+            <span id="cart-count-badge">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+      <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+          <h1 class="display-4 text-white animated zoomIn">Our Products</h1>
+          <a href="index.html" class="h5 text-white">Home</a>
+          <i class="far fa-circle text-white px-2"></i>
+          <a href="product.html" class="h5 text-white">Products</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar End -->
+
+  
+<!-- Product Section with Sidebar Start -->
+<div class="container-fluid py-5 bg-light">
+  <div class="row">
+    <!-- Sidebar with Categories -->
+    <aside class="col-lg-3">
+      <div class="p-4 h-100 bg-primary text-white rounded position-sticky d-flex flex-column align-items-center"
+           style="top: 100px; border: 2px solid white; max-width: 280px; margin: 0 auto;">
+        <h4 class="fw-semibold mb-5 fs-3 text-center" style="user-select: none;">Categories</h4>
+        <ul class="list-group list-group-flush w-100 text-center" style="font-size: 1.25rem; font-weight: 600;">
+          <li class="list-group-item bg-transparent border-0 px-0 py-3">
+            <a href="#" class="text-white text-decoration-none category-link active">ALL</a>
+          </li>
+          <li class="list-group-item bg-transparent border-0 px-0 py-3">
+            <a href="#" class="text-white text-decoration-none category-link">T-Shirts</a>
+          </li>
+          <li class="list-group-item bg-transparent border-0 px-0 py-3">
+            <a href="#" class="text-white text-decoration-none category-link">Hoodies</a>
+          </li>
+          <li class="list-group-item bg-transparent border-0 px-0 py-3">
+            <a href="#" class="text-white text-decoration-none category-link">Sweatshirts</a>
+          </li>
+          <li class="list-group-item bg-transparent border-0 px-0 py-3">
+            <a href="#" class="text-white text-decoration-none category-link">Footwear</a>
+          </li>
+          <li class="list-group-item bg-transparent border-0 px-0 py-3">
+            <a href="#" class="text-white text-decoration-none category-link">Accessories</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Product Cards -->
+    <section class="col-lg-9">
+      <div class="row g-4">
+        <!-- T-Shirts -->
+        <article class="col-md-6 col-lg-4" data-category="T-Shirts ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product1.jpg" class="card-img-top rounded-top" alt="Gradient Shirt" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Gradient Shirt</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$21.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p1" data-name="Gradient Shirt" data-price="21.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="T-Shirts ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product11.jpg" class="card-img-top rounded-top" alt="Striped Tee" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Striped Tee</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$18.50</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p2" data-name="Striped Tee" data-price="18.50">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="T-Shirts ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product12.jpg" class="card-img-top rounded-top" alt="Classic White Tee" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Classic White Tee</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$15.00</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn" 
+                      data-id="p3" data-name="Classic White Tee" data-price="15.00">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hoodies -->
+        <article class="col-md-6 col-lg-4" data-category="Hoodies ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product2.jpg" class="card-img-top rounded-top" alt="Who Are You Hoodie" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Who Are You Hoodie</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$29.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p4" data-name="Who Are You Hoodie" data-price="29.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="Hoodies ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product13.jpg" class="card-img-top rounded-top" alt="Cozy Zip Hoodie" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Cozy Zip Hoodie</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$39.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p5" data-name="Cozy Zip Hoodie" data-price="39.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="Hoodies ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product14.jpg" class="card-img-top rounded-top" alt="Urban Hoodie" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Urban Hoodie</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$34.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p6" data-name="Urban Hoodie" data-price="34.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sweatshirts -->
+        <article class="col-md-6 col-lg-4" data-category="Sweatshirts ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product3.jpg" class="card-img-top rounded-top" alt="White M Shirt" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">White M Shirt</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$10.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p7" data-name="White M Shirt" data-price="10.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="Sweatshirts ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product15.jpg" class="card-img-top rounded-top" alt="Comfort Sweatshirt" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Comfort Sweatshirt</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$24.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p8" data-name="Comfort Sweatshirt" data-price="24.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="Sweatshirts ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product16.jpg" class="card-img-top rounded-top" alt="Sport Sweatshirt" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Sport Sweatshirt</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$27.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p9" data-name="Sport Sweatshirt" data-price="27.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Footwear -->
+        <article class="col-md-6 col-lg-4" data-category="Footwear ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product17.jpg" class="card-img-top rounded-top" alt="Running Shoes" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Running Shoes</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$49.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p10" data-name="Running Shoes" data-price="49.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="Footwear ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product18.jpg" class="card-img-top rounded-top" alt="Casual Sneakers" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Casual Sneakers</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$44.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p11" data-name="Casual Sneakers" data-price="44.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="Footwear ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product19.jpg" class="card-img-top rounded-top" alt="Leather Boots" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Leather Boots</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$89.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p12" data-name="Leather Boots" data-price="89.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Accessories -->
+        <article class="col-md-6 col-lg-4" data-category="Accessories ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product20.jpg" class="card-img-top rounded-top" alt="Leather Wallet" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Leather Wallet</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$25.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p13" data-name="Leather Wallet" data-price="25.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="Accessories ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product21.jpg" class="card-img-top rounded-top" alt="Stylish Cap" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Stylish Cap</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$15.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p14" data-name="Stylish Cap" data-price="15.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-md-6 col-lg-4" data-category="Accessories ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
+            <img src="img/product22.jpg" class="card-img-top rounded-top" alt="Wrist Watch" />
+            <div class="card-body text-center d-flex flex-column px-3 py-4">
+              <h5 class="card-title fw-bold mb-2">Wrist Watch</h5>
+              <p class="text-primary fw-bold fs-5 mb-3">$49.99</p>
+              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                      data-id="p15" data-name="Wrist Watch" data-price="49.99">Add to Cart</button>
+              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+<!-- Product Section with Sidebar End -->
+
+<style>
+  .transition-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .transition-hover:hover,
+  .transition-hover:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(13, 110, 253, 0.3);
+    outline: none;
+  }
+  .btn-hover-scale {
+    transition: transform 0.2s ease;
+  }
+  .btn-hover-scale:hover,
+  .btn-hover-scale:focus {
+    transform: scale(1.05);
+    outline: none;
+  }
+  .category-link {
+    cursor: pointer;
+  }
+  .category-link:hover,
+  .category-link:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+  .category-link.active {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  aside .list-group-item a {
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+  aside h4 {
+    font-size: 2rem;
+  }
+  .card-product img {
+    object-fit: cover;
+    height: 230px;
+  }
+  .card-product .card-body {
+    flex-grow: 1;
+  }
+</style>
+
+<!-- jQuery, then your custom script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(function () {
+    const $categoryLinks = $(".category-link");
+    const $products = $("article.col-md-6.col-lg-4");
+    const CART_KEY = "cart";
+
+    let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+
+    function saveCart() {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    function updateCartUI() {
+      const $cartAmount = $("#cart-amount");
+      const $cartCountBadge = $("#cart-count-badge");
+      let totalAmount = 0;
+      let totalItems = 0;
+
+      cart.forEach(item => {
+        totalAmount += item.price * item.qty;
+        totalItems += item.qty;
+      });
+
+      if ($cartAmount.length) {
+        $cartAmount.text("Amount: $" + totalAmount.toFixed(2));
+      }
+      if ($cartCountBadge.length) {
+        if (totalItems > 0) {
+          $cartCountBadge.text(totalItems).show();
+        } else {
+          $cartCountBadge.hide();
+        }
+      }
+    }
+
+    function addToCart(id, name, price) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ id, name, price, qty: 1 });
+      }
+      saveCart();
+      updateCartUI();
+      // Optional: You can add notification or cart sidebar toggle here
+    }
+
+    function filterProducts(category) {
+      if (category === "ALL") {
+        $products.show();
+      } else {
+        $products.each(function () {
+          const cats = $(this).data("category");
+          if (typeof cats === "string" && cats.split(" ").includes(category)) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+    }
+
+    $categoryLinks.on("click", function (e) {
+      e.preventDefault();
+      const selectedCategory = $(this).text().trim();
+
+      $categoryLinks.removeClass("active");
+      $(this).addClass("active");
+
+      filterProducts(selectedCategory);
+
+      $("section.col-lg-9").get(0).scrollIntoView({ behavior: "smooth" });
+    });
+
+    $(".add-to-cart-btn").on("click", function () {
+      const id = $(this).data("id");
+      const name = $(this).data("name");
+      const price = parseFloat($(this).data("price"));
+      if (id && name && !isNaN(price)) {
+        addToCart(id, name, price);
+      }
+    });
+
+    // Initialize with ALL category active & update cart UI on page load
+    $categoryLinks.filter(function () { return $(this).text().trim() === "ALL"; }).trigger("click");
+    updateCartUI();
+  });
+</script>
+
+
+ 
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" tabindex="-1" aria-hidden="true"></div>
+
+  <!-- Cart Sidebar -->
+  <div id="side-cart" aria-label="Shopping cart" role="dialog" aria-modal="true" tabindex="-1">
+    <header>
+      Your Cart
+      <button id="close-cart" aria-label="Close cart">&times;</button>
+    </header>
+    <div id="cart-items">
+      <p class="text-muted">Your cart is empty.</p>
+    </div>
+    <footer>
+      <div class="total">
+        <span>Total:</span>
+        <span id="cart-total">$0.00</span>
+      </div>
+      <button class="checkout btn btn-light w-100" type="button">Checkout</button>
+      <button class="continue btn btn-outline-light w-100 mt-2" id="continue-shopping-btn" type="button">Continue Shopping</button>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const sideCart = document.getElementById("side-cart");
+      const cartBtn = document.getElementById("cart-btn");
+      const closeCartBtn = document.getElementById("close-cart");
+      const cartOverlay = document.getElementById("cart-overlay");
+      const continueShoppingBtn = document.getElementById("continue-shopping-btn");
+      const cartItemsDiv = document.getElementById("cart-items");
+      const cartTotalSpan = document.getElementById("cart-total");
+      const cartCountBadge = document.getElementById("cart-count-badge");
+      const cartAmountSpan = document.getElementById("cart-amount");
+
+      // Load cart from localStorage or initialize array
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function updateCartDisplay() {
+        let totalAmount = 0,
+          totalItems = 0;
+        cartItemsDiv.innerHTML = "";
+
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+          cartCountBadge.style.display = "none";
+          if (cartAmountSpan) cartAmountSpan.textContent = "Amount: $0.00";
+          cartTotalSpan.textContent = "$0.00";
+        } else {
+          cart.forEach((item, index) => {
+            totalAmount += item.price * item.qty;
+            totalItems += item.qty;
+
+            const div = document.createElement("div");
+            div.className = "cart-item d-flex justify-content-between align-items-center border-bottom py-2";
+            div.innerHTML = `
+              <div>
+                <strong>${item.name}</strong><br />
+                Quantity: ${item.qty}
+              </div>
+              <div>
+                $${(item.price * item.qty).toFixed(2)}
+                <button class="btn btn-sm btn-outline-danger remove-item mt-1" data-index="${index}" title="Remove item">&times;</button>
+              </div>
+            `;
+            cartItemsDiv.appendChild(div);
+          });
+          cartCountBadge.style.display = totalItems > 0 ? "inline-block" : "none";
+          if (cartAmountSpan) cartAmountSpan.textContent = `Amount: $${totalAmount.toFixed(2)}`;
+          cartTotalSpan.textContent = `$${totalAmount.toFixed(2)}`;
+        }
+
+        cartCountBadge.textContent = totalItems;
+
+        // Remove item buttons event
+        cartItemsDiv.querySelectorAll(".remove-item").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const idx = parseInt(e.target.getAttribute("data-index"));
+            cart.splice(idx, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+          });
+        });
+      }
+
+      function openCart() {
+        sideCart.classList.add("open");
+        cartOverlay.style.display = "block";
+        sideCart.setAttribute("aria-hidden", "false");
+      }
+
+      function closeCart() {
+        sideCart.classList.remove("open");
+        cartOverlay.style.display = "none";
+        sideCart.setAttribute("aria-hidden", "true");
+      }
+
+      cartBtn.addEventListener("click", openCart);
+      closeCartBtn.addEventListener("click", closeCart);
+      cartOverlay.addEventListener("click", closeCart);
+      continueShoppingBtn.addEventListener("click", closeCart);
+
+      // Add to cart buttons handler
+      document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-id");
+          const name = btn.getAttribute("data-name");
+          const price = parseFloat(btn.getAttribute("data-price"));
+
+          const existing = cart.find(item => item.id === id);
+          if (existing) {
+            existing.qty++;
+          } else {
+            cart.push({ id: id, name: name, price: price, qty: 1 });
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartDisplay();
+          openCart();
+        });
+      });
+
+      // Initialize cart display on page load
+      updateCartDisplay();
+    })();
+  </script>
+</body>
+
+</html>

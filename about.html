@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Startup - About Us</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Free HTML Templates" name="keywords" />
+  <meta content="Free HTML Templates" name="description" />
+  <link href="img/favicon.ico" rel="icon" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icon Fonts -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/animate/animate.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+
+  <style>
+    /* Transparent navbar like index.html */
+    nav.navbar {
+      background: transparent !important;
+      position: absolute;
+      width: 100%;
+      z-index: 1030;
+    }
+
+    /* Cart panel styles */
+    #side-cart {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      max-width: 90vw;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+      transition: right 0.35s ease;
+      z-index: 1050;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    #side-cart.open {
+      right: 0;
+    }
+
+    #side-cart header {
+      padding: 1rem 1.5rem;
+      background: #f8f9fa;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #0d6efd;
+    }
+
+    #side-cart header button {
+      font-size: 1.5rem;
+      background: transparent;
+      border: none;
+      color: #0d6efd;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    #cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    #cart-items .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 0.5rem 0;
+    }
+
+    #cart-items .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    #side-cart footer {
+      padding: 1rem 1.5rem;
+      background: #0d6efd;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    #side-cart footer .total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    #side-cart footer button {
+      padding: 0.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    #side-cart footer button.checkout {
+      background-color: #fff;
+      color: #0d6efd;
+    }
+
+    #side-cart footer button.continue {
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
+    /* Overlay */
+    #cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1040;
+      display: none;
+    }
+
+    /* Gradient backgrounds for facts */
+    .bg-gradient-primary {
+      background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+    }
+
+    .bg-gradient-success {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    }
+
+    .bg-gradient-warning {
+      background: linear-gradient(135deg, #ffc107 0%, #ff7e00 100%);
+    }
+
+    /* Facts boxes styling */
+    .fact-box {
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.15);
+      text-align: center;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .fact-box .icon {
+      margin-bottom: 1rem;
+    }
+
+    .fact-box .icon i {
+      font-size: 3rem;
+    }
+
+    .fact-box h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      line-height: 1;
+    }
+
+    .fact-box p {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    /* About Us section tweaks */
+    .section-title h5 {
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #0d6efd;
+      text-transform: uppercase;
+    }
+
+    .section-title h1 {
+      font-weight: 700;
+      font-family: 'Rubik', sans-serif;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Icon + text badges container */
+    .about-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: #212529;
+      font-size: 1.05rem;
+      flex: 1 1 200px;
+    }
+
+    .about-feature i {
+      color: #0d6efd;
+      font-size: 1.5rem;
+      min-width: 30px;
+    }
+
+    /* Call us section */
+    .call-us {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .call-us .phone-icon {
+      width: 48px;
+      height: 48px;
+      background-color: #0d6efd;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .call-us .phone-info p {
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .call-us .phone-info a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0d6efd;
+      text-decoration: none;
+    }
+
+    .call-us .phone-info a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar Start -->
+  <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <div class="row gx-0">
+      <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+        <div class="d-inline-flex align-items-center" style="height: 45px;">
+          <small class="me-3 text-light"
+            ><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York,
+            USA</small
+          >
+          <small class="me-3 text-light"
+            ><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small
+          >
+          <small class="text-light"
+            ><i class="fa fa-envelope-open me-2"></i>info@example.com</small
+          >
+        </div>
+      </div>
+      <div class="col-lg-4 text-center text-lg-end">
+        <div class="d-inline-flex align-items-center" style="height: 45px;">
+          <a
+            class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
+            href="#"
+            ><i class="fab fa-twitter fw-normal"></i
+          ></a>
+          <a
+            class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
+            href="#"
+            ><i class="fab fa-facebook-f fw-normal"></i
+          ></a>
+          <a
+            class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
+            href="#"
+            ><i class="fab fa-linkedin-in fw-normal"></i
+          ></a>
+          <a
+            class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
+            href="#"
+            ><i class="fab fa-instagram fw-normal"></i
+          ></a>
+          <a
+            class="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
+            href="#"
+            ><i class="fab fa-youtube fw-normal"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Topbar End -->
+
+  <!-- Navbar Start -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+      <a href="index.html" class="navbar-brand p-0">
+        <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+          <a href="index.html" class="nav-item nav-link">Home</a>
+          <a href="about.html" class="nav-item nav-link active">About</a>
+          <a href="service.html" class="nav-item nav-link">Services</a>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+              >Products</a
+            >
+            <div class="dropdown-menu m-0">
+              <a href="product.html" class="dropdown-item">ALL</a>
+              <a href="#" class="dropdown-item">Category 1</a>
+              <a href="#" class="dropdown-item">Category 2</a>
+              <a href="#" class="dropdown-item">Category 3</a>
+              <a href="#" class="dropdown-item">Category 4</a>
+              <a href="#" class="dropdown-item">Category 5</a>
+            </div>
+          </div>
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+        <button
+          type="button"
+          class="btn text-primary ms-3"
+          data-bs-toggle="modal"
+          data-bs-target="#searchModal"
+        >
+          <i class="fa fa-search"></i>
+        </button>
+
+        <!-- Cart display -->
+        <div class="d-flex align-items-center ms-3">
+          <span id="cart-amount" class="me-2">Amount: $0</span>
+          <span id="cart-count" class="me-2">0</span>
+          <button
+            id="cart-btn"
+            class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
+            aria-label="Open cart"
+          >
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Optional Header/banner area (transparent navbar overlays) -->
+    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+      <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+          <h1 class="display-4 text-white animated zoomIn">About Us</h1>
+          <a href="index.html" class="h5 text-white">Home</a>
+          <i class="far fa-circle text-white px-2"></i>
+          <a href="about.html" class="h5 text-white">About</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar End -->
+
+  <!-- Full Screen Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content" style="background: rgba(9, 30, 62, 0.7);">
+        <div class="modal-header border-0">
+          <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex align-items-center justify-content-center">
+          <div class="input-group" style="max-width: 600px;">
+            <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword" />
+            <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modernized About Us Section -->
+  <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="section-title mb-4">
+            <h5 class="fw-semibold text-primary text-uppercase">About Us</h5>
+            <h1 class="display-5 fw-bold">
+              The Best IT Solution With 10 Years of Experience
+            </h1>
+          </div>
+          <p class="lead" style="line-height: 1.6; color: #555;">
+            Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit.
+            Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit,
+            sed stet no labore lorem sit.
+          </p>
+
+          <div class="d-flex flex-wrap gap-4 mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa fa-check-circle text-primary fs-4"></i>
+              <span>Award Winning</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa fa-user-tie text-primary fs-4"></i>
+              <span>Professional Staff</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa fa-headset text-primary fs-4"></i>
+              <span>24/7 Support</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa fa-tags text-primary fs-4"></i>
+              <span>Fair Prices</span>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+              <i class="fa fa-phone-alt"></i>
+            </div>
+            <div>
+              <p class="mb-1 fw-semibold">Call to ask any question</p>
+              <a href="tel:+0123456789" class="h4 text-decoration-none text-primary">+012 345 6789</a>
+            </div>
+          </div>
+
+          <a href="quote.html" class="btn btn-primary py-3 px-5 mt-4 d-inline-block">
+            Request A Quote
+          </a>
+        </div>
+
+        <div class="col-lg-5 text-center text-lg-end">
+          <img src="img/about.jpg" alt="About Us" class="rounded shadow-lg w-100" style="object-fit: cover; max-height: 500px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our Approach Section (without add to cart buttons) -->
+  <div class="container-fluid py-5 bg-light wow fadeInUp" data-wow-delay="0.15s">
+    <div class="container py-5">
+      <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+        <h5 class="fw-bold text-primary text-uppercase">Our Approach</h5>
+        <h1 class="mb-0">How We Deliver Excellence</h1>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.2s">
+          <div class="bg-white p-4 rounded shadow h-100 d-flex flex-column">
+            <div class="mb-3 text-primary">
+              <i class="fa fa-lightbulb fa-3x"></i>
+            </div>
+            <h4 class="mb-3">Innovative Solutions</h4>
+            <p class="flex-grow-1">We embrace creativity and innovation to tailor solutions that perfectly match your unique business needs.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.5s">
+          <div class="bg-white p-4 rounded shadow h-100 d-flex flex-column">
+            <div class="mb-3 text-primary">
+              <i class="fa fa-cogs fa-3x"></i>
+            </div>
+            <h4 class="mb-3">Technical Expertise</h4>
+            <p class="flex-grow-1">Our team consists of industry experts who leverage the latest technologies for robust and scalable solutions.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.8s">
+          <div class="bg-white p-4 rounded shadow h-100 d-flex flex-column">
+            <div class="mb-3 text-primary">
+              <i class="fa fa-users fa-3x"></i>
+            </div>
+            <h4 class="mb-3">Customer Centric</h4>
+            <p class="flex-grow-1">Your satisfaction drives us. We ensure transparency and collaborate closely with you throughout the project lifecycle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Industries/Tools/Process Section Start -->
+<div class="container-fluid py-5 bg-light wow fadeInUp" data-wow-delay="0.2s">
+  <div class="container py-5">
+    <div class="section-title text-center pb-3 mb-4 mx-auto" style="max-width:700px;">
+      <h5 class="fw-bold text-primary text-uppercase">Industries, Technology & Our Process</h5>
+      <h1 class="mb-0">Hospitality Experts Empowered by Modern Tools</h1>
+      <p class="mt-3 text-muted">We specialize in supporting <strong>hotels</strong> and <strong>restaurants</strong>, but our digital expertise extends across various sectors. Our toolbox and proven methodology ensure every project is a success.</p>
+    </div>
+  
+    <!-- Industries We Serve -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="bg-white rounded shadow p-4 h-100 text-center">
+          <i class="fa fa-hotel fa-3x text-primary mb-3"></i>
+          <h4 class="mb-2">Hotels</h4>
+          <p class="mb-0 text-muted">Smart solutions for independent hotels, resorts, and hospitality groups to boost guest experience and streamline operations.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="bg-white rounded shadow p-4 h-100 text-center">
+          <i class="fa fa-utensils fa-3x text-primary mb-3"></i>
+          <h4 class="mb-2">Restaurants</h4>
+          <p class="mb-0 text-muted">Modern digital services for restaurants, cafes, and chains—online reservations, POS, delivery integration, and more.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="bg-white rounded shadow p-4 h-100 text-center">
+          <i class="fa fa-briefcase fa-3x text-primary mb-3"></i>
+          <h4 class="mb-2">Other Sectors</h4>
+          <p class="mb-0 text-muted">We also service retail, education, healthcare, and growing businesses ready for digital transformation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technologies & Tools -->
+    <div class="mb-5 text-center">
+      <h5 class="fw-semibold text-primary mb-3">Technologies & Tools We Use</h5>
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+        <img src="img/tool-aws.png" alt="AWS" style="height: 40px;" title="AWS Cloud">
+        <img src="img/tool-microsoft.png" alt="Microsoft" style="height: 40px;" title="Microsoft Suite">
+        <img src="img/tool-oracle.png" alt="Oracle" style="height: 40px;" title="Oracle Hospitality">
+        <img src="img/tool-pos.png" alt="POS" style="height: 40px;" title="POS Integrations">
+        <img src="img/tool-slack.png" alt="Slack" style="height: 40px;" title="Slack Collaboration">
+        <img src="img/tool-wordpress.png" alt="WordPress" style="height: 40px;" title="WordPress">
+        <!-- Add or revise logos as needed -->
+      </div>
+    </div>
+    
+    <!-- Our Process -->
+    <div class="mb-2 text-center">
+      <h5 class="fw-semibold text-primary mb-4">Our Proven Process</h5>
+      <div class="row justify-content-center">
+        <div class="col-md-2 col-6 mb-4">
+          <div class="process-step p-3 rounded bg-white h-100 shadow text-center">
+            <div class="mb-2"><i class="fa fa-comments fa-2x text-primary"></i></div>
+            <div class="fw-bold">1. Consultation</div>
+            <div class="small text-muted">We listen, analyze, and define your needs and ambitions.</div>
+          </div>
+        </div>
+        <div class="col-md-2 col-6 mb-4">
+          <div class="process-step p-3 rounded bg-white h-100 shadow text-center">
+            <div class="mb-2"><i class="fa fa-lightbulb fa-2x text-primary"></i></div>
+            <div class="fw-bold">2. Solution Design</div>
+            <div class="small text-muted">Creative, tailor-made proposals with state-of-the-art tools and tech.</div>
+          </div>
+        </div>
+        <div class="col-md-2 col-6 mb-4">
+          <div class="process-step p-3 rounded bg-white h-100 shadow text-center">
+            <div class="mb-2"><i class="fa fa-cogs fa-2x text-primary"></i></div>
+            <div class="fw-bold">3. Implementation</div>
+            <div class="small text-muted">Agile rollout, full setup, training, and integration into your workflow.</div>
+          </div>
+        </div>
+        <div class="col-md-2 col-6 mb-4">
+          <div class="process-step p-3 rounded bg-white h-100 shadow text-center">
+            <div class="mb-2"><i class="fa fa-headset fa-2x text-primary"></i></div>
+            <div class="fw-bold">4. Support & Iterate</div>
+            <div class="small text-muted">Proactive support and continuous improvement for lasting results.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Industries/Tools/Process Section End -->
+
+
+<!-- Trusted By / Vendors Section -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+  <div class="container py-5 mb-5">
+    <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width:500px;">
+      <h5 class="fw-bold text-primary text-uppercase">Trusted by Industry Leaders</h5>
+      <h1 class="mb-0">Our Partners</h1>
+      <p class="mt-2 text-muted">We’re proud to collaborate with world-class vendors and trusted partners.</p>
+    </div>
+    <div class="bg-white">
+      <div class="owl-carousel vendor-carousel">
+        <img src="img/vendor-1.jpg" alt="Vendor 1" />
+        <img src="img/vendor-2.jpg" alt="Vendor 2" />
+        <img src="img/vendor-3.jpg" alt="Vendor 3" />
+        <img src="img/vendor-4.jpg" alt="Vendor 4" />
+        <img src="img/vendor-5.jpg" alt="Vendor 5" />
+        <img src="img/vendor-6.jpg" alt="Vendor 6" />
+        <img src="img/vendor-7.jpg" alt="Vendor 7" />
+        <img src="img/vendor-8.jpg" alt="Vendor 8" />
+        <img src="img/vendor-9.jpg" alt="Vendor 9" />
+        <!-- Add more as needed -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer (same as your template) -->
+  <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+      <div class="row gx-5">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+            <a href="index.html" class="navbar-brand">
+              <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+            </a>
+            <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
+            <form action="">
+              <div class="input-group">
+                <input type="text" class="form-control border-white p-3" placeholder="Your Email" />
+                <button class="btn btn-dark">Sign Up</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-6">
+          <div class="row gx-5">
+            <div class="col-lg-4 col-md-12 pt-5 mb-5">
+              <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                <h3 class="text-light mb-0">Get In Touch</h3>
+              </div>
+              <div class="d-flex mb-2">
+                <i class="bi bi-geo-alt text-primary me-2"></i>
+                <p class="mb-0">123 Street, New York, USA</p>
+              </div>
+              <div class="d-flex mb-2">
+                <i class="bi bi-envelope-open text-primary me-2"></i>
+                <p class="mb-0">info@example.com</p>
+              </div>
+              <div class="d-flex mb-2">
+                <i class="bi bi-telephone text-primary me-2"></i>
+                <p class="mb-0">+012 345 67890</p>
+              </div>
+              <div class="d-flex mt-4">
+                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
+                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+              <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                <h3 class="text-light mb-0">Quick Links</h3>
+              </div>
+              <div class="link-animated d-flex flex-column justify-content-start">
+                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
+                <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+              <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                <h3 class="text-light mb-0">Popular Links</h3>
+              </div>
+              <div class="link-animated d-flex flex-column justify-content-start">
+                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
+                <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"
+    ><i class="bi bi-arrow-up"></i
+  ></a>
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" tabindex="-1" aria-hidden="true"></div>
+
+  <!-- Side Cart Panel -->
+  <div id="side-cart" aria-label="Shopping cart" role="dialog" aria-modal="true" tabindex="-1">
+    <header>
+      Your Cart
+      <button id="close-cart" aria-label="Close cart">&times;</button>
+    </header>
+    <div id="cart-items">
+      <p class="text-muted">Your cart is empty.</p>
+    </div>
+    <footer>
+      <div class="total">
+        <span>Total:</span>
+        <span id="cart-total">$0</span>
+      </div>
+      <button class="checkout" type="button">Checkout</button>
+      <button class="continue" type="button" id="continue-shopping-btn">Continue Shopping</button>
+    </footer>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Cart functionality -->
+  <script>
+    const sideCart = document.getElementById("side-cart");
+    const cartBtn = document.getElementById("cart-btn");
+    const closeCartBtn = document.getElementById("close-cart");
+    const cartOverlay = document.getElementById("cart-overlay");
+    const continueShoppingBtn = document.getElementById("continue-shopping-btn");
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartDisplay() {
+      let totalAmount = 0;
+      let totalItems = 0;
+      const cartItemsDiv = document.getElementById("cart-items");
+      cartItemsDiv.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+      } else {
+        cart.forEach((item, index) => {
+          totalAmount += item.price * item.qty;
+          totalItems += item.qty;
+
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'cart-item';
+
+          itemDiv.innerHTML = `
+            <div class="item-info">
+              <div class="item-name">${item.name}</div>
+              <div class="item-qty">Quantity: ${item.qty}</div>
+            </div>
+            <div class="item-price">$${(item.price * item.qty).toFixed(2)}</div>
+            <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}" title="Remove item">&times;</button>
+          `;
+
+          cartItemsDiv.appendChild(itemDiv);
+        });
+      }
+      document.getElementById("cart-amount").textContent = "Amount: $" + totalAmount.toFixed(2);
+      document.getElementById("cart-count").textContent = totalItems;
+      document.getElementById("cart-total").textContent = "$" + totalAmount.toFixed(2);
+
+      document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', function () {
+          const idx = parseInt(this.getAttribute('data-index'));
+          cart.splice(idx, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartDisplay();
+        });
+      });
+    }
+
+    function openCart() {
+      sideCart.classList.add("open");
+      cartOverlay.style.display = "block";
+    }
+
+    function closeCart() {
+      sideCart.classList.remove("open");
+      cartOverlay.style.display = "none";
+    }
+
+    cartBtn.addEventListener("click", openCart);
+    closeCartBtn.addEventListener("click", closeCart);
+    cartOverlay.addEventListener("click", closeCart);
+    continueShoppingBtn.addEventListener("click", closeCart);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCartDisplay();
+    });
+  </script>
+</body>
+
+</html>
