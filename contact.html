@@ -63,56 +63,60 @@
     <!-- Topbar End -->
 
 
-    <!-- Navbar Start -->
-    <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-            <a href="index.html" class="navbar-brand p-0">
-                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                            <a href="feature.html" class="dropdown-item">Our features</a>
-                            <a href="team.html" class="dropdown-item">Team Members</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="quote.html" class="dropdown-item">Free Quote</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link active">Contact</a>
-                </div>
-                <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
-                <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
-            </div>
-        </nav>
+  <!-- Navbar Start -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+      <a href="index.html" class="navbar-brand p-0">
+        <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+          <a href="index.html" class="nav-item nav-link">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <a href="service.html" class="nav-item nav-link">Services</a>
 
-        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-            <div class="row py-5">
-                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Contact Us</h1>
-                    <a href="" class="h5 text-white">Home</a>
-                    <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Contact</a>
-                </div>
-            </div>
+          <div class="nav-item dropdown">
+            <a href="product.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu m-0">
+              <li><a class="dropdown-item" href="#">Category 1</a></li>
+              <li><a class="dropdown-item" href="#">Category 2</a></li>
+              <li><a class="dropdown-item" href="#">Category 3</a></li>
+              <li><a class="dropdown-item" href="#">Category 4</a></li>
+              <li><a class="dropdown-item" href="#">Category 5</a></li>
+            </ul>
+          </div>
+
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
         </div>
+
+        <!-- Cart area - amount display, button, count badge -->
+        <div class="navbar-cart">
+          <span id="cart-amount">Amount: $0.00</span>
+          <button id="cart-btn" aria-label="Open shopping cart"
+            class="btn btn-outline-light btn-sm btn-square rounded-circle position-relative">
+            <i class="fa fa-shopping-cart"></i>
+            <span id="cart-count-badge">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+      <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+          <h1 class="display-4 text-white animated zoomIn">Our Products</h1>
+        </div>
+      </div>
     </div>
-    <!-- Navbar End -->
+  </div>
+  <!-- Navbar End -->
 
 
     <!-- Full Screen Search Start -->
@@ -320,6 +324,118 @@
         </div>
     </div>
     <!-- Footer End -->
+
+    <!-- Cart Overlay -->
+<div id="cart-overlay" tabindex="-1" aria-hidden="true" style="display:none;"></div>
+
+<!-- Cart Sidebar -->
+<div id="side-cart" aria-label="Shopping cart" role="dialog" aria-modal="true" tabindex="-1">
+  <header>
+    Your Cart
+    <button id="close-cart" aria-label="Close cart">&times;</button>
+  </header>
+  <div id="cart-items" tabindex="0" style="overflow-y:auto; max-height:70vh; padding:1rem; font-family: 'Nunito', sans-serif;">
+    <!-- Cart items will be injected here -->
+  </div>
+  <footer>
+    <div class="total d-flex justify-content-between fw-bold fs-5 px-3">
+      <span>Total:</span>
+      <span id="cart-total">$0.00</span>
+    </div>
+    <button class="checkout btn btn-primary w-100 my-2" type="button">Checkout</button>
+    <button class="continue btn btn-outline-primary w-100" type="button" id="continue-shopping-btn">Continue Shopping</button>
+  </footer>
+</div>
+
+
+<style>
+
+    #cart-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  z-index: 1040;
+  display: none;
+}
+#side-cart {
+  position: fixed;
+  top: 0; right: -400px;
+  width: 400px; max-width: 90vw;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nunito', sans-serif;
+}
+#side-cart.open {
+  right: 0;
+}
+#side-cart header {
+  padding: 1rem;
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#side-cart header button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+#cart-items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+#cart-items .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: .5rem 0;
+}
+#cart-items .cart-item:last-child {
+  border-bottom: none;
+}
+#cart-items .cart-item button {
+  background: transparent;
+  border: none;
+  color: #dc3545;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+#side-cart footer {
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+}
+#side-cart footer button {
+  width: 100%;
+  font-weight: 700;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+}
+#side-cart footer .checkout {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+}
+#side-cart footer .continue {
+  background-color: transparent;
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+  margin-top: 0.5rem;
+}
+
+</style>
 
 
     <!-- Back to Top -->
