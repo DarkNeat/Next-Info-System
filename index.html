@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Startup - Startup Website Template</title>
+  <title>Next Info Systems</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta content="Free HTML Templates" name="keywords" />
   <meta content="Free HTML Templates" name="description" />
@@ -112,12 +112,6 @@
       flex-direction: column;
       gap: 0.5rem;
     }
-    #side-cart footer .total {
-      display: flex;
-      justify-content: space-between;
-      font-weight: 700;
-      font-size: 1.15rem;
-    }
     #side-cart footer button {
       padding: 0.6rem;
       font-weight: 700;
@@ -171,14 +165,14 @@
       <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
         <div class="d-inline-flex align-items-center" style="height: 45px;">
           <small class="me-3 text-light"
-            ><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York,
-            USA</small
+            ><i class="fa fa-map-marker-alt me-2"></i>Dubai Branch Building, Mankhool, Dubai, 
+            United Arab Emirates</small
           >
           <small class="me-3 text-light"
             ><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small
           >
           <small class="text-light"
-            ><i class="fa fa-envelope-open me-2"></i>info@example.com</small
+            ><i class="fa fa-envelope-open me-2"></i>sales@nextinfosystem.com</small
           >
         </div>
       </div>
@@ -236,19 +230,8 @@
           <a href="index.html" class="nav-item nav-link active">Home</a>
           <a href="about.html" class="nav-item nav-link">About</a>
           <a href="service.html" class="nav-item nav-link">Services</a>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-              >Products</a
-            >
-            <div class="dropdown-menu m-0">
-              <a href="product.html" class="dropdown-item">ALL</a>
-              <a href="#" class="dropdown-item">Category 1</a>
-              <a href="#" class="dropdown-item">Category 2</a>
-              <a href="#" class="dropdown-item">Category 3</a>
-              <a href="#" class="dropdown-item">Category 4</a>
-              <a href="#" class="dropdown-item">Category 5</a>
-            </div>
-          </div>
+          <a href="product.html" class="nav-item nav-link">Products</a>
+
           <a href="contact.html" class="nav-item nav-link">Contact</a>
         </div>
         <button
@@ -262,8 +245,7 @@
 
      <!-- Cart display -->
         <div class="d-flex align-items-center ms-3">
-          <span id="cart-amount" class="me-2">Amount: $0.00</span>
-          <span id="cart-count" class="me-2">0</span>
+          <span id="cart-count-badge" class="me-2 badge bg-danger" style="display: none;">0</span>
           <button
             id="cart-btn"
             class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
@@ -390,18 +372,12 @@
   <!-- Full Screen Search End -->
 
 <!-- Facts Start -->
-<div class="container-fluid facts py-5 pt-lg-0">
+<div class="container-fluid facts py-6 pt-lg-0">
   <div class="container py-5 pt-lg-0">
     <div class="row gx-0">
       <div class="col-lg-2 wow zoomIn" data-wow-delay="0.1s">
-        <div
-          class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
-          style="height: 150px"
-        >
-          <div
-            class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
-            style="width: 60px; height: 60px"
-          >
+        <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px">
+          <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px">
             <i class="fa fa-cash-register text-primary" style="font-size: 38px;"></i>
           </div>
           <div class="ps-4">
@@ -409,15 +385,10 @@
           </div>
         </div>
       </div>
+
       <div class="col-lg-2 wow zoomIn" data-wow-delay="0.3s">
-        <div
-          class="bg-light shadow d-flex align-items-center justify-content-center p-4"
-          style="height: 150px"
-        >
-          <div
-            class="bg-primary d-flex align-items-center justify-content-center rounded mb-2"
-            style="width: 60px; height: 60px"
-          >
+        <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px">
+          <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px">
             <i class="fa fa-print text-white" style="font-size: 38px;"></i>
           </div>
           <div class="ps-4">
@@ -425,51 +396,48 @@
           </div>
         </div>
       </div>
+
       <div class="col-lg-2 wow zoomIn" data-wow-delay="0.6s">
-        <div
-          class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
-          style="height: 150px"
-        >
-          <div
-            class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
-            style="width: 60px; height: 60px"
-          >
-            <i class="fa fa-code text-primary"style="font-size: 38px;"></i>
+        <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px">
+          <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px">
+            <i class="fa fa-code text-primary" style="font-size: 38px;"></i>
           </div>
           <div class="ps-4">
             <h5 class="text-white mb-0">SOFTWARE DEVELOPMENT</h5>
           </div>
         </div>
       </div>
+
       <div class="col-lg-2 wow zoomIn" data-wow-delay="0.8s">
-        <div
-          class="bg-light shadow d-flex align-items-center justify-content-center p-4"
-          style="height: 150px"
-        >
-          <div
-            class="bg-primary d-flex align-items-center justify-content-center rounded mb-2"
-            style="width: 60px; height: 60px"
-          >
-            <i class="fa fa-headset text-white"style="font-size: 38px;"></i>
+        <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px">
+          <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px">
+            <i class="fa fa-headset text-white" style="font-size: 38px;"></i>
           </div>
           <div class="ps-4">
             <h5 class="text-primary mb-0">IT SUPPORT SERVICES</h5>
           </div>
         </div>
       </div>
+
       <div class="col-lg-2 wow zoomIn" data-wow-delay="1.0s">
-        <div
-          class="bg-primary shadow d-flex align-items-center justify-content-center p-4"
-          style="height: 150px"
-        >
-          <div
-            class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
-            style="width: 60px; height: 60px"
-          >
-            <i class="fa fa-video text-primary"style="font-size: 38px;"></i>
+        <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px">
+          <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px">
+            <i class="fa fa-video text-primary" style="font-size: 38px;"></i>
           </div>
           <div class="ps-4">
             <h5 class="text-white mb-0">CCTV SOLUTION</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Updated 6th Box for Consistency -->
+      <div class="col-lg-2 wow zoomIn" data-wow-delay="1.2s">
+        <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px">
+          <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px">
+            <i class="fa fa-cloud text-white" style="font-size: 38px;"></i>
+          </div>
+          <div class="ps-4">
+            <h5 class="text-primary mb-0">CLOUD SERVICES</h5>
           </div>
         </div>
       </div>
@@ -479,21 +447,22 @@
 <!-- Facts End -->
 
 
-
 <!-- Modernized About Us Section -->
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
   <div class="container py-5">
     <div class="row align-items-center g-5">
       <!-- Left content -->
       <div class="col-lg-7">
-        <div class="section-title mb-4">
+        <div class="section-title mb-4 position-relative">
           <h5 class="fw-semibold text-primary text-uppercase">About Us</h5>
           <h1 class="display-5 fw-bold">
             The Best IT Solution With 10 Years of Experience
           </h1>
         </div>
         <p class="lead" style="line-height: 1.6; color: #555;">
-          Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit.
+          Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit.
+          Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit,
+          sed stet no labore lorem sit.
         </p>
 
         <div class="d-flex flex-wrap gap-4 mb-4">
@@ -516,12 +485,17 @@
         </div>
 
         <div class="d-flex align-items-center gap-3">
-          <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+          <div
+            class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center"
+            style="width: 48px; height: 48px;"
+          >
             <i class="fa fa-phone-alt"></i>
           </div>
           <div>
             <p class="mb-1 fw-semibold">Call to ask any question</p>
-            <a href="tel:+0123456789" class="h4 text-decoration-none text-primary">+012 345 6789</a>
+            <a href="tel:+0123456789" class="h4 text-decoration-none text-primary"
+              >+012 345 6789</a
+            >
           </div>
         </div>
 
@@ -532,11 +506,17 @@
 
       <!-- Right image -->
       <div class="col-lg-5 text-center text-lg-end">
-        <img src="img/about.jpg" alt="About Us" class="rounded shadow-lg w-100" style="object-fit: cover; max-height: 500px;" />
+        <img
+          src="img/about.jpg"
+          alt="About Us"
+          class="rounded shadow-lg w-100"
+          style="object-fit: cover; max-height: 500px;"
+        />
       </div>
     </div>
   </div>
 </div>
+
 
 
   <!-- Features Start (Why Choose Us) -->
@@ -834,156 +814,161 @@
   </div>
   <!-- Vendor End -->
 
-  <!-- Footer Start -->
-  <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container">
-      <div class="row gx-5">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <div
-            class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4"
-          >
-            <a href="index.html" class="navbar-brand">
-              <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
-            </a>
-            <p class="mt-3 mb-4">
-              Lorem diam sit erat dolor elitr et, diam lorem justo amet clita
-              stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam
-              amet erat lorem stet eos. Diam amet et kasd eos duo.
-            </p>
-            <form action="">
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control border-white p-3"
-                  placeholder="Your Email"
-                />
-                <button class="btn btn-dark">Sign Up</button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-6">
-          <div class="row gx-5">
-            <div class="col-lg-4 col-md-12 pt-5 mb-5">
-              <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                <h3 class="text-light mb-0">Get In Touch</h3>
-              </div>
-              <div class="d-flex mb-2">
-                <i class="bi bi-geo-alt text-primary me-2"></i>
-                <p class="mb-0">123 Street, New York, USA</p>
-              </div>
-              <div class="d-flex mb-2">
-                <i class="bi bi-envelope-open text-primary me-2"></i>
-                <p class="mb-0">info@example.com</p>
-              </div>
-              <div class="d-flex mb-2">
-                <i class="bi bi-telephone text-primary me-2"></i>
-                <p class="mb-0">+012 345 67890</p>
-              </div>
-              <div class="d-flex mt-4">
-                <a class="btn btn-primary btn-square me-2" href="#"
-                  ><i class="fab fa-twitter fw-normal"></i
-                ></a>
-                <a class="btn btn-primary btn-square me-2" href="#"
-                  ><i class="fab fa-facebook-f fw-normal"></i
-                ></a>
-                <a class="btn btn-primary btn-square me-2" href="#"
-                  ><i class="fab fa-linkedin-in fw-normal"></i
-                ></a>
-                <a class="btn btn-primary btn-square" href="#"
-                  ><i class="fab fa-instagram fw-normal"></i
-                ></a>
-              </div>
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+  <div class="container">
+    <div class="row gx-5">
+      <!-- About Section -->
+      <div class="col-lg-4 col-md-6 footer-about">
+        <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded">
+          <a href="index.html" class="navbar-brand mb-3">
+            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+          </a>
+          <p class="mb-4 px-lg-3" style="color: #e1e1e1; font-size: 0.95rem;">
+            We provide innovative IT solutions and outstanding service with over 10 years of experience to help your business grow.
+          </p>
+          <form action="" class="w-100" style="max-width: 400px;">
+            <div class="input-group">
+              <input
+                type="email"
+                class="form-control border-white p-3"
+                placeholder="Your Email"
+                aria-label="Email"
+                required
+              />
+              <button class="btn btn-dark" type="submit">
+                Sign Up
+              </button>
             </div>
-            <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-              <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                <h3 class="text-light mb-0">Quick Links</h3>
-              </div>
-              <div class="link-animated d-flex flex-column justify-content-start">
-                <a class="text-light mb-2" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>Home</a
-                >
-                <a class="text-light mb-2" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a
-                >
-                <a class="text-light mb-2" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>Our
-                  Services</a
-                >
-                <a class="text-light mb-2" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>Meet The
-                  Team</a
-                >
-                <a class="text-light" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>Contact
-                  Us</a
-                >
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-              <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                <h3 class="text-light mb-0">Popular Links</h3>
-              </div>
-              <div class="link-animated d-flex flex-column justify-content-start">
-                <a class="text-light mb-2" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>Home</a
-                >
-                <a class="text-light mb-2" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a
-                >
-                <a class="text-light mb-2" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>Our
-                  Services</a
-                >
-                <a class="text-light mb-2" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>Meet The
-                  Team</a
-                >
-                <a class="text-light" href="#"
-                  ><i class="bi bi-arrow-right text-primary me-2"></i>Contact
-                  Us</a
-                >
-              </div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="container-fluid text-white" style="background: #061429;">
-    <div class="container text-center">
-      <div class="row justify-content-end">
-        <div class="col-lg-8 col-md-6">
-          <div
-            class="d-flex align-items-center justify-content-center"
-            style="height: 75px"
-          >
-            <p class="mb-0">
-              &copy;
-              <a class="text-white border-bottom" href="#">Your Site Name</a
-              >. All Rights Reserved.
-              Designed by
-              <a
-                class="text-white border-bottom"
-                href="https://htmlcodex.com"
-                >HTML Codex</a
-              >
-            </p>
-            <br />
-            Distributed By:
-            <a
-              class="border-bottom"
-              href="https://themewagon.com"
-              target="_blank"
-              >ThemeWagon</a
-            >
+      <!-- Contact Info Section -->
+      <div class="col-lg-8 col-md-6">
+        <div class="row gx-5">
+          <!-- Get In Touch -->
+          <div class="col-lg-4 col-md-12 pt-5 mb-5">
+            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+              <h3 class="text-light mb-0">Get In Touch</h3>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-geo-alt text-primary me-3 fs-4"></i>
+              <p class="mb-0">Dubai Branch Building, Mankhool, Dubai, UAE</p>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-envelope-open text-primary me-3 fs-4"></i>
+              <p class="mb-0">sales@nextinfosystem.com</p>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-telephone text-primary me-3 fs-4"></i>
+              <p class="mb-0">+012 345 6789</p>
+            </div>
+            <div class="d-flex mt-4">
+              <a class="btn btn-primary btn-square me-2" href="#" aria-label="Twitter">
+                <i class="fab fa-twitter fw-normal"></i>
+              </a>
+              <a class="btn btn-primary btn-square me-2" href="#" aria-label="Facebook">
+                <i class="fab fa-facebook-f fw-normal"></i>
+              </a>
+              <a class="btn btn-primary btn-square me-2" href="#" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in fw-normal"></i>
+              </a>
+              <a class="btn btn-primary btn-square" href="#" aria-label="Instagram">
+                <i class="fab fa-instagram fw-normal"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+              <h3 class="text-light mb-0">Quick Links</h3>
+            </div>
+            <div class="d-flex flex-column link-animated">
+              <a class="text-light mb-2" href="index.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>Home
+              </a>
+              <a class="text-light mb-2" href="about.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>About
+              </a>
+              <a class="text-light mb-2" href="service.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>Services
+              </a>
+              <a class="text-light mb-2" href="product.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>Products
+              </a>
+              <a class="text-light" href="contact.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>Contact
+              </a>
+            </div>
+          </div>
+
+          <!-- Popular Links (copy of Quick Links for consistent UX) -->
+          <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+              <h3 class="text-light mb-0">Popular Links</h3>
+            </div>
+            <div class="d-flex flex-column link-animated">
+              <a class="text-light mb-2" href="index.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>Home
+              </a>
+              <a class="text-light mb-2" href="about.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>About
+              </a>
+              <a class="text-light mb-2" href="service.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>Services
+              </a>
+              <a class="text-light mb-2" href="product.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>Products
+              </a>
+              <a class="text-light" href="contact.html">
+                <i class="bi bi-arrow-right text-primary me-2"></i>Contact
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- Footer End -->
+</div>
+
+<!-- Footer Bottom Bar -->
+<div class="container-fluid text-white" style="background: #061429;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 text-center py-3">
+        <p class="mb-0 small">
+          &copy; <span id="year"></span>
+          <a class="text-white border-bottom" href="#">nextinfosystem.com</a>. All Rights Reserved.
+          Designed by
+          <a
+            class="text-white border-bottom"
+            href="https://htmlcodex.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UMBRA</a
+          >.
+          Distributed by
+          <a
+            class="text-white border-bottom"
+            href="https://themewagon.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >UMBRA</a
+          >.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Dynamically set current year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+
 
   <!-- Back to Top -->
   <a
@@ -1004,16 +989,11 @@
     <div id="cart-items">
       <p class="text-muted">Your cart is empty.</p>
     </div>
-    <footer>
-      <div class="total">
-        <span>Total:</span>
-        <span id="cart-total">$0</span>
-      </div>
-      <button class="checkout" type="button">Checkout</button>
-      <button class="continue" type="button" id="continue-shopping-btn">
-        Continue Shopping
-      </button>
-    </footer>
+<footer>
+  <button class="checkout" type="button">Request A Quote</button>
+  <button class="continue" type="button" id="continue-shopping-btn">Continue Shopping</button>
+</footer>
+
   </div>
 
   <!-- JavaScript Libraries -->
@@ -1027,17 +1007,15 @@
   <script src="js/main.js"></script>
 
   <!-- Cart Window JS -->
-  <script>
-// Cart Window JS (integrated with centralized CartManager)
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
   const sideCart = document.getElementById("side-cart");
   const cartBtn = document.getElementById("cart-btn");
   const closeCartBtn = document.getElementById("close-cart");
   const cartOverlay = document.getElementById("cart-overlay");
   const continueShoppingBtn = document.getElementById("continue-shopping-btn");
-  const cartAmountEl = document.getElementById("cart-amount");
-  const cartCountEl = document.getElementById("cart-count");
-  const cartTotalEl = document.getElementById("cart-total");
+  // Use the correct cart badge id (matching your main.js logic)
+  const cartCountBadge = document.getElementById("cart-count-badge");
   const cartItemsDiv = document.getElementById("cart-items");
 
   function openCart() {
@@ -1055,40 +1033,65 @@ document.addEventListener("DOMContentLoaded", function () {
   cartOverlay.addEventListener("click", closeCart);
   continueShoppingBtn.addEventListener("click", closeCart);
 
-  // Function to update the cart display, connecting to CartManager for amounts
+  // --- REVISED: Cart Count + Items Only, No Price ---
   function updateCartDisplay() {
-    // Use CartManager if available; fallback to zero
-    const amount = window.CartManager ? window.CartManager.getCartAmount() : 0;
-    // TODO: Replace with your logic to get real cart item count
-    const items = 0;
-
-    const formattedAmount = amount.toFixed(2);
-
-    if (cartAmountEl) {
-      cartAmountEl.textContent = `Amount: $${formattedAmount}`;
+    // Get actual cart from main.js's CartManager or localStorage
+    let cart = [];
+    if (window.CartManager && typeof window.CartManager.renderCartSidebar === "function") {
+      // Let CartManager handle sidebar rendering, just update badge here (optional)
+      if (typeof window.CartManager.updateCartUI === "function") {
+        window.CartManager.updateCartUI();
+        return; // Let main.js handle it
+      }
+    } else {
+      cart = JSON.parse(localStorage.getItem("cart")) || [];
     }
-    if (cartCountEl) {
-      cartCountEl.textContent = items.toString();
-    }
-    if (cartTotalEl) {
-      cartTotalEl.textContent = `$${formattedAmount}`;
+
+    const totalItems = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+
+    if (cartCountBadge) {
+      if (totalItems > 0) {
+        cartCountBadge.textContent = totalItems;
+        cartCountBadge.style.display = "inline-block";
+      } else {
+        cartCountBadge.textContent = "0";
+        cartCountBadge.style.display = "none";
+      }
     }
 
     if (cartItemsDiv) {
-      cartItemsDiv.innerHTML =
-        items === 0
-          ? '<p class="text-muted">Your cart is empty.</p>'
-          : `<p>You have ${items} item${items !== 1 ? "s" : ""} in your cart.</p>`;
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+      } else {
+        cartItemsDiv.innerHTML = cart.map(item => `
+          <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-2">
+            <div>
+              <strong>${item.name}</strong><br>
+              Qty: ${item.qty || 1}
+            </div>
+            <div>
+              <button class="btn btn-sm btn-outline-danger remove-item mt-1" title="Remove item">&times;</button>
+            </div>
+          </div>
+        `).join("");
+        // Add remove functionality
+        cartItemsDiv.querySelectorAll('.remove-item').forEach((btn, idx) => {
+          btn.addEventListener('click', function() {
+            cart.splice(idx, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+          });
+        });
+      }
     }
   }
 
-  // Update the cart display once on page load
   updateCartDisplay();
 
-  // OPTIONAL: Expose update function globally to update display when cart changes
+  // Optionally, expose the updateCartDisplay for other scripts
   window.updateCartDisplay = updateCartDisplay;
 });
+</script>
 
-  </script>
 </body>
 </html>
