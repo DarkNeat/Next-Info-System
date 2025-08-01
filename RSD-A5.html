@@ -355,68 +355,211 @@
     <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 80px;">
       <div class="row">
         <div class="col text-center">
-          <h1 class="display-4 text-white animated zoomIn">Product 1</h1>
+          <h1 class="display-4 text-white animated zoomIn">POS Category</h1>
         </div>
       </div>
     </div>
   </div>
 
-<!-- Product Detail -->
+<!-- Product Detail Container -->
 <div class="container">
-  <div class="row g-4">
-    <div class="col-auto">
-      <div class="product-thumbnails d-flex flex-column">
-        <img src="img/product1-thumb1.jpg" alt="Thumbnail 1" class="active mb-2" data-large="img/product1.jpg" />
-        <img src="img/product1-thumb2.jpg" alt="Thumbnail 2" class="mb-2" data-large="img/product1-2.jpg" />
-        <img src="img/product1-thumb3.jpg" alt="Thumbnail 3" class="mb-2" data-large="img/product1-3.jpg" />
-        <img src="img/product1-thumb4.jpg" alt="Thumbnail 4" class="mb-2" data-large="img/product1-4.jpg" />
+  <div class="row g-4 align-items-start">
+    <!-- Left side: Images block, 3 columns -->
+    <div class="col-lg-7 d-flex align-items-start">
+      <!-- Active thumbnails -->
+      <div class="product-thumbnails d-flex flex-column flex-shrink-0 me-3" style="width: 80px;">
+        <div id="thumbs-active-black">
+          <img src="img/products/POS System/RSD-A5/Black/pos 1a.jpg" alt="Black View 1"
+            data-large="img/products/POS System/RSD-A5/Black/pos 1a.jpg" class="active mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1b.jpg" alt="Black View 2"
+            data-large="img/products/POS System/RSD-A5/Black/pos 1b.jpg" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1c.jpg" alt="Black View 3"
+            data-large="img/products/POS System/RSD-A5/Black/pos 1c.jpg" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1d.jpg" alt="Black View 4"
+            data-large="img/products/POS System/RSD-A5/Black/pos 1d.jpg" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1e.jpg" alt="Black View 5"
+            data-large="img/products/POS System/RSD-A5/Black/pos 1e.jpg" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1f.jpg" alt="Black View 6"
+            data-large="img/products/POS System/RSD-A5/Black/pos 1f.jpg" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1g.jpg" alt="Black View 7"
+            data-large="img/products/POS System/RSD-A5/Black/pos 1g.jpg" class="mb-2" tabindex="0" />
+        </div>
+        <div id="thumbs-active-white" style="display:none;">
+          <img src="img/products/POS System/RSD-A5/White/pos 1h.png" alt="White View 1"
+            data-large="img/products/POS System/RSD-A5/White/pos 1h.png" class="active mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1i.png" alt="White View 2"
+            data-large="img/products/POS System/RSD-A5/White/pos 1i.png" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1j.png" alt="White View 3"
+            data-large="img/products/POS System/RSD-A5/White/pos 1j.png" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1k.png" alt="White View 4"
+            data-large="img/products/POS System/RSD-A5/White/pos 1k.png" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1l.png" alt="White View 5"
+            data-large="img/products/POS System/RSD-A5/White/pos 1l.png" class="mb-2" tabindex="0" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1m.jpg" alt="White View 6"
+            data-large="img/products/POS System/RSD-A5/White/pos 1m.jpg" class="mb-2" tabindex="0" />
+        </div>
+      </div>
+
+      <!-- Main image -->
+      <div class="product-main-image flex-grow-1 mx-3">
+        <img id="main-product-image" src="img/products/POS System/RSD-A5/Black/pos 1a.jpg" alt="POS A5 Main Image"
+          class="img-fluid rounded" />
+      </div>
+
+      <!-- Inactive thumbnails grayed out -->
+      <div class="product-thumbnails d-flex flex-column flex-shrink-0 ms-3" style="width: 80px; opacity: 0.4; pointer-events: none;">
+        <div id="thumbs-inactive-white">
+          <img src="img/products/POS System/RSD-A5/White/pos 1h.png" alt="White View 1" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1i.png" alt="White View 2" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1j.png" alt="White View 3" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1k.png" alt="White View 4" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1l.png" alt="White View 5" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/White/pos 1m.jpg" alt="White View 6" class="mb-2" />
+        </div>
+        <div id="thumbs-inactive-black" style="display:none;">
+          <img src="img/products/POS System/RSD-A5/Black/pos 1a.jpg" alt="Black View 1" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1b.jpg" alt="Black View 2" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1c.jpg" alt="Black View 3" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1d.jpg" alt="Black View 4" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1e.jpg" alt="Black View 5" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1f.jpg" alt="Black View 6" class="mb-2" />
+          <img src="img/products/POS System/RSD-A5/Black/pos 1g.jpg" alt="Black View 7" class="mb-2" />
+        </div>
       </div>
     </div>
-    <div class="col-lg-5">
-      <img id="main-product-image" src="img/product1.jpg" alt="Product main" class="img-fluid rounded" />
-    </div>
-    <div class="col-lg-5">
-      <p class="product-short-description mb-3">
-        Stylish gradient shirt with quality printing adaptable to casual or smart casual looks.
-      </p>
-      <button class="btn btn-primary btn-add-cart mb-4 fw-semibold" 
-              data-id="p1" data-name="Gradient Shirt" data-price="21.99">
-        Add to Cart
-      </button>
 
-      <div class="specs-section">
+    <!-- Right side: Product info column -->
+    <div class="col-lg-5">
+      <h2 class="product-title mb-3" style="margin-top: 0;">
+        RSD-A5<br />
+        <small style="font-weight: 600; font-size: 1.25rem;">15" Retail POS System with Aluminium Alloy Housing</small>
+      </h2>
+
+      <!-- Color buttons -->
+      <div class="mb-4">
+        <button id="btn-black" class="btn btn-outline-primary me-2 active" aria-pressed="true" type="button">Black</button>
+        <button id="btn-white" class="btn btn-outline-primary" aria-pressed="false" type="button">White</button>
+      </div>
+
+      <p class="product-short-description mb-4">
+        Industrial POS Terminal with LCD, Capacitive Touchscreen, High-End Aluminium Housing, Multiple I/O Ports.
+      </p>
+
+      <div class="specs-section mb-4">
         <h4 class="mb-3" style="color: var(--primary); font-weight: 700;">Highlighted Specs</h4>
-        <div class="specs-highlighted p-3 rounded bg-light text-dark">
+        <div class="specs-highlighted p-3 rounded bg-light text-dark" style="font-size: 1rem;">
           <ul class="mb-0">
-            <li>Material: 100% Cotton</li>
-            <li>Available Sizes: S, M, L, XL, XXL</li>
-            <li>Colors: Blue Gradient</li>
-            <li>Machine washable</li>
+            <li>Industrial Grade A LCD Display (15", 400 Nits)</li>
+            <li>10-Point Capacitive Touchscreen</li>
+            <li>Intel Celeron J1900 Dual-Core 2.0 GHz (Upgradeable)</li>
+            <li>Kingston RAM & SSD (Upgradeable)</li>
+            <li>Aluminum Alloy Housing with Excellent Heat Dissipation</li>
+            <li>Stable 12V Global Power Supply (UL Certified)</li>
+            <li>Black & White Color Options</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Full Specifications Section -->
+  <!-- Full Specifications Section (Separate row, full width) -->
   <div class="row justify-content-center mt-5">
     <div class="col-md-10 col-lg-8">
-      <h2 class="mb-6 text-center" style="color: var(--primary); font-weight: 700;">Full Specifications</h2>
+      <h2 class="mb-4 text-center" style="color: var(--primary); font-weight: 700;">
+        Full Specifications
+      </h2>
       <div class="section-title text-center my-0"></div>
-      <div class="specs-full text-center px-3" style="font-size: 1rem; color: #555; border-top: 1px solid #eee; padding-top: 1rem;">
-        <p>
-          This gradient shirt combines style with comfort. Made of 100% cotton, breathable and soft. Advanced printing technology
-          ensures vibrant and long-lasting colors. Perfect for any season, pairs well with jeans or formal trousers.
-        </p>
-        <p>
-          Care instructions: machine wash cold, do not bleach, tumble dry low, warm iron if needed.
-        </p>
-        <p>
-          Sizes run true to fit. Please check size guide on the product page.
-        </p>
+      <div class="specs-full" style="font-size: 1rem; color: #555; border-top: 1px solid #eee; padding-top: 1rem; text-align: left;">
+        <p><strong>Model No.:</strong> RSD-A5 — Industrial Grade 15" LED Display (4:3, 1024x768, 400 nits brightness)</p>
+        <p><strong>Motherboard:</strong> Industrial Grade (Upgradeable to J1800, J1900, i3, i5)</p>
+        <p><strong>CPU:</strong> Intel Celeron J1900 Dual-Core 2.0GHz (Upgradeable)</p>
+        <p><strong>Memory:</strong> Kingston DDR3-2GB (Upgradeable to 4GB/8GB)</p>
+        <p><strong>Storage:</strong> Kingston SSD 32GB (Upgradeable to 64GB/128GB)</p>
+        <p><strong>I/O Ports:</strong> 6x USB, RJ45, COM, VGA, PS/2, LPT, MIC, Audio</p>
+        <p><strong>Touchscreen:</strong> Flat free-bezel 10-point capacitive</p>
+        <p><strong>Customer Display:</strong> 8-digit LED or VFD220 (Optional)</p>
+        <p><strong>OS Support:</strong> Windows XP / 7 / 10, Linux</p>
+        <p><strong>Power Supply:</strong> 100-260VAC 50-60Hz (12V 5A output)</p>
+        <p><strong>Material:</strong> Aluminum Alloy Housing</p>
+        <p><strong>Accessories (Optional):</strong> Cash Drawer, Thermal Printer, Barcode Scanner, Card Reader (Integrated MSR), Wifi/3G</p>
+        <p><strong>Packing:</strong> Single box with inner foam</p>
+        <p><strong>Warranty:</strong> 18 Months, with 3 Years free maintenance</p>
       </div>
     </div>
   </div>
+</div>
+
+<!-- JQuery + JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(function() {
+    const $thumbsActiveBlack = $("#thumbs-active-black");
+    const $thumbsActiveWhite = $("#thumbs-active-white");
+    const $thumbsInactiveWhite = $("#thumbs-inactive-white");
+    const $thumbsInactiveBlack = $("#thumbs-inactive-black");
+    const $mainImage = $("#main-product-image");
+    const $btnBlack = $("#btn-black");
+    const $btnWhite = $("#btn-white");
+    let activeColor = 'black';
+
+    // Thumbnail click update main image for active thumbs only
+    $(".product-thumbnails > div").on("click", "img", function () {
+      const src = $(this).data("large");
+      if (!src) return;
+      $mainImage.attr("src", src);
+      $(this).siblings().removeClass("active");
+      $(this).addClass("active");
+    });
+
+    // Keyboard accessibility for thumbnails (Enter and Space keys)
+    $(".product-thumbnails img").attr("tabindex", "0").on("keypress", function (e) {
+      if (e.which === 13 || e.which === 32) {
+        $(this).trigger("click");
+      }
+    });
+
+    function switchToBlack() {
+      if (activeColor === 'black') return;
+      activeColor = 'black';
+
+      $thumbsActiveBlack.show();
+      $thumbsActiveWhite.hide();
+
+      $thumbsInactiveWhite.show();
+      $thumbsInactiveBlack.hide();
+
+      $btnBlack.addClass("active").attr("aria-pressed", "true");
+      $btnWhite.removeClass("active").attr("aria-pressed", "false");
+
+      const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
+      $mainImage.attr("src", firstBlackSrc);
+      $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
+    }
+
+    function switchToWhite() {
+      if (activeColor === 'white') return;
+      activeColor = 'white';
+
+      $thumbsActiveWhite.show();
+      $thumbsActiveBlack.hide();
+
+      $thumbsInactiveBlack.show();
+      $thumbsInactiveWhite.hide();
+
+      $btnWhite.addClass("active").attr("aria-pressed", "true");
+      $btnBlack.removeClass("active").attr("aria-pressed", "false");
+
+      const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
+      $mainImage.attr("src", firstWhiteSrc);
+      $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
+    }
+
+    $btnBlack.on("click", switchToBlack);
+    $btnWhite.on("click", switchToWhite);
+  });
+</script>
+
+
 
   <!-- Other Products Section -->
   <section class="other-products-section mt-5">
