@@ -103,107 +103,7 @@
     });
   }
 
-  /*** Service Boxes Interactions ***/
-  var services = [
-    // your existing services data here, unchanged
-  ];
-
-  var $detailPanel = $("#serviceDetail");
-  var $detailTitle = $("#serviceDetailTitle");
-  var $detailDescription = $("#serviceDetailDescription");
-  var $carouselInner = $("#serviceCarousel .carousel-inner");
-  var bsCarousel = null;
-
-  function showServiceDetail(index) {
-    var service = services[index];
-
-    $detailTitle.text(service.title);
-    $detailDescription.text(service.description);
-    $detailPanel.attr("aria-hidden", "false").show();
-    $detailPanel.attr("data-current", index);
-
-    $carouselInner.empty();
-    service.images.forEach(function (img, i) {
-      var activeClass = i === 0 ? "active" : "";
-      var item = `<div class="carousel-item ${activeClass}">
-                    <img src="${img}" alt="${service.title} image ${i + 1}" class="d-block w-100 rounded">
-                  </div>`;
-      $carouselInner.append(item);
-    });
-
-    if (bsCarousel) bsCarousel.dispose();
-    bsCarousel = new bootstrap.Carousel(document.getElementById("serviceCarousel"));
-  }
-
-  function hideServiceDetail() {
-    $detailPanel.attr("aria-hidden", "true").hide();
-    $detailPanel.removeAttr("data-current");
-    if (bsCarousel) {
-      bsCarousel.dispose();
-      bsCarousel = null;
-    }
-  }
-
-  $("#servicesGrid article.service-box").each(function () {
-    $(this).on("click keydown", function (e) {
-      if (
-        e.type === "click" ||
-        (e.type === "keydown" && (e.key === "Enter" || e.key === " "))
-      ) {
-        e.preventDefault();
-        var index = parseInt($(this).attr("data-index"), 10);
-        var current = $detailPanel.attr("data-current");
-
-        if ($detailPanel.is(":hidden") || current !== String(index)) {
-          showServiceDetail(index);
-        } else {
-          hideServiceDetail();
-        }
-      }
-    });
-  });
-
-  // --- Product category filtering ---
-  $(document).ready(function () {
-    const $categoryLinks = $(".category-link");
-    const $products = $(".col-lg-9 article");
-
-    function filterProducts(category) {
-      if (category === "ALL") {
-        $products.show();
-      } else {
-        $products.each(function () {
-          const cats = $(this).data("category");
-          if (typeof cats === "string" && cats.split(" ").includes(category)) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
-      }
-    }
-
-    $categoryLinks.on("click", function (e) {
-      e.preventDefault();
-      const selectedCategory = $(this).text().trim();
-
-      $categoryLinks.removeClass("active");
-      $(this).addClass("active");
-
-      filterProducts(selectedCategory);
-
-      $("section.col-lg-9").get(0).scrollIntoView({ behavior: "smooth" });
-    });
-
-    $categoryLinks.each(function () {
-      if ($(this).text().trim() === "ALL") {
-        $(this).trigger("click");
-        return false;
-      }
-    });
-  });
-
-  // --- Centralized Cart Manager without prices (for "Request for Quote" only) ---
+  // --- Centralized Cart Manager (without prices) ---
   (function () {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -213,7 +113,7 @@
 
     function getTotals() {
       let totalItems = 0;
-      cart.forEach(item => {
+      cart.forEach((item) => {
         totalItems += item.qty;
       });
       return { totalItems };
@@ -223,7 +123,7 @@
       const { totalItems } = getTotals();
       const $cartCountBadge = $("#cart-count-badge");
 
-      // Remove amount display entirely if present
+      // Remove amount display if any
       $("#cart-amount").remove();
 
       if ($cartCountBadge.length) {
@@ -235,9 +135,9 @@
       }
     }
 
-    // Add to cart by id/name, increment quantity if exists
+    // Add to cart by id/name, increment qty if exists
     function addToCart(id, name) {
-      const existing = cart.find(item => item.id === id && item.name === name);
+      const existing = cart.find((item) => item.id === id && item.name === name);
       if (existing) {
         existing.qty++;
       } else {
@@ -256,7 +156,6 @@
     const $closeCartBtn = $("#cart-close-btn");
     const $continueShoppingBtn = $("#cart-continue-btn");
 
-    // Render the cart sidebar items—no prices, just product name & qty
     function renderCartSidebar() {
       if (!$cartItemsDiv.length) return;
       $cartItemsDiv.empty();
@@ -276,7 +175,7 @@
         $cartItemsDiv.append(itemHtml);
       });
 
-      // Attach event to remove buttons
+      // Attach remove handlers
       $cartItemsDiv.find(".remove-item").on("click", function () {
         const idx = $(this).data("index");
         if (idx !== undefined) {
@@ -288,7 +187,6 @@
       });
     }
 
-    // Open/Close cart functions
     function openCart() {
       if ($sideCart.length && $cartOverlay.length) {
         $sideCart.addClass("open").attr("aria-hidden", "false");
@@ -301,6 +199,7 @@
         $cartOverlay.hide();
       }
     }
+
     if ($cartBtn.length && $closeCartBtn.length && $cartOverlay.length && $continueShoppingBtn.length) {
       $cartBtn.on("click", openCart);
       $closeCartBtn.on("click", closeCart);
@@ -308,17 +207,16 @@
       $continueShoppingBtn.on("click", closeCart);
     }
 
-    // Bind add-to-cart buttons click (ignore price entirely)
+    // Bind add-to-cart button click (ignore price)
     $(document).on("click", ".add-to-cart-btn", function () {
       const id = $(this).data("id");
-      const name = $(this).data("name");
+      const name = $(this).attr("data-name") || $(this).data("name");
       if (id && name) {
         addToCart(id, name);
         renderCartSidebar();
       }
     });
 
-    // Initialize on DOM ready
     $(document).ready(function () {
       updateCartUI();
       renderCartSidebar();
@@ -331,102 +229,8 @@
       updateCartUI,
       renderCartSidebar,
       openCart,
-      closeCart
+      closeCart,
     };
   })();
-
-  /**
-   * Color Variant Switcher
-   * Usage: call initColorSwitcher() on page load and whenever you create a product color block
-   * Pass proper unique selectors and product name for each product instance on page
-   */
-  function initColorSwitcher(options) {
-    const {
-      btnBlackSelector,
-      btnWhiteSelector,
-      thumbsActiveBlackSelector,
-      thumbsActiveWhiteSelector,
-      thumbsInactiveBlackSelector,
-      thumbsInactiveWhiteSelector,
-      mainImageSelector,
-      addToCartButtonSelector,
-      productNamePrefix,
-    } = options;
-
-    const $btnBlack = $(btnBlackSelector);
-    const $btnWhite = $(btnWhiteSelector);
-    const $thumbsActiveBlack = $(thumbsActiveBlackSelector);
-    const $thumbsActiveWhite = $(thumbsActiveWhiteSelector);
-    const $thumbsInactiveBlack = $(thumbsInactiveBlackSelector);
-    const $thumbsInactiveWhite = $(thumbsInactiveWhiteSelector);
-    const $mainImage = $(mainImageSelector);
-    const $addToCartBtn = $(addToCartButtonSelector);
-
-    let activeColor = 'black';
-
-    // Thumbnail click updates main image for visible thumbs only
-    $(".product-thumbnails > div").on("click", "img", function () {
-      if (!$(this).is(":visible")) return;
-      const src = $(this).data("large");
-      if (!src) return;
-      $mainImage.attr("src", src);
-      $(this).siblings().removeClass("active");
-      $(this).addClass("active");
-    });
-
-    $btnBlack.on("click", function () {
-      if (activeColor === 'black') return;
-      activeColor = 'black';
-
-      $thumbsActiveBlack.show();
-      $thumbsActiveWhite.hide();
-      $thumbsInactiveWhite.show();
-      $thumbsInactiveBlack.hide();
-      $btnBlack.addClass("active").attr("aria-pressed", "true");
-      $btnWhite.removeClass("active").attr("aria-pressed", "false");
-
-      const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
-      $mainImage.attr("src", firstBlackSrc);
-      $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
-      $addToCartBtn.data("name", `${productNamePrefix} – Black`);
-    });
-
-    $btnWhite.on("click", function () {
-      if (activeColor === 'white') return;
-      activeColor = 'white';
-
-      $thumbsActiveWhite.show();
-      $thumbsActiveBlack.hide();
-      $thumbsInactiveBlack.show();
-      $thumbsInactiveWhite.hide();
-      $btnWhite.addClass("active").attr("aria-pressed", "true");
-      $btnBlack.removeClass("active").attr("aria-pressed", "false");
-
-      const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
-      $mainImage.attr("src", firstWhiteSrc);
-      $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
-      $addToCartBtn.data("name", `${productNamePrefix} – White`);
-    });
-
-    // Initialize button attribute on startup
-    $addToCartBtn.data("name", `${productNamePrefix} – Black`);
-  }
-
-  // Example usage of initColorSwitcher:
-  // Initialize your products on page load like this (customize ids per product):
-  // $(function() {
-  //   initColorSwitcher({
-  //     btnBlackSelector: '#btn-black-rsd',
-  //     btnWhiteSelector: '#btn-white-rsd',
-  //     thumbsActiveBlackSelector: '#thumbs-active-black-rsd',
-  //     thumbsActiveWhiteSelector: '#thumbs-active-white-rsd',
-  //     thumbsInactiveBlackSelector: '#thumbs-inactive-black-rsd',
-  //     thumbsInactiveWhiteSelector: '#thumbs-inactive-white-rsd',
-  //     mainImageSelector: '#main-product-image-rsd',
-  //     addToCartButtonSelector: '#addToCartBtn-rsd',
-  //     productNamePrefix: 'RSD-A5'
-  //   });
-  //   // Repeat for other products
-  // });
 
 })(jQuery);
