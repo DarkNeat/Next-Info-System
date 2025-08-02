@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Next Info Systems - RSD-A5</title>
+  <title>Next Info Systems - RSD-A5D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="keywords" content="Free HTML Templates" />
   <meta name="description" content="Free HTML Templates" />
@@ -304,10 +304,10 @@
           <i class="fa fa-map-marker-alt me-2"></i>Dubai Branch, Mankool, UAE
         </small>
         <small class="me-3 text-light">
-          <i class="fa fa-phone-alt me-2"></i>+012 345 6789
+          <i class="fa fa-phone-alt me-2"></i>+971 56 656 5880 
         </small>
         <small class="text-light">
-          <i class="fa fa-envelope me-2"></i>sales@nextinfosystems.com
+          <i class="fa fa-envelope me-2"></i>sales@nextinfosystem.com
         </small>
       </div>
       <div class="col-lg-4 text-center text-lg-end">
@@ -796,41 +796,45 @@ jQuery(function($) {
     }
   });
 
-function switchToBlack() {
-  if (activeColor === "black") return;
-  activeColor = "black";
-  $thumbsActiveBlack.show();
-  $thumbsActiveWhite.hide();
-  $thumbsInactiveWhite.show();
-  $thumbsInactiveBlack.hide();
-  $btnBlack.addClass("active").attr("aria-pressed", "true");
-  $btnWhite.removeClass("active").attr("aria-pressed", "false");
-  const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
-  $mainImage.attr("src", firstBlackSrc);
-  $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
-  $addToCartBtn.data("name", "RSD-A5D – Black");  // UPDATED HERE
-}
+  function switchToBlack() {
+    if (activeColor === "black") return;
+    activeColor = "black";
+    $thumbsActiveBlack.show();
+    $thumbsActiveWhite.hide();
+    $thumbsInactiveWhite.show();
+    $thumbsInactiveBlack.hide();
+    $btnBlack.addClass("active").attr("aria-pressed", "true");
+    $btnWhite.removeClass("active").attr("aria-pressed", "false");
+    const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
+    $mainImage.attr("src", firstBlackSrc);
+    $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
+    $addToCartBtn.data("name", "RSD-A5D – Black");
+  }
 
-function switchToWhite() {
-  if (activeColor === "white") return;
-  activeColor = "white";
-  $thumbsActiveWhite.show();
-  $thumbsActiveBlack.hide();
-  $thumbsInactiveBlack.show();
-  $thumbsInactiveWhite.hide();
-  $btnWhite.addClass("active").attr("aria-pressed", "true");
-  $btnBlack.removeClass("active").attr("aria-pressed", "false");
-  const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
-  $mainImage.attr("src", firstWhiteSrc);
-  $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
-  $addToCartBtn.data("name", "RSD-A5D – White");  // UPDATED HERE
-}
+  function switchToWhite() {
+    if (activeColor === "white") return;
+    activeColor = "white";
+    $thumbsActiveWhite.show();
+    $thumbsActiveBlack.hide();
+    $thumbsInactiveBlack.show();
+    $thumbsInactiveWhite.hide();
+    $btnWhite.addClass("active").attr("aria-pressed", "true");
+    $btnBlack.removeClass("active").attr("aria-pressed", "false");
+    const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
+    $mainImage.attr("src", firstWhiteSrc);
+    $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
+    $addToCartBtn.data("name", "RSD-A5D – White");
+  }
 
-// Initialize on page load
-$addToCartBtn.data("name", "RSD-A5D – Black");
-switchToBlack();
+  $btnBlack.on("click", switchToBlack);
+  $btnWhite.on("click", switchToWhite);
 
+  // Initialize on page load
+  $addToCartBtn.data("name", "RSD-A5D – Black");
+  switchToBlack();
 });
+
+
   </script>
 
 </body>
