@@ -281,16 +281,26 @@
         </button>
 
      <!-- Cart display -->
-        <div class="d-flex align-items-center ms-3">
-          <span id="cart-count-badge" class="me-2 badge bg-danger" style="display: none;">0</span>
-          <button
-            id="cart-btn"
-            class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
-            aria-label="Open cart"
-          >
-            <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
+<div class="d-flex align-items-center ms-3" style="position: relative;">
+  <button
+    id="cart-btn"
+    class="btn btn-outline-light btn-sm btn-sm-square rounded-circle"
+    aria-label="Open cart"
+  >
+    <i class="fa fa-shopping-cart"></i>
+  </button>
+  <span id="cart-count-badge" class="badge bg-danger" 
+    style="
+      display: none; 
+      position: absolute; 
+      top: -5px; 
+      right: -5px; 
+      font-size: 0.7rem;
+      border-radius: 50%;
+      padding: 1px 6px;
+      pointer-events: none;
+    ">0</span>
+</div>
       </div>
     </nav>
 
@@ -305,33 +315,25 @@
   </div>
   <!-- Navbar End -->
 
+
   
 <!-- Product Section with Sidebar Start -->
 <div class="container-fluid py-5 bg-light">
   <div class="row">
+
     <!-- Sidebar with Categories -->
     <aside class="col-lg-3">
-      <div class="p-4 h-100 bg-primary text-white rounded position-sticky d-flex flex-column align-items-center"
-           style="top: 100px; border: 2px solid white; max-width: 280px; margin: 0 auto;">
+      <div 
+        class="p-4 h-100 bg-primary text-white rounded position-sticky d-flex flex-column align-items-center"
+        style="top: 100px; border: 2px solid white; max-width: 280px; margin: 0 auto;"
+      >
         <h4 class="fw-semibold mb-5 fs-3 text-center" style="user-select: none;">Categories</h4>
         <ul class="list-group list-group-flush w-100 text-center" style="font-size: 1.25rem; font-weight: 600;">
           <li class="list-group-item bg-transparent border-0 px-0 py-3">
             <a href="#" class="text-white text-decoration-none category-link active">ALL</a>
           </li>
           <li class="list-group-item bg-transparent border-0 px-0 py-3">
-            <a href="#" class="text-white text-decoration-none category-link">T-Shirts</a>
-          </li>
-          <li class="list-group-item bg-transparent border-0 px-0 py-3">
-            <a href="#" class="text-white text-decoration-none category-link">Hoodies</a>
-          </li>
-          <li class="list-group-item bg-transparent border-0 px-0 py-3">
-            <a href="#" class="text-white text-decoration-none category-link">Sweatshirts</a>
-          </li>
-          <li class="list-group-item bg-transparent border-0 px-0 py-3">
-            <a href="#" class="text-white text-decoration-none category-link">Footwear</a>
-          </li>
-          <li class="list-group-item bg-transparent border-0 px-0 py-3">
-            <a href="#" class="text-white text-decoration-none category-link">Accessories</a>
+            <a href="#" class="text-white text-decoration-none category-link">POS System</a>
           </li>
         </ul>
       </div>
@@ -340,348 +342,931 @@
     <!-- Product Cards -->
     <section class="col-lg-9">
       <div class="row g-4">
-        <!-- T-Shirts -->
-        <article class="col-md-6 col-lg-4" data-category="T-Shirts ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product1.jpg" class="card-img-top rounded-top" alt="Gradient Shirt" />
+
+        <!-- RSD-A5 -->
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+            <img 
+              src="img/products/POS System/RSD-A5/Black/pos 1a.jpg" 
+              alt="RSD-A5 Main Image"
+              class="card-img-top rounded-top"
+              id="main-image-rsd-a5"
+            />
             <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Gradient Shirt</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$21.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p1" data-name="Gradient Shirt" data-price="21.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+              <h5 class="card-title fw-bold mb-2">RSD-A5</h5>
+
+              <!-- Variant boxes -->
+              <div class="variant-boxes d-flex justify-content-center gap-3 mb-3" style="margin-bottom:1rem;">
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="Black"
+                  data-img="img/products/POS System/RSD-A5/Black/pos 1a.jpg"
+                  aria-label="Black variant"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-A5/Black/pos 1a.jpg"
+                    alt="Black Variant"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="White"
+                  data-img="img/products/POS System/RSD-A5/White/pos 1h.png"
+                  aria-label="White variant"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-A5/White/pos 1h.png"
+                    alt="White Variant"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+              </div>
+
+              <button 
+                class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                data-id="RSD-A5" 
+                data-name="RSD-A5" 
+                data-price="0" 
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <a 
+                href="RSD-A5.html" 
+                class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale" 
+                role="button"
+              >
+                View Product
+              </a>
+            </div>
+
+            <!-- Vertical category bar -->
+            <div style="
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 40px;
+              background-color: #06A3DA;
+              color: white;
+              font-weight: 700;
+              font-size: 1rem;
+              letter-spacing: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              user-select: none;
+              pointer-events: none;
+              padding: 10px 5px;
+              white-space: nowrap;
+              line-height: 1.2;
+              border-radius: 0 0.75rem 0.75rem 0;
+              font-family: 'Nunito', sans-serif;
+            ">
+              P<br/>
+              O<br/>
+              S<br/>
+              <br/>
+              S<br/>
+              Y<br/>
+              S<br/>
+              T<br/>
+              E<br/>
+              M
             </div>
           </div>
         </article>
 
-        <article class="col-md-6 col-lg-4" data-category="T-Shirts ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product11.jpg" class="card-img-top rounded-top" alt="Striped Tee" />
+        <!-- RSD-A5D -->
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+            <img 
+              src="img/products/POS System/RSD-A5D/Black/pos 2d.jpg" 
+              alt="RSD-A5D Main Image"
+              class="card-img-top rounded-top"
+              id="main-image-rsd-a5d"
+            />
             <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Striped Tee</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$18.50</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p2" data-name="Striped Tee" data-price="18.50">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+              <h5 class="card-title fw-bold mb-2">RSD-A5D</h5>
+
+              <div class="variant-boxes d-flex justify-content-center gap-3 mb-3" style="margin-bottom:1rem;">
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="Black"
+                  data-img="img/products/POS System/RSD-A5D/Black/pos 2d.jpg"
+                  aria-label="Black variant"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-A5D/Black/pos 2d.jpg"
+                    alt="Black Variant"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="White"
+                  data-img="img/products/POS System/RSD-A5D/White/pos 2a.jpg"
+                  aria-label="White variant"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-A5D/White/pos 2a.jpg"
+                    alt="White Variant"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+              </div>
+
+              <button 
+                class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                data-id="RSD-A5D" 
+                data-name="RSD-A5D" 
+                data-price="0" 
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <a 
+                href="RSD-A5D.html" 
+                class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale" 
+                role="button"
+              >
+                View Product
+              </a>
+            </div>
+
+            <!-- Vertical category bar -->
+            <div style="
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 40px;
+              background-color: #06A3DA;
+              color: white;
+              font-weight: 700;
+              font-size: 1rem;
+              letter-spacing: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              user-select: none;
+              pointer-events: none;
+              padding: 10px 5px;
+              white-space: nowrap;
+              line-height: 1.2;
+              border-radius: 0 0.75rem 0.75rem 0;
+              font-family: 'Nunito', sans-serif;
+            ">
+              P<br/>
+              O<br/>
+              S<br/>
+              <br/>
+              S<br/>
+              Y<br/>
+              S<br/>
+              T<br/>
+              E<br/>
+              M
             </div>
           </div>
         </article>
 
-        <article class="col-md-6 col-lg-4" data-category="T-Shirts ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product12.jpg" class="card-img-top rounded-top" alt="Classic White Tee" />
+        <!-- RSD-A8 -->
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+            <img 
+              src="img/products/POS System/RSD-A8/pos 3a.jpg" 
+              alt="RSD-A8 Main Image"
+              class="card-img-top rounded-top"
+            />
             <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Classic White Tee</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$15.00</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn" 
-                      data-id="p3" data-name="Classic White Tee" data-price="15.00">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+              <h5 class="card-title fw-bold mb-2">RSD-A8</h5>
+
+              <button 
+                class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                data-id="RSD-A8" 
+                data-name="RSD-A8" 
+                data-price="0" 
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <a 
+                href="RSD-A8.html" 
+                class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale" 
+                role="button"
+              >
+                View Product
+              </a>
+            </div>
+
+            <!-- Vertical category bar -->
+            <div style="
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 40px;
+              background-color: #06A3DA;
+              color: white;
+              font-weight: 700;
+              font-size: 1rem;
+              letter-spacing: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              user-select: none;
+              pointer-events: none;
+              padding: 10px 5px;
+              white-space: nowrap;
+              line-height: 1.2;
+              border-radius: 0 0.75rem 0.75rem 0;
+              font-family: 'Nunito', sans-serif;
+            ">
+              P<br/>
+              O<br/>
+              S<br/>
+              <br/>
+              S<br/>
+              Y<br/>
+              S<br/>
+              T<br/>
+              E<br/>
+              M
             </div>
           </div>
         </article>
 
-        <!-- Hoodies -->
-        <article class="col-md-6 col-lg-4" data-category="Hoodies ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product2.jpg" class="card-img-top rounded-top" alt="Who Are You Hoodie" />
+        <!-- RSD-S610 -->
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+            <img 
+              src="img/products/POS System/RSD-S610/RSD-S610/pos 4a.jpg" 
+              alt="RSD-S610 Main Image"
+              class="card-img-top rounded-top"
+              id="main-image-rsd-s610"
+            />
             <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Who Are You Hoodie</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$29.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p4" data-name="Who Are You Hoodie" data-price="29.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+              <h5 class="card-title fw-bold mb-2">RSD-S610</h5>
+
+              <div class="variant-boxes d-flex justify-content-center gap-3 mb-3" style="margin-bottom:1rem;">
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="S610"
+                  data-img="img/products/POS System/RSD-S610/RSD-S610/pos 4a.jpg"
+                  aria-label="S610 variant"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-S610/RSD-S610/pos 4a.jpg"
+                    alt="S610 Variant"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="S610+"
+                  data-img="img/products/POS System/RSD-S610/RSD-S610+/pos 4i.jpg"
+                  aria-label="S610+ variant"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-S610/RSD-S610+/pos 4i.jpg"
+                    alt="S610+ Variant"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+              </div>
+
+              <button 
+                class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                data-id="RSD-S610" 
+                data-name="RSD-S610" 
+                data-price="0" 
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <a 
+                href="RSD-S610.html" 
+                class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale" 
+                role="button"
+              >
+                View Product
+              </a>
+            </div>
+
+            <!-- Vertical category bar -->
+            <div style="
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 40px;
+              background-color: #06A3DA;
+              color: white;
+              font-weight: 700;
+              font-size: 1rem;
+              letter-spacing: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              user-select: none;
+              pointer-events: none;
+              padding: 10px 5px;
+              white-space: nowrap;
+              line-height: 1.2;
+              border-radius: 0 0.75rem 0.75rem 0;
+              font-family: 'Nunito', sans-serif;
+            ">
+              P<br/>
+              O<br/>
+              S<br/>
+              <br/>
+              S<br/>
+              Y<br/>
+              S<br/>
+              T<br/>
+              E<br/>
+              M
             </div>
           </div>
         </article>
 
-        <article class="col-md-6 col-lg-4" data-category="Hoodies ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product13.jpg" class="card-img-top rounded-top" alt="Cozy Zip Hoodie" />
+        <!-- RSD-S800 -->
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+            <img 
+              src="img/products/POS System/RSD-S800/xcd/pos 5a.jpg" 
+              alt="RSD-S800 Main Image"
+              class="card-img-top rounded-top"
+              id="main-image-rsd-s800"
+            />
             <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Cozy Zip Hoodie</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$39.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p5" data-name="Cozy Zip Hoodie" data-price="39.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+              <h5 class="card-title fw-bold mb-2">RSD-S800</h5>
+
+              <div class="variant-boxes d-flex justify-content-center gap-3 mb-3" style="margin-bottom:1rem;">
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="Without Customer Display"
+                  data-img="img/products/POS System/RSD-S800/xcd/pos 5a.jpg"
+                  aria-label="Without Customer Display"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-S800/xcd/pos 5a.jpg"
+                    alt="Without Customer Display"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="With Customer Display"
+                  data-img="img/products/POS System/RSD-S800/cd/pos 5g.jpg"
+                  aria-label="With Customer Display"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-S800/cd/pos 5g.jpg"
+                    alt="With Customer Display"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+              </div>
+
+              <button 
+                class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                data-id="RSD-S800" 
+                data-name="RSD-S800" 
+                data-price="0" 
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <a 
+                href="RSD-S800.html" 
+                class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale" 
+                role="button"
+              >
+                View Product
+              </a>
+            </div>
+
+            <!-- Vertical category bar -->
+            <div style="
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 40px;
+              background-color: #06A3DA;
+              color: white;
+              font-weight: 700;
+              font-size: 1rem;
+              letter-spacing: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              user-select: none;
+              pointer-events: none;
+              padding: 10px 5px;
+              white-space: nowrap;
+              line-height: 1.2;
+              border-radius: 0 0.75rem 0.75rem 0;
+              font-family: 'Nunito', sans-serif;
+            ">
+              P<br/>
+              O<br/>
+              S<br/>
+              <br/>
+              S<br/>
+              Y<br/>
+              S<br/>
+              T<br/>
+              E<br/>
+              M
             </div>
           </div>
         </article>
 
-        <article class="col-md-6 col-lg-4" data-category="Hoodies ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product14.jpg" class="card-img-top rounded-top" alt="Urban Hoodie" />
+        <!-- RSD-S900 -->
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+            <img 
+              src="img/products/POS System/RSD-S900/xcr/pos 6a.jpg" 
+              alt="RSD-S900 Main Image"
+              class="card-img-top rounded-top"
+              id="main-image-rsd-s900"
+            />
             <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Urban Hoodie</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$34.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p6" data-name="Urban Hoodie" data-price="34.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+              <h5 class="product-title fw-bold mb-2">RSD-S900</h5>
+
+              <div class="variant-boxes d-flex justify-content-center gap-3 mb-3" style="margin-bottom:1rem;">
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="Without Card Reader"
+                  data-img="img/products/POS System/RSD-S900/xcr/pos 6a.jpg"
+                  aria-label="Without Card Reader"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-S900/xcr/pos 6a.jpg"
+                    alt="Without Card Reader"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="With Card Reader"
+                  data-img="img/products/POS System/RSD-S900/cr/pos 6g.jpg"
+                  aria-label="With Card Reader"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-S900/cr/pos 6g.jpg"
+                    alt="With Card Reader"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+              </div>
+
+              <button 
+                class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                data-id="RSD-S900" 
+                data-name="RSD-S900" 
+                data-price="0" 
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <a 
+                href="RSD-S900.html" 
+                class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale" 
+                role="button"
+              >
+                View Product
+              </a>
+            </div>
+
+            <!-- Vertical category bar -->
+            <div style="
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 40px;
+              background-color: #06A3DA;
+              color: white;
+              font-weight: 700;
+              font-size: 1rem;
+              letter-spacing: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              user-select: none;
+              pointer-events: none;
+              padding: 10px 5px;
+              white-space: nowrap;
+              line-height: 1.2;
+              border-radius: 0 0.75rem 0.75rem 0;
+              font-family: 'Nunito', sans-serif;
+            ">
+              P<br/>
+              O<br/>
+              S<br/>
+              <br/>
+              S<br/>
+              Y<br/>
+              S<br/>
+              T<br/>
+              E<br/>
+              M
             </div>
           </div>
         </article>
 
-        <!-- Sweatshirts -->
-        <article class="col-md-6 col-lg-4" data-category="Sweatshirts ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product3.jpg" class="card-img-top rounded-top" alt="White M Shirt" />
+        <!-- RSD-T610 (No variants) -->
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+            <img 
+              src="img/products/POS System/RSD-T610/pos 7a.jpg" 
+              alt="RSD-T610 Main Image"
+              class="card-img-top rounded-top"
+            />
             <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">White M Shirt</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$10.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p7" data-name="White M Shirt" data-price="10.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+              <h5 class="card-title fw-bold mb-2">RSD-T610</h5>
+
+              <button 
+                class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                data-id="RSD-T610" 
+                data-name="RSD-T610" 
+                data-price="0" 
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <a 
+                href="RSD-T610.html" 
+                class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale" 
+                role="button"
+              >
+                View Product
+              </a>
+            </div>
+
+            <!-- Vertical category bar -->
+            <div style="
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 40px;
+              background-color: #06A3DA;
+              color: white;
+              font-weight: 700;
+              font-size: 1rem;
+              letter-spacing: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              user-select: none;
+              pointer-events: none;
+              padding: 10px 5px;
+              white-space: nowrap;
+              line-height: 1.2;
+              border-radius: 0 0.75rem 0.75rem 0;
+              font-family: 'Nunito', sans-serif;
+            ">
+              P<br/>
+              O<br/>
+              S<br/>
+              <br/>
+              S<br/>
+              Y<br/>
+              S<br/>
+              T<br/>
+              E<br/>
+              M
             </div>
           </div>
         </article>
 
-        <article class="col-md-6 col-lg-4" data-category="Sweatshirts ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product15.jpg" class="card-img-top rounded-top" alt="Comfort Sweatshirt" />
+        <!-- RSD-T660 -->
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+            <img 
+              src="img/products/POS System/RSD-T660/Black/pos 8a.jpg" 
+              alt="RSD-T660 Main Image"
+              class="card-img-top rounded-top"
+              id="main-image-rsd-t660"
+            />
             <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Comfort Sweatshirt</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$24.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p8" data-name="Comfort Sweatshirt" data-price="24.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
+              <h5 class="card-title fw-bold mb-2">RSD-T660</h5>
+
+              <div class="variant-boxes d-flex justify-content-center gap-3 mb-3" style="margin-bottom:1rem;">
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="Black"
+                  data-img="img/products/POS System/RSD-T660/Black/pos 8a.jpg"
+                  aria-label="Black variant"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-T660/Black/pos 8a.jpg"
+                    alt="Black Variant"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+                <div
+                  class="variant-box"
+                  tabindex="0"
+                  title="White"
+                  data-img="img/products/POS System/RSD-T660/White/pos 8g.jpg"
+                  aria-label="White variant"
+                  style="cursor:pointer; outline:none;"
+                >
+                  <img
+                    src="img/products/POS System/RSD-T660/White/pos 8g.jpg"
+                    alt="White Variant"
+                    style="border-radius:6px; border:1.5px solid #ccc; width:50px; height:auto; object-fit:contain; transition: box-shadow 0.3s ease, border-color 0.3s ease;"
+                    onmouseover="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onmouseout="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                    onfocus="this.style.borderColor='#06A3DA'; this.style.boxShadow='0 0 6px 2px rgba(6,163,218,0.7)';"
+                    onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+                  />
+                </div>
+              </div>
+
+              <button 
+                class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+                data-id="RSD-T660" 
+                data-name="RSD-T660" 
+                data-price="0" 
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <a 
+                href="RSD-T660.html" 
+                class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale" 
+                role="button"
+              >
+                View Product
+              </a>
+            </div>
+
+            <!-- Vertical category bar -->
+            <div style="
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 40px;
+              background-color: #06A3DA;
+              color: white;
+              font-weight: 700;
+              font-size: 1rem;
+              letter-spacing: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              user-select: none;
+              pointer-events: none;
+              padding: 10px 5px;
+              white-space: nowrap;
+              line-height: 1.2;
+              border-radius: 0 0.75rem 0.75rem 0;
+              font-family: 'Nunito', sans-serif;
+            ">
+              P<br/>
+              O<br/>
+              S<br/>
+              <br/>
+              S<br/>
+              Y<br/>
+              S<br/>
+              T<br/>
+              E<br/>
+              M
             </div>
           </div>
         </article>
 
-        <article class="col-md-6 col-lg-4" data-category="Sweatshirts ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product16.jpg" class="card-img-top rounded-top" alt="Sport Sweatshirt" />
-            <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Sport Sweatshirt</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$27.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p9" data-name="Sport Sweatshirt" data-price="27.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
-            </div>
-          </div>
-        </article>
 
-        <!-- Footwear -->
-        <article class="col-md-6 col-lg-4" data-category="Footwear ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product17.jpg" class="card-img-top rounded-top" alt="Running Shoes" />
-            <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Running Shoes</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$49.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p10" data-name="Running Shoes" data-price="49.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
-            </div>
-          </div>
-        </article>
+        <article class="col-md-6 col-lg-4" data-category="POS System ALL">
+  <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+    <img
+      src="img/products/POS System/RSD-T670/pos 9a.jpg"
+      alt="RSD-T670 Main Image"
+      class="card-img-top rounded-top"
+      id="main-image-rsd-t670"
+    />
+    <div class="card-body text-center d-flex flex-column px-3 py-4">
+      <h5 class="card-title fw-bold mb-2">RSD-T670</h5>
 
-        <article class="col-md-6 col-lg-4" data-category="Footwear ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product18.jpg" class="card-img-top rounded-top" alt="Casual Sneakers" />
-            <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Casual Sneakers</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$44.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p11" data-name="Casual Sneakers" data-price="44.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
-            </div>
-          </div>
-        </article>
+      <button
+        class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+        data-id="RSD-T670"
+        data-name="RSD-T670 – Black"
+        data-price="0"
+        type="button"
+      >
+        Add to Cart
+      </button>
+      <a
+        href="RSD-T670.html"
+        class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale"
+        role="button"
+      >
+        View Product
+      </a>
+    </div>
 
-        <article class="col-md-6 col-lg-4" data-category="Footwear ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product19.jpg" class="card-img-top rounded-top" alt="Leather Boots" />
-            <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Leather Boots</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$89.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p12" data-name="Leather Boots" data-price="89.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
-            </div>
-          </div>
-        </article>
+    <!-- Vertical category bar -->
+    <div style="
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 40px;
+      background-color: #06A3DA;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      user-select: none;
+      pointer-events: none;
+      padding: 10px 5px;
+      white-space: nowrap;
+      line-height: 1.2;
+      border-radius: 0 0.75rem 0.75rem 0;
+      font-family: 'Nunito', sans-serif;
+    ">
+      P<br />
+      O<br />
+      S<br />
+      <br />
+      S<br />
+      Y<br />
+      S<br />
+      T<br />
+      E<br />
+      M
+    </div>
+  </div>
+</article>
 
-        <!-- Accessories -->
-        <article class="col-md-6 col-lg-4" data-category="Accessories ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product20.jpg" class="card-img-top rounded-top" alt="Leather Wallet" />
-            <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Leather Wallet</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$25.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p13" data-name="Leather Wallet" data-price="25.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
-            </div>
-          </div>
-        </article>
+<article class="col-md-6 col-lg-4" data-category="POS System ALL">
+  <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover" style="position: relative; overflow: visible;">
+    <img
+      src="img/products/POS System/RSD-T680/pos 10a.jpg"
+      alt="RSD-T680 Main Image"
+      class="card-img-top rounded-top"
+      id="main-image-rsd-t680"
+    />
+    <div class="card-body text-center d-flex flex-column px-3 py-4">
+      <h5 class="card-title fw-bold mb-2">RSD-T680</h5>
 
-        <article class="col-md-6 col-lg-4" data-category="Accessories ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product21.jpg" class="card-img-top rounded-top" alt="Stylish Cap" />
-            <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Stylish Cap</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$15.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p14" data-name="Stylish Cap" data-price="15.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
-            </div>
-          </div>
-        </article>
+      <button
+        class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+        data-id="RSD-T680"
+        data-name="RSD-T680 – Black"
+        data-price="0"
+        type="button"
+      >
+        Add to Cart
+      </button>
+      <a
+        href="RSD-T680.html"
+        class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale"
+        role="button"
+      >
+        View Product
+      </a>
+    </div>
 
-        <article class="col-md-6 col-lg-4" data-category="Accessories ALL">
-          <div class="card card-product shadow-sm h-100 border-0 rounded-3 transition-hover">
-            <img src="img/product22.jpg" class="card-img-top rounded-top" alt="Wrist Watch" />
-            <div class="card-body text-center d-flex flex-column px-3 py-4">
-              <h5 class="card-title fw-bold mb-2">Wrist Watch</h5>
-              <p class="text-primary fw-bold fs-5 mb-3">$49.99</p>
-              <button class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
-                      data-id="p15" data-name="Wrist Watch" data-price="49.99">Add to Cart</button>
-              <button class="btn btn-outline-secondary w-100 fw-semibold btn-hover-scale">View Product</button>
-            </div>
-          </div>
-        </article>
+    <!-- Vertical category bar -->
+    <div style="
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 40px;
+      background-color: #06A3DA;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      user-select: none;
+      pointer-events: none;
+      padding: 10px 5px;
+      white-space: nowrap;
+      line-height: 1.2;
+      border-radius: 0 0.75rem 0.75rem 0;
+      font-family: 'Nunito', sans-serif;
+    ">
+      P<br />
+      O<br />
+      S<br />
+      <br />
+      S<br />
+      Y<br />
+      S<br />
+      T<br />
+      E<br />
+      M
+    </div>
+  </div>
+</article>
+
+
+
       </div>
     </section>
   </div>
 </div>
 <!-- Product Section with Sidebar End -->
 
-<style>
-  .transition-hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  .transition-hover:hover,
-  .transition-hover:focus-within {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(13, 110, 253, 0.3);
-    outline: none;
-  }
-  .btn-hover-scale {
-    transition: transform 0.2s ease;
-  }
-  .btn-hover-scale:hover,
-  .btn-hover-scale:focus {
-    transform: scale(1.05);
-    outline: none;
-  }
-  .category-link {
-    cursor: pointer;
-  }
-  .category-link:hover,
-  .category-link:focus {
-    text-decoration: underline;
-    outline: none;
-  }
-  .category-link.active {
-    font-weight: 700;
-    text-decoration: underline;
-  }
-  aside .list-group-item a {
-    font-weight: 600;
-    font-size: 1.25rem;
-  }
-  aside h4 {
-    font-size: 2rem;
-  }
-  .card-product img {
-    object-fit: cover;
-    height: 230px;
-  }
-  .card-product .card-body {
-    flex-grow: 1;
-  }
-</style>
 
-<!-- jQuery, then your custom script -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(function () {
-    const $categoryLinks = $(".category-link");
-    const $products = $("article.col-md-6.col-lg-4");
-    const CART_KEY = "cart";
 
-    let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
 
-    function saveCart() {
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    }
 
-    function updateCartUI() {
-      const $cartAmount = $("#cart-amount");
-      const $cartCountBadge = $("#cart-count-badge");
-      let totalAmount = 0;
-      let totalItems = 0;
-
-      cart.forEach(item => {
-        totalAmount += item.price * item.qty;
-        totalItems += item.qty;
-      });
-
-      if ($cartAmount.length) {
-        $cartAmount.text("Amount: $" + totalAmount.toFixed(2));
-      }
-      if ($cartCountBadge.length) {
-        if (totalItems > 0) {
-          $cartCountBadge.text(totalItems).show();
-        } else {
-          $cartCountBadge.hide();
-        }
-      }
-    }
-
-    function addToCart(id, name, price) {
-      const existing = cart.find(item => item.id === id);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ id, name, price, qty: 1 });
-      }
-      saveCart();
-      updateCartUI();
-      // Optional: You can add notification or cart sidebar toggle here
-    }
-
-    function filterProducts(category) {
-      if (category === "ALL") {
-        $products.show();
-      } else {
-        $products.each(function () {
-          const cats = $(this).data("category");
-          if (typeof cats === "string" && cats.split(" ").includes(category)) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
-      }
-    }
-
-    $categoryLinks.on("click", function (e) {
-      e.preventDefault();
-      const selectedCategory = $(this).text().trim();
-
-      $categoryLinks.removeClass("active");
-      $(this).addClass("active");
-
-      filterProducts(selectedCategory);
-
-      $("section.col-lg-9").get(0).scrollIntoView({ behavior: "smooth" });
-    });
-
-    $(".add-to-cart-btn").on("click", function () {
-      const id = $(this).data("id");
-      const name = $(this).data("name");
-      const price = parseFloat($(this).data("price"));
-      if (id && name && !isNaN(price)) {
-        addToCart(id, name, price);
-      }
-    });
-
-    // Initialize with ALL category active & update cart UI on page load
-    $categoryLinks.filter(function () { return $(this).text().trim() === "ALL"; }).trigger("click");
-    updateCartUI();
-  });
-</script>
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -861,115 +1446,170 @@
   </div>
 
   <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <script>
-    (function () {
-      "use strict";
+<!-- WOW.js -->
+<script src="lib/wow/wow.min.js"></script>
 
-      const sideCart = document.getElementById("side-cart");
-      const cartBtn = document.getElementById("cart-btn");
-      const closeCartBtn = document.getElementById("close-cart");
-      const cartOverlay = document.getElementById("cart-overlay");
-      const continueShoppingBtn = document.getElementById("continue-shopping-btn");
-      const cartItemsDiv = document.getElementById("cart-items");
-      const cartTotalSpan = document.getElementById("cart-total");
-      const cartCountBadge = document.getElementById("cart-count-badge");
-      const cartAmountSpan = document.getElementById("cart-amount");
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-      // Load cart from localStorage or initialize array
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+<!-- Your main.js -->
+<script src="js/main.js"></script>
 
-      function updateCartDisplay() {
-        let totalAmount = 0,
-          totalItems = 0;
-        cartItemsDiv.innerHTML = "";
 
-        if (cart.length === 0) {
-          cartItemsDiv.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
-          cartCountBadge.style.display = "none";
-          if (cartAmountSpan) cartAmountSpan.textContent = "Amount: $0.00";
-          cartTotalSpan.textContent = "$0.00";
-        } else {
-          cart.forEach((item, index) => {
-            totalAmount += item.price * item.qty;
-            totalItems += item.qty;
 
-            const div = document.createElement("div");
-            div.className = "cart-item d-flex justify-content-between align-items-center border-bottom py-2";
-            div.innerHTML = `
-              <div>
-                <strong>${item.name}</strong><br />
-                Quantity: ${item.qty}
-              </div>
-              <div>
-                $${(item.price * item.qty).toFixed(2)}
-                <button class="btn btn-sm btn-outline-danger remove-item mt-1" data-index="${index}" title="Remove item">&times;</button>
-              </div>
-            `;
-            cartItemsDiv.appendChild(div);
-          });
-          cartCountBadge.style.display = totalItems > 0 ? "inline-block" : "none";
-          if (cartAmountSpan) cartAmountSpan.textContent = `Amount: $${totalAmount.toFixed(2)}`;
-          cartTotalSpan.textContent = `$${totalAmount.toFixed(2)}`;
-        }
+<script>
+jQuery(function($) {
+  // Cached selectors
+  const $categoryLinks = $(".category-link");
+  const $products = $("article.col-md-6.col-lg-4");
 
-        cartCountBadge.textContent = totalItems;
+  /*** Spinner ***/
+  const spinner = () => {
+    setTimeout(() => {
+      if ($("#spinner").length) {
+        $("#spinner").removeClass("show");
+      }
+    }, 1);
+  };
+  spinner();
 
-        // Remove item buttons event
-        cartItemsDiv.querySelectorAll(".remove-item").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const idx = parseInt(e.target.getAttribute("data-index"));
-            cart.splice(idx, 1);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartDisplay();
-          });
-        });
-      }
+  /*** Init WOW.js ***/
+  new WOW().init();
 
-      function openCart() {
-        sideCart.classList.add("open");
-        cartOverlay.style.display = "block";
-        sideCart.setAttribute("aria-hidden", "false");
-      }
+  /*** Sticky Navbar ***/
+  $(window).on("scroll", function() {
+    if ($(this).scrollTop() > 45) {
+      $(".navbar").addClass("sticky-top shadow-sm");
+    } else {
+      $(".navbar").removeClass("sticky-top shadow-sm");
+    }
+  });
 
-      function closeCart() {
-        sideCart.classList.remove("open");
-        cartOverlay.style.display = "none";
-        sideCart.setAttribute("aria-hidden", "true");
-      }
+  /*** Dropdown on hover for desktop ***/
+  const $dropdown = $(".dropdown");
+  const $dropdownToggle = $(".dropdown-toggle");
+  const $dropdownMenu = $(".dropdown-menu");
+  const showClass = "show";
 
-      cartBtn.addEventListener("click", openCart);
-      closeCartBtn.addEventListener("click", closeCart);
-      cartOverlay.addEventListener("click", closeCart);
-      continueShoppingBtn.addEventListener("click", closeCart);
+  $(window).on("load resize", function() {
+    if (window.matchMedia("(min-width: 992px)").matches) {
+      $dropdown.hover(
+        function() {
+          $(this).addClass(showClass);
+          $(this).find($dropdownToggle).attr("aria-expanded", true);
+          $(this).find($dropdownMenu).addClass(showClass);
+        },
+        function() {
+          $(this).removeClass(showClass);
+          $(this).find($dropdownToggle).attr("aria-expanded", false);
+          $(this).find($dropdownMenu).removeClass(showClass);
+        }
+      );
+    } else {
+      $dropdown.off("mouseenter mouseleave");
+    }
+  });
 
-      // Add to cart buttons handler
-      document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-id");
-          const name = btn.getAttribute("data-name");
-          const price = parseFloat(btn.getAttribute("data-price"));
+  /*** Facts Counter ***/
+  $('[data-toggle="counter-up"]').counterUp({
+    delay: 10,
+    time: 2000,
+  });
 
-          const existing = cart.find(item => item.id === id);
-          if (existing) {
-            existing.qty++;
-          } else {
-            cart.push({ id: id, name: name, price: price, qty: 1 });
-          }
+  /*** Back to top button ***/
+  $(window).on("scroll", function() {
+    if ($(this).scrollTop() > 100) {
+      $(".back-to-top").fadeIn("slow");
+    } else {
+      $(".back-to-top").fadeOut("slow");
+    }
+  });
+  $(".back-to-top").on("click", function() {
+    $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
+    return false;
+  });
 
-          localStorage.setItem("cart", JSON.stringify(cart));
-          updateCartDisplay();
-          openCart();
-        });
-      });
+  /*** Testimonial carousel ***/
+  if ($(".testimonial-carousel").length) {
+    $(".testimonial-carousel").owlCarousel({
+      autoplay: true,
+      smartSpeed: 1500,
+      dots: true,
+      loop: true,
+      center: true,
+      responsive: {
+        0: { items: 1 },
+        576: { items: 1 },
+        768: { items: 2 },
+        992: { items: 3 },
+      },
+    });
+  }
 
-      // Initialize cart display on page load
-      updateCartDisplay();
-    })();
-  </script>
+  /*** Vendor carousel ***/
+  if ($(".vendor-carousel").length) {
+    $(".vendor-carousel").owlCarousel({
+      loop: true,
+      margin: 45,
+      dots: false,
+      autoplay: true,
+      smartSpeed: 1000,
+      responsive: {
+        0: { items: 2 },
+        576: { items: 4 },
+        768: { items: 6 },
+        992: { items: 8 },
+      },
+    });
+  }
+
+  // Category filtering function
+  function filterProducts(category) {
+    if (category === "ALL") {
+      $products.show();
+    } else {
+      $products.each(function() {
+        const cats = $(this).data("category");
+        if (typeof cats === "string" && cats.split(" ").includes(category)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    }
+  }
+
+  // Category click event
+  $categoryLinks.on("click", function(e) {
+    e.preventDefault();
+    const selectedCategory = $(this).text().trim();
+
+    $categoryLinks.removeClass("active");
+    $(this).addClass("active");
+
+    filterProducts(selectedCategory);
+
+    // Scroll to products section on category filter
+    $("section.col-lg-9")[0].scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Variant image switching on click
+  $(".variant-box").on("click", function() {
+    const newImg = $(this).data("img");
+    if (newImg) {
+      const $card = $(this).closest("article");
+      $card.find("img.card-img-top").attr("src", newImg);
+    }
+  });
+
+  // Initialize page state
+  $categoryLinks.filter((_, el) => $(el).text().trim() === "ALL").trigger("click");
+});
+</script>
+
 </body>
 
 </html>

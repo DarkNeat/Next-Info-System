@@ -1,21 +1,21 @@
 (function ($) {
   "use strict";
 
-  /*** Spinner ***/
+  // Spinner loader
   var spinner = function () {
     setTimeout(function () {
-      if ($("#spinner").length > 0) {
+      if ($("#spinner").length) {
         $("#spinner").removeClass("show");
       }
     }, 1);
   };
   spinner();
 
-  /*** Init WOW.js ***/
+  // Initialize WOW.js animations
   new WOW().init();
 
-  /*** Sticky Navbar ***/
-  $(window).scroll(function () {
+  // Sticky Navbar on scroll
+  $(window).on("scroll", function () {
     if ($(this).scrollTop() > 45) {
       $(".navbar").addClass("sticky-top shadow-sm");
     } else {
@@ -23,14 +23,14 @@
     }
   });
 
-  /*** Dropdown on mouse hover for desktop only ***/
+  // Dropdown on hover for desktop only
   const $dropdown = $(".dropdown");
   const $dropdownToggle = $(".dropdown-toggle");
   const $dropdownMenu = $(".dropdown-menu");
   const showClass = "show";
 
   $(window).on("load resize", function () {
-    if (this.matchMedia("(min-width: 992px)").matches) {
+    if (window.matchMedia("(min-width: 992px)").matches) {
       $dropdown.hover(
         function () {
           const $this = $(this);
@@ -50,26 +50,26 @@
     }
   });
 
-  /*** Facts Counter ***/
+  // Facts counter animation
   $('[data-toggle="counter-up"]').counterUp({
     delay: 10,
     time: 2000,
   });
 
-  /*** Back to top button ***/
-  $(window).scroll(function () {
+  // Back to top button
+  $(window).on("scroll", function () {
     if ($(this).scrollTop() > 100) {
       $(".back-to-top").fadeIn("slow");
     } else {
       $(".back-to-top").fadeOut("slow");
     }
   });
-  $(".back-to-top").click(function () {
+  $(".back-to-top").on("click", function () {
     $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
     return false;
   });
 
-  /*** Testimonial carousel ***/
+  // Testimonial carousel
   if ($(".testimonial-carousel").length) {
     $(".testimonial-carousel").owlCarousel({
       autoplay: true,
@@ -86,7 +86,7 @@
     });
   }
 
-  /*** Vendor carousel ***/
+  // Vendor carousel
   if ($(".vendor-carousel").length) {
     $(".vendor-carousel").owlCarousel({
       loop: true,
@@ -103,29 +103,35 @@
     });
   }
 
-  // --- Centralized Cart Manager (without prices) ---
+  // --- Centralized Cart Manager ---
   (function () {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const CART_KEY = "cart";
 
+    // Cache DOM elements
+    const $sideCart = $("#side-cart");
+    const $cartOverlay = $("#cart-overlay");
+    const $cartItemsDiv = $("#cart-items");
+    const $cartBtn = $("#cart-btn");
+    const $closeCartBtn = $("#close-cart");
+    const $continueShoppingBtn = $("#cart-continue-btn");
+    const $cartCountBadge = $("#cart-count-badge");
+
+    // Load cart from localStorage or initialize empty
+    let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+
+    // Save cart to localStorage
     function saveCart() {
-      localStorage.setItem("cart", JSON.stringify(cart));
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
+    // Calculate total items in cart
     function getTotals() {
-      let totalItems = 0;
-      cart.forEach((item) => {
-        totalItems += item.qty;
-      });
-      return { totalItems };
+      return cart.reduce((total, item) => total + (item.qty || 1), 0);
     }
 
+    // Update cart badge UI
     function updateCartUI() {
-      const { totalItems } = getTotals();
-      const $cartCountBadge = $("#cart-count-badge");
-
-      // Remove amount display if any
-      $("#cart-amount").remove();
-
+      const totalItems = getTotals();
       if ($cartCountBadge.length) {
         if (totalItems > 0) {
           $cartCountBadge.text(totalItems).show();
@@ -135,50 +141,32 @@
       }
     }
 
-    // Add to cart by id/name, increment qty if exists
-    function addToCart(id, name) {
-      const existing = cart.find((item) => item.id === id && item.name === name);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ id, name, qty: 1 });
-      }
-      saveCart();
-      updateCartUI();
-      openCart();
-    }
-
-    // Cart sidebar & overlay references
-    const $sideCart = $("#side-cart");
-    const $cartOverlay = $("#cart-overlay");
-    const $cartItemsDiv = $("#cart-items");
-    const $cartBtn = $("#cart-btn");
-    const $closeCartBtn = $("#cart-close-btn");
-    const $continueShoppingBtn = $("#cart-continue-btn");
-
+    // Render cart sidebar content
     function renderCartSidebar() {
       if (!$cartItemsDiv.length) return;
+
       $cartItemsDiv.empty();
 
       if (cart.length === 0) {
         $cartItemsDiv.html('<p class="text-muted">Your cart is empty.</p>');
         return;
       }
+
       cart.forEach((item, index) => {
-        const itemHtml = `
+        const itemHTML = `
           <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-2" data-index="${index}">
             <div><strong>${item.name}</strong><br>Qty: ${item.qty}</div>
             <div>
-              <button class="btn btn-sm btn-outline-danger remove-item mt-1" data-index="${index}" title="Remove item">&times;</button>
+              <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}" title="Remove item">&times;</button>
             </div>
           </div>`;
-        $cartItemsDiv.append(itemHtml);
+        $cartItemsDiv.append(itemHTML);
       });
 
-      // Attach remove handlers
-      $cartItemsDiv.find(".remove-item").on("click", function () {
+      // Attach remove item event handlers
+      $cartItemsDiv.find(".remove-item").off("click").on("click", function () {
         const idx = $(this).data("index");
-        if (idx !== undefined) {
+        if (typeof idx !== "undefined") {
           cart.splice(idx, 1);
           saveCart();
           updateCartUI();
@@ -187,42 +175,58 @@
       });
     }
 
+    // Open the cart sidebar
     function openCart() {
-      if ($sideCart.length && $cartOverlay.length) {
-        $sideCart.addClass("open").attr("aria-hidden", "false");
-        $cartOverlay.show();
-      }
+      renderCartSidebar();
+      $sideCart.addClass("open").attr("aria-hidden", "false");
+      $cartOverlay.show();
     }
+
+    // Close the cart sidebar
     function closeCart() {
-      if ($sideCart.length && $cartOverlay.length) {
-        $sideCart.removeClass("open").attr("aria-hidden", "true");
-        $cartOverlay.hide();
-      }
+      $sideCart.removeClass("open").attr("aria-hidden", "true");
+      $cartOverlay.hide();
     }
 
-    if ($cartBtn.length && $closeCartBtn.length && $cartOverlay.length && $continueShoppingBtn.length) {
-      $cartBtn.on("click", openCart);
-      $closeCartBtn.on("click", closeCart);
-      $cartOverlay.on("click", closeCart);
-      $continueShoppingBtn.on("click", closeCart);
+    // Add an item to the cart or increment quantity if exists
+    function addToCart(id, name, price = 0) {
+      const existingItem = cart.find((item) => item.id === id && item.name === name);
+      if (existingItem) {
+        existingItem.qty++;
+      } else {
+        cart.push({ id, name, price, qty: 1 });
+      }
+      saveCart();
+      updateCartUI();
+      openCart();
     }
 
-    // Bind add-to-cart button click (ignore price)
-    $(document).on("click", ".add-to-cart-btn", function () {
-      const id = $(this).data("id");
-      const name = $(this).attr("data-name") || $(this).data("name");
-      if (id && name) {
-        addToCart(id, name);
-        renderCartSidebar();
-      }
-    });
+    // Initialize event handlers
+    function init() {
+      if ($cartBtn.length) $cartBtn.on("click", openCart);
+      if ($closeCartBtn.length) $closeCartBtn.on("click", closeCart);
+      if ($cartOverlay.length) $cartOverlay.on("click", closeCart);
+      if ($continueShoppingBtn.length) $continueShoppingBtn.on("click", closeCart);
 
-    $(document).ready(function () {
+      // Delegate click on add-to-cart buttons
+      $(document).on("click", ".add-to-cart-btn", function () {
+        const id = $(this).data("id");
+        const name = $(this).data("name") || $(this).attr("data-name");
+        const price = parseFloat($(this).data("price"));
+        if (id && name && !isNaN(price)) {
+          addToCart(id, name, price);
+        }
+      });
+
+      // Initial UI update
       updateCartUI();
       renderCartSidebar();
-    });
+    }
 
-    // Expose CartManager globally if needed
+    // Initialize on script load
+    $(document).ready(init);
+
+    // Expose cart functionality if needed
     window.CartManager = {
       addToCart,
       saveCart,
@@ -230,7 +234,7 @@
       renderCartSidebar,
       openCart,
       closeCart,
+      getCartData: () => cart,
     };
   })();
-
 })(jQuery);
