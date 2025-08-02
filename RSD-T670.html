@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Next Info Systems - RSD-T670</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="Free HTML Templates" />
+  <meta name="description" content="Free HTML Templates" />
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik&display=swap" rel="stylesheet" />
+
+  <!-- Icon Fonts -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Libraries -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/animate/animate.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Template CSS -->
+  <link href="css/style.css" rel="stylesheet" />
+
+  <style>
+    /* Cart Sidebar */
+    #side-cart {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      max-width: 90vw;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+      transition: right 0.3s ease;
+      z-index: 1050;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    #side-cart.open {
+      right: 0;
+    }
+
+    #side-cart header {
+      padding: 1rem 1.5rem;
+      background: #0d6efd;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #side-cart header button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    #cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    #cart-items .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 0.5rem 0;
+    }
+
+    #cart-items .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    #side-cart footer {
+      padding: 1rem 1.5rem;
+      background: #0d6efd;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    #side-cart footer button {
+      padding: 0.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    #side-cart footer button.checkout {
+      background-color: #fff;
+      color: #0d6efd;
+    }
+
+    #side-cart footer button.checkout:hover {
+      background-color: #cce5ff;
+    }
+
+    #side-cart footer button.continue {
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
+    #side-cart footer button.continue:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Overlay behind cart */
+    #cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1040;
+      display: none;
+    }
+
+    /* Thumbnails */
+    .product-thumbnails {
+      max-width: 80px;
+      user-select: none;
+    }
+
+    .product-thumbnails img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      transition: border-color 0.3s;
+    }
+
+    .product-thumbnails img.active,
+    .product-thumbnails img:hover {
+      border-color: var(--primary);
+    }
+
+    /* Main product image */
+    .product-main-image img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Product details */
+    .product-title {
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-short-description {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #444;
+    }
+
+    /* Add to cart button */
+    .btn-add-cart {
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 12px 22px;
+      width: 100%;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-add-cart:hover {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+      color: #fff;
+    }
+
+    /* Specs section */
+    .specs-section {
+      margin-top: 2rem;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .specs-section h4 {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .specs-highlighted {
+      background-color: var(--light);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .specs-full {
+      max-width: 700px;
+      margin: 3rem auto 2rem auto;
+      font-size: 1rem;
+      color: #555;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+      text-align: center;
+    }
+
+    /* Other products */
+    .other-products-section {
+      margin-bottom: 3rem;
+    }
+
+    .other-products-section h3 {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .card-product {
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-product:hover,
+    .card-product:focus {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 123, 255, 0.3);
+      outline: none;
+    }
+
+    .card-product img {
+      border-radius: 16px 16px 0 0;
+      max-height: 180px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .card-product .card-body {
+      padding: 0.75rem 1rem;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .card-product .card-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-product .card-price {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <div class="row gx-0">
+      <div class="col-lg-8 text-center text-lg-start">
+        <small class="me-3 text-light">
+          <i class="fa fa-map-marker-alt me-2"></i>Dubai Branch, Mankool, UAE
+        </small>
+        <small class="me-3 text-light">
+          <i class="fa fa-phone-alt me-2"></i>+971 56 656 5880 
+        </small>
+        <small class="text-light">
+          <i class="fa fa-envelope me-2"></i>sales@nextinfosystem.com
+        </small>
+      </div>
+      <div class="col-lg-4 text-center text-lg-end">
+        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-instagram"></i></a>
+        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3">
+      <a href="index.html" class="navbar-brand">
+        <h1 class="m-0">
+          <i class="fa fa-user-tie me-2"></i>Next Info Systems
+        </h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+          <a href="index.html" class="nav-item nav-link">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <a href="service.html" class="nav-item nav-link">Services</a>
+          <a href="product.html" class="nav-item nav-link active">Products</a>
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+        <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+          <i class="fa fa-search"></i>
+        </button>
+        <div class="d-flex align-items-center ms-3 position-relative">
+          <span id="cart-count-badge" class="badge bg-danger" style="display: none; position: absolute; top: -5px; right: 0;"></span>
+          <button id="cart-btn" class="btn btn-outline-light btn-sm btn-square rounded-circle position-relative" aria-label="Open cart">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 80px;">
+      <div class="row">
+        <div class="col text-center">
+          <h1 class="display-4 text-white animated zoomIn">POS Category</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+<!-- Product Detail Container for RSD-T670 -->
+<div class="container">
+  <div class="row g-4 align-items-start">
+
+    <!-- Left side: Images -->
+    <div class="col-lg-7 d-flex">
+      <div class="product-left w-100 d-flex align-items-stretch">
+
+        <!-- Thumbnails -->
+        <div class="product-thumbnails d-flex flex-column flex-shrink-0 me-3" style="width: 80px;">
+          <div id="thumbs-black-rsd-t670">
+            <img src="img/products/POS System/RSD-T670/pos 9a.jpg" alt="Black View 1"
+              data-large="img/products/POS System/RSD-T670/pos 9a.jpg" class="active mb-2" tabindex="0" />
+            <img src="img/products/POS System/RSD-T670/pos 9b.jpg" alt="Black View 2"
+              data-large="img/products/POS System/RSD-T670/pos 9b.jpg" class="mb-2" tabindex="0" />
+            <img src="img/products/POS System/RSD-T670/pos 9c.jpg" alt="Black View 3"
+              data-large="img/products/POS System/RSD-T670/pos 9c.jpg" class="mb-2" tabindex="0" />
+            <img src="img/products/POS System/RSD-T670/pos 9d.jpg" alt="Black View 4"
+              data-large="img/products/POS System/RSD-T670/pos 9d.jpg" class="mb-2" tabindex="0" />
+            <img src="img/products/POS System/RSD-T670/pos 9e.jpg" alt="Black View 5"
+              data-large="img/products/POS System/RSD-T670/pos 9e.jpg" class="mb-2" tabindex="0" />
+            <img src="img/products/POS System/RSD-T670/pos 9f.jpg" alt="Black View 6"
+              data-large="img/products/POS System/RSD-T670/pos 9f.jpg" class="mb-2" tabindex="0" />
+          </div>
+        </div>
+
+        <!-- Main Image -->
+        <div class="product-main-image mx-3 flex-grow-1 d-flex align-items-center">
+          <img id="main-product-image-rsd-t670" src="img/products/POS System/RSD-T670/pos 9a.jpg" alt="RSD-T670 Main Image" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right side: Product Info -->
+    <div class="col-lg-5 d-flex flex-column align-items-start">
+      <h2 class="product-title mb-3" style="margin-top: 0;">
+        RSD-T670<br />
+        <small style="font-weight: 600; font-size: 1.25rem;">15.6" All-in-One Capacitive Touch POS System with Aluminum Alloy Housing</small>
+      </h2>
+
+      <!-- No color toggle since only black -->
+
+      <!-- Add to Cart Button -->
+      <button id="addToCartBtn-rsd-t670" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
+        data-id="RSD-T670"
+        data-name="RSD-T670 – Black"
+        data-price="0"
+        type="button"
+        aria-label="Add RSD-T670 to cart">
+        Add to Cart
+      </button>
+
+      <p class="product-short-description mb-4">
+        15.6" All-in-One capacitive touch POS system with industrial grade display options, upgraded motherboard, flexible CPU and memory options, and versatile customer display support.
+      </p>
+
+      <div class="specs-section mb-4">
+        <h4 class="mb-3" style="color: var(--primary); font-weight: 700;">Highlighted Specs</h4>
+        <div class="specs-highlighted p-3 rounded bg-light text-dark" style="font-size: 1rem;">
+          <ul class="mb-0">
+            <li>15.6" Industrial Grade A LED (16:9)</li>
+            <li>Resolution options: 1366 x 768 px or 1920 x 1080 px</li>
+            <li>Brightness: 300 CD/㎡</li>
+            <li>Industrial Grade Motherboard 1037 (Upgradeable)</li>
+            <li>CPU: Intel Celeron 1037 Dual-core 1.8GHz (Upgradeable to J1800, J1900, i3, i5, i7 Optional)</li>
+            <li>Memory: DDR3 2GB (Upgradeable to 4GB or 8GB Optional)</li>
+            <li>Storage: SSD 32GB (Upgradeable to 64GB, 128GB, 256GB Optional)</li>
+            <li>I/O Ports: USB x6, RJ45 x1, COM x1, VGA x1, PS/2 x2, LPT x1, MIC x1, Audio x2 (COM x2 Optional)</li>
+            <li>10-Point Capacitive Touchscreen</li>
+            <li>Customer Display options: 8 Digital Display, VFD220, 12" or 15" LED Customer Display (Optional)</li>
+            <li>Supports Windows XP / 7 / 10</li>
+            <li>Power Supply: 100-260VAC 50-60Hz, 12V 5A</li>
+            <li>Black color only for this product detail</li>
+            <li>Material: Plastic Case + Aluminum Base</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Specifications Section with Blue Background & White Text -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-10 col-lg-8" style="background-color: var(--primary); border-radius: 12px; padding: 2rem;">
+      <h2 class="mb-4 text-center text-white" style="font-weight: 700;">Full Specifications</h2>
+      <div class="section-title text-center my-0"></div>
+      <div class="specs-full text-white" style="font-size: 1rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem; text-align: left;">
+        <p><strong>Model No.:</strong> T670</p>
+        <p><strong>Feature:</strong> All-in-one Capacitive Touch POS System with Aluminum Alloy Housing</p>
+        <p><strong>Display:</strong> 15.6" Industrial Grade A LED (16:9)</p>
+        <p><strong>Resolution:</strong> 1366 x 768Pixels / 1920 x 1080 Pixels (Optional)</p>
+        <p><strong>Brightness:</strong> 300 CD/㎡</p>
+        <p><strong>Motherboard:</strong> Industrial Grade Motherboard 1037 (Upgradeable to J1800, J1900, i3 & i5 motherboard Optional)</p>
+        <p><strong>CPU:</strong> Intel Celeron 1037 Dual-core 1.8GHz (Upgradeable to J1800, J1900, i3, i5, i7 Optional)</p>
+        <p><strong>Memory:</strong> DDR3-2GB (Upgradeable to 4GB or 8GB Optional)</p>
+        <p><strong>Storage:</strong> SSD 32GB (Upgradeable to 64GB, 128GB, 256GB Optional)</p>
+        <p><strong>I/O Ports:</strong> USB x6, RJ45 x1, COM x1, VGA x1, PS/2 x2, LPT x1, MIC x1, Audio x2 (COM x2 Optional)</p>
+        <p><strong>Touchscreen:</strong> 10-Point Capacitive Touchscreen</p>
+        <p><strong>Customer Display:</strong> 8 Digital Display, VFD220, 12" or 15" LED Customer Display (Optional)</p>
+        <p><strong>OS Support:</strong> Windows XP / 7 / 10</p>
+        <p><strong>Power Supply:</strong> 100-260VAC 50-60Hz, 12V 5A</p>
+        <p><strong>Color:</strong> Black</p>
+        <p><strong>Material of Housing:</strong> Plastic Case + Aluminum Base</p>
+        <p><strong>Accessories (Optional):</strong> Cash Drawer, Thermal Printer (58 mm/80 mm), Barcode Scanner (1D/2D), Card Reader (Integrated MSR), Wifi/3G</p>
+        <p><strong>Packing:</strong> Single Box with Inner Foam</p>
+        <p><strong>Service:</strong> Generic products / OEM Service Offer</p>
+        <p><strong>Warranty:</strong> Two Years Warranty</p>
+        <p><strong>Advantages:</strong> Extensive productive experience, use of high quality material parts, UL certification on power supply, fast lead time, and long-term technical maintenance support</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Product Detail Container for RSD-T670 -->
+
+
+
+
+
+
+
+
+  <!-- Other Products Section -->
+  <section class="other-products-section mt-5">
+    <h3 class="mb-2" style="color: var(--primary); font-weight: 700;">Other Products from Same Category</h3>
+    <div class="section-title text-center my-2"></div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-product h-100">
+          <img src="img/product2.jpg" alt="Classic Tee" class="card-img-top" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Classic Tee</h5>
+            <a href="product2.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View Classic Tee Product">View Product</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-product h-100">
+          <img src="img/product3.jpg" alt="Striped Hoodie" class="card-img-top" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Striped Hoodie</h5>
+            <a href="product3.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View Striped Hoodie Product">View Product</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-product h-100">
+          <img src="img/product4.jpg" alt="Classic Sweatshirt" class="card-img-top" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Classic Sweatshirt</h5>
+            <a href="product4.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View Classic Sweatshirt Product">View Product</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-product h-100">
+          <img src="img/product5.jpg" alt="Runner Shoes" class="card-img-top" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Runner Shoes</h5>
+            <a href="product5.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View Runner Shoes Product">View Product</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-product h-100">
+          <img src="img/product6.jpg" alt="Stylish Backpack" class="card-img-top" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Stylish Backpack</h5>
+            <a href="product6.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View Stylish Backpack Product">View Product</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <a href="index.html" class="navbar-brand mb-3 d-block text-center text-lg-start">
+            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+          </a>
+          <p class="text-center text-lg-start" style="opacity: 0.8;">
+            We provide innovative IT solutions with over 10 years experience helping your business grow.
+          </p>
+          <form class="d-flex justify-content-center justify-content-lg-start" style="max-width: 400px;">
+            <input type="email" class="form-control me-2" placeholder="Your Email" required />
+            <button class="btn btn-dark" type="submit">Sign Up</button>
+          </form>
+        </div>
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <h5 class="text-primary mb-3">Get In Touch</h5>
+              <p><i class="fa fa-map-marker-alt me-2"></i>Dubai Branch, Mankool, UAE</p>
+              <p><i class="fa fa-envelope me-2"></i>sales@nextinfosystem.com</p>
+              <p><i class="fa fa-phone me-2"></i>+012 345 6789</p>
+              <div class="mt-3 d-flex gap-2">
+                <a href="#" class="btn btn-primary btn-circle btn-sm"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="btn btn-primary btn-circle btn-sm"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="btn btn-primary btn-circle btn-sm"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="btn btn-primary btn-circle btn-sm"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="btn btn-primary btn-circle btn-sm"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <h5 class="text-primary mb-3">Quick Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="text-light">Home</a></li>
+                <li><a href="about.html" class="text-light">About</a></li>
+                <li><a href="service.html" class="text-light">Services</a></li>
+                <li><a href="product.html" class="text-light">Products</a></li>
+                <li><a href="contact.html" class="text-light">Contact</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+              <h5 class="text-primary mb-3">Popular Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="text-light">Home</a></li>
+                <li><a href="about.html" class="text-light">About</a></li>
+                <li><a href="service.html" class="text-light">Services</a></li>
+                <li><a href="product.html" class="text-light">Products</a></li>
+                <li><a href="contact.html" class="text-light">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-muted py-3" style="background:#061429; font-size: 0.9rem;">
+      &copy; <span id="year"></span> Startup. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" tabindex="-1" aria-hidden="true"></div>
+
+  <!-- Cart Sidebar -->
+  <div id="side-cart" aria-label="Shopping cart" role="dialog" aria-modal="true" tabindex="-1">
+    <header>
+      Your Cart
+      <button id="cart-close-btn" aria-label="Close cart" class="btn-close btn-close-white"></button>
+    </header>
+    <div id="cart-items" tabindex="0" aria-live="polite" aria-atomic="true" class="px-3 py-2"></div>
+    <footer>
+      <button class="btn checkout w-100 mb-2" id="cart-checkout-btn" type="button">Checkout</button>
+      <button class="btn btn-outline-light w-100" id="cart-continue-btn" type="button">Continue Shopping</button>
+    </footer>
+  </div>
+
+  <!-- Back to Top -->
+  <button type="button" class="btn btn-primary btn-lg rounded-circle back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    // Thumbnail click to change main image
+    $(function(){
+      const thumbnails = $(".product-thumbnails img");
+      const mainImage = $("#main-product-image");
+
+      thumbnails.on("click keypress", function(e){
+        if(e.type === 'click' || e.key === 'Enter'){
+          const largeSrc = $(this).data("large");
+          mainImage.attr("src", largeSrc);
+          thumbnails.removeClass("active");
+          $(this).addClass("active");
+        }
+      });
+    });
+
+    // Cart Manager
+    (function(){
+      const cartKey = "cart";
+      let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+      // Save to localStorage
+      function saveCart(){
+        localStorage.setItem(cartKey, JSON.stringify(cart));
+      }
+
+      // Update UI badge and sidebar
+      function updateCartUI(){
+        const $badge = $("#cart-count-badge");
+
+        let totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+        if(totalQty){
+          $badge.text(totalQty).show();
+        } else {
+          $badge.hide();
+        }
+        renderCartItems();
+      }
+
+      // Render cart items in sidebar
+      function renderCartItems(){
+        const $cartItems = $("#cart-items");
+        $cartItems.empty();
+
+        if(cart.length === 0){
+          $cartItems.html('<p class="text-muted">Your cart is empty.</p>');
+          return;
+        }
+
+        cart.forEach((item, i) => {
+          const itemDiv = $(`
+            <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-2">
+              <div><strong>${item.name}</strong><br />Qty: ${item.qty}</div>
+              <div>
+                $${(item.price * item.qty).toFixed(2)}
+                <button class="btn btn-sm btn-danger ms-2" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
+              </div>
+            </div>`);
+          $cartItems.append(itemDiv);
+        });
+
+        // Attach remove handlers
+        $cartItems.find("button").on("click", function(){
+          const idx = $(this).data("index");
+          cart.splice(idx,1);
+          saveCart();
+          updateCartUI();
+        });
+      }
+
+      // Add to cart
+      $(document).on("click", ".add-to-cart-btn", function(){
+        const id = $(this).data("id");
+        const name = $(this).data("name");
+        const price = parseFloat($(this).data("price"));
+        if(!id || !name || isNaN(price)) return;
+
+        const found = cart.find(item => item.id === id);
+        if(found){
+          found.qty++;
+        } else {
+          cart.push({id, name, price, qty:1});
+        }
+        saveCart();
+        updateCartUI();
+        openCart();
+      });
+
+      // Open cart
+      function openCart(){
+        $("#side-cart").addClass("open").attr("aria-hidden","false");
+        $("#cart-overlay").show();
+      }
+
+      // Close cart
+      function closeCart(){
+        $("#side-cart").removeClass("open").attr("aria-hidden","true");
+        $("#cart-overlay").hide();
+      }
+
+      $("#cart-btn").click(openCart);
+      $("#cart-close-btn, #cart-continue-btn, #cart-overlay").click(closeCart);
+
+      // Initialize on load
+      $(function(){
+        updateCartUI();
+      });
+    })();
+
+    // Back to top button
+    $(window).scroll(function(){
+      if($(this).scrollTop()>100){
+        $(".back-to-top").fadeIn();
+      } else{
+        $(".back-to-top").fadeOut();
+      }
+    });
+
+    $(".back-to-top").click(function(e){
+      e.preventDefault();
+      $("html, body").animate({scrollTop:0}, 600);
+    });
+
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+jQuery(function($) {
+  const $thumbsBlack = $("#thumbs-black-rsd-t670");
+  const $mainImage = $("#main-product-image-rsd-t670");
+  const $addToCartBtn = $("#addToCartBtn-rsd-t670");
+
+  // Thumbnail click & keyboard handler
+  $thumbsBlack.on("click keypress", "img", function(e) {
+    if (e.type === "click" || e.key === "Enter") {
+      const largeSrc = $(this).data("large");
+      if (!largeSrc) return;
+
+      $mainImage.attr("src", largeSrc);
+
+      $thumbsBlack.find("img").removeClass("active");
+      $(this).addClass("active");
+    }
+  });
+
+  $thumbsBlack.find("img").attr("tabindex", "0"); // for keyboard accessibility
+
+  // Set add to cart name on page load
+  $addToCartBtn.data("name", "RSD-T670 – Black");
+  $addToCartBtn.attr("aria-label", "Add RSD-T670 Black to cart");
+
+  // Initialize main image and active thumbnail
+  const firstSrc = $thumbsBlack.find("img").first().data("large");
+  $mainImage.attr("src", firstSrc);
+  $thumbsBlack.find("img").removeClass("active").first().addClass("active");
+});
+
+
+  </script>
+
+</body>
+
+</html>

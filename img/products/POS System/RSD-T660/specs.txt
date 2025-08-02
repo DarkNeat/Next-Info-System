@@ -1,0 +1,13 @@
+ Model – T660
+CPU	Intel® Celeron J1900 Quad-core 2.0 GHz
+Motherboard	Industrial Grade Motherboard 1037
+Memory	Kingston 4GB DDR3
+Hard Disk	Kingston SSD 64GB
+Power	Power Supply (100-260VAC50-60Hz) 12V 5A
+Interface	USB x 6, RJ45 x 1, COM x 1, VGA x 1, PS/2 x 2
+LPT x 1, MIC x 1, Audio x 2
+
+Display	15″ Industrial Grade A LED (4:3), 10-Ponits Capacitive Touchscreen, Resolution 1024 * 768
+OS Support	Windows XP/ Win 7/ Win 10
+Casing and Color	Aluminum Alloy Base, Plastic Case, Black Color
+Wight	1.3 KGS/CTN

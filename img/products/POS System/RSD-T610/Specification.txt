@@ -1,0 +1,23 @@
+Specification :  
+
+15" All in One Touch POS System (No-bezel)                                                     
+Display  15" Industrial Grade A LED (4:3)
+Resolution : 1024 x 768 Pixels 
+Brightness : 400 CD/㎡                                                                   
+I/O :USB x 6 ;RJ45 x 1; COM x 2;MIC x 1;Audio port x 1 ; VGA x 1 ;
+Touchscreen : Resistive touchscreen
+Customer Display : 8 Digit LED Display / VFD 
+OS support :     Win 7/ Win 10 /Linux 
+Power Supply :( AC100-260V50-60Hz) DC 12V 5A (UL)
+Color : Black/White 
+Material of Housing :Plastic Case + Plastic base
+
+Configuration Optional : 
+
+Intel Celeron J1900 / Intel CORE i3 / CORE i5 / CORE i7 
+Ram :  2Gb / 4Gb / 8Gb 
+Hard Disk :  SSD 32Gb / SSD 64G / SSD 128G / SSD 256G / HDD : 500Gb / HDD 1Tb
+Wi-Fi Optional 
+
+Application Area  :  
+Supermark , Shopping Mall , Retail Store ,School , Hopstial, Restaurant ,Cafe bar , Warehouse etc .
