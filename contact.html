@@ -124,13 +124,16 @@
 
      <!-- Cart display -->
         <div class="d-flex align-items-center ms-3">
-          <span id="cart-count-badge" class="me-2 badge bg-danger" style="display: none;">0</span>
           <button
             id="cart-btn"
             class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
             aria-label="Open cart"
           >
             <i class="fa fa-shopping-cart"></i>
+            <span id="cart-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="font-size:0.8em; display:none; min-width:22px; min-height:22px; line-height:22px; padding:0;">
+              0
+            </span>
           </button>
         </div>
       </div>
@@ -403,9 +406,6 @@
           <a
             class="text-white border-bottom"
             href="https://themewagon.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            >UMBRA</a
           >.
         </p>
       </div>
