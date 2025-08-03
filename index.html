@@ -243,15 +243,26 @@
           <i class="fa fa-search"></i>
         </button>
 
-     <!-- Cart display -->
-        <div class="d-flex align-items-center ms-3">
-          <span id="cart-count-badge" class="me-2 badge bg-danger" style="display: none;">0</span>
+     <!-- Cart display in Navbar -->
+        <div class="d-flex align-items-center ms-3" style="position: relative;">
           <button
             id="cart-btn"
-            class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
+            class="btn btn-outline-light btn-sm btn-sm-square rounded-circle"
             aria-label="Open cart"
           >
             <i class="fa fa-shopping-cart"></i>
+            <span id="cart-count-badge" class="badge bg-danger"
+              style="
+                display: none;
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                font-size: 0.7rem;
+                border-radius: 50%;
+                padding: 1px 6px;
+                pointer-events: none;
+              "
+            >0</span>
           </button>
         </div>
       </div>
@@ -980,7 +991,7 @@
   <!-- Cart Overlay -->
   <div id="cart-overlay" tabindex="-1" aria-hidden="true"></div>
 
-  <!-- Side Cart Panel (hidden initially) -->
+  <!-- Cart Sidebar -->
   <div id="side-cart" aria-label="Shopping cart" role="dialog" aria-modal="true" tabindex="-1">
     <header>
       Your Cart
@@ -989,109 +1000,26 @@
     <div id="cart-items">
       <p class="text-muted">Your cart is empty.</p>
     </div>
-<footer>
-  <button class="checkout" type="button">Request A Quote</button>
-  <button class="continue" type="button" id="continue-shopping-btn">Continue Shopping</button>
-</footer>
-
+    <footer>
+      <div class="total">
+        <span>Total Items:</span>
+        <span id="cart-total-items">0</span>
+      </div>
+      <button class="checkout btn btn-light w-100" type="button">Checkout</button>
+      <button class="continue btn btn-outline-light w-100 mt-2" id="continue-shopping-btn" type="button">Continue Shopping</button>
+    </footer>
   </div>
 
   <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- Cart Window JS -->
- <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const sideCart = document.getElementById("side-cart");
-  const cartBtn = document.getElementById("cart-btn");
-  const closeCartBtn = document.getElementById("close-cart");
-  const cartOverlay = document.getElementById("cart-overlay");
-  const continueShoppingBtn = document.getElementById("continue-shopping-btn");
-  // Use the correct cart badge id (matching your main.js logic)
-  const cartCountBadge = document.getElementById("cart-count-badge");
-  const cartItemsDiv = document.getElementById("cart-items");
-
-  function openCart() {
-    sideCart.classList.add("open");
-    cartOverlay.style.display = "block";
-  }
-
-  function closeCart() {
-    sideCart.classList.remove("open");
-    cartOverlay.style.display = "none";
-  }
-
-  cartBtn.addEventListener("click", openCart);
-  closeCartBtn.addEventListener("click", closeCart);
-  cartOverlay.addEventListener("click", closeCart);
-  continueShoppingBtn.addEventListener("click", closeCart);
-
-  // --- REVISED: Cart Count + Items Only, No Price ---
-  function updateCartDisplay() {
-    // Get actual cart from main.js's CartManager or localStorage
-    let cart = [];
-    if (window.CartManager && typeof window.CartManager.renderCartSidebar === "function") {
-      // Let CartManager handle sidebar rendering, just update badge here (optional)
-      if (typeof window.CartManager.updateCartUI === "function") {
-        window.CartManager.updateCartUI();
-        return; // Let main.js handle it
-      }
-    } else {
-      cart = JSON.parse(localStorage.getItem("cart")) || [];
-    }
-
-    const totalItems = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
-
-    if (cartCountBadge) {
-      if (totalItems > 0) {
-        cartCountBadge.textContent = totalItems;
-        cartCountBadge.style.display = "inline-block";
-      } else {
-        cartCountBadge.textContent = "0";
-        cartCountBadge.style.display = "none";
-      }
-    }
-
-    if (cartItemsDiv) {
-      if (cart.length === 0) {
-        cartItemsDiv.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
-      } else {
-        cartItemsDiv.innerHTML = cart.map(item => `
-          <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-2">
-            <div>
-              <strong>${item.name}</strong><br>
-              Qty: ${item.qty || 1}
-            </div>
-            <div>
-              <button class="btn btn-sm btn-outline-danger remove-item mt-1" title="Remove item">&times;</button>
-            </div>
-          </div>
-        `).join("");
-        // Add remove functionality
-        cartItemsDiv.querySelectorAll('.remove-item').forEach((btn, idx) => {
-          btn.addEventListener('click', function() {
-            cart.splice(idx, 1);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartDisplay();
-          });
-        });
-      }
-    }
-  }
-
-  updateCartDisplay();
-
-  // Optionally, expose the updateCartDisplay for other scripts
-  window.updateCartDisplay = updateCartDisplay;
-});
-</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>

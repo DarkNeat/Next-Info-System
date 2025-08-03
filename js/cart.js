@@ -15,7 +15,7 @@ jQuery(function($) {
       $badge.hide();
     }
     renderCartItems();
-    $("#cart-total-items").text(totalQty); // <-- update total items
+    $("#cart-total-items").text(totalQty);
   }
 
   function renderCartItems() {
@@ -28,12 +28,14 @@ jQuery(function($) {
     }
     cart.forEach((item, i) => {
       const itemDiv = $(`
-        <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-2">
-          <div><strong>${item.name}</strong><br />Qty: ${item.qty}</div>
-          <div>
-            $${(item.price * item.qty).toFixed(2)}
-            <button class="btn btn-sm btn-danger ms-2" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
+        <div class="cart-item d-flex align-items-start border-bottom py-2" style="gap:10px;">
+          <img src="${item.img}" alt="${item.name}" style="width:60px;height:60px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+          <div class="flex-grow-1">
+            <strong>${item.name}</strong>
+            <div style="font-size:0.95em;color:#555;">${item.desc || ""}</div>
+            <div style="font-size:0.95em;">Qty: ${item.qty}</div>
           </div>
+          <button class="btn btn-sm btn-danger ms-2" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
         </div>`);
       $cartItems.append(itemDiv);
     });
@@ -60,12 +62,14 @@ jQuery(function($) {
     const id = $(this).data("id");
     const name = $(this).data("name");
     const price = parseFloat($(this).data("price")) || 0;
+    const img = $(this).data("img") || "";
+    const desc = $(this).data("desc") || "";
     if (!id || !name) return;
     const found = cart.find(item => item.id === id && item.name === name);
     if (found) {
       found.qty++;
     } else {
-      cart.push({ id, name, price, qty: 1 });
+      cart.push({ id, name, price, qty: 1, img, desc });
     }
     saveCart();
     updateCartUI();

@@ -629,4 +629,27 @@ h5, h6, .fw-medium {
   }
 }
 
+/* Cart Sidebar Item Styles */
+#cart-items .cart-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+#cart-items .cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+#cart-items .cart-item .flex-grow-1 {
+  flex: 1 1 auto;
+}
+
 
