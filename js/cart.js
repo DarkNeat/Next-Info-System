@@ -77,6 +77,11 @@ jQuery(function($) {
     $("#cart-overlay").show();
   });
 
+  // Ensure the checkout button in the cart sidebar navigates to checkout.html
+  $(document).on('click', '.checkout', function () {
+    window.location.href = 'checkout.html';
+  });
+
   // Initialize cart UI on page load
   updateCartUI();
 });

@@ -406,7 +406,7 @@
           <a
             class="text-white border-bottom"
             href="https://themewagon.com"
-          >.
+            target="_blank
         </p>
       </div>
     </div>
@@ -419,7 +419,7 @@
 </script>
 
     <!-- Cart Overlay -->
-<div id="cart-overlay" tabindex="-1" aria-hidden="true" style="display:none;"></div>
+<div id="cart-overlay" tabindex="-1" aria-hidden="true"></div>
 
 <!-- Cart Sidebar -->
 <div id="side-cart" aria-label="Shopping cart" role="dialog" aria-modal="true" tabindex="-1">
@@ -427,16 +427,16 @@
     Your Cart
     <button id="close-cart" aria-label="Close cart">&times;</button>
   </header>
-  <div id="cart-items" tabindex="0" style="overflow-y:auto; max-height:70vh; padding:1rem; font-family: 'Nunito', sans-serif;">
-    <!-- Cart items will be injected here -->
+  <div id="cart-items">
+    <p class="text-muted">Your cart is empty.</p>
   </div>
   <footer>
-    <div class="total d-flex justify-content-between fw-bold fs-5 px-3">
-      <span>Total:</span>
-      <span id="cart-total">$0.00</span>
+    <div class="total">
+      <span>Total Items:</span>
+      <span id="cart-total-items">0</span>
     </div>
-    <button class="checkout btn btn-primary w-100 my-2" type="button">Checkout</button>
-    <button class="continue btn btn-outline-primary w-100" type="button" id="continue-shopping-btn">Continue Shopping</button>
+    <button class="checkout btn btn-light w-100" type="button">Checkout</button>
+    <button class="continue btn btn-outline-light w-100 mt-2" id="continue-shopping-btn" type="button">Continue Shopping</button>
   </footer>
 </div>
 
@@ -528,6 +528,25 @@
   margin-top: 0.5rem;
 }
 
+#cart-items .cart-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+#cart-items .cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+#cart-items .cart-item .flex-grow-1 {
+  flex: 1 1 auto;
+}
 </style>
 
 
@@ -543,7 +562,7 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
+    <script src="js/cart.js"></script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
