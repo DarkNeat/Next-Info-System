@@ -84,4 +84,27 @@ jQuery(function($) {
 
   // Initialize cart UI on page load
   updateCartUI();
+
+  // --------------- New code added below for Formcarry cart summary -------------
+
+  // Function to generate cart summary string formatted for email
+  function getCartSummary() {
+    if (!cart.length) return "Cart is empty.";
+    let summary = "";
+    cart.forEach((item) => {
+      summary += `- ${item.name || ""}`;
+      if (item.desc) summary += ` (${item.desc})`;
+      summary += ` | Qty: ${item.qty || 1}`;
+      if (item.price) summary += ` | $${item.price.toFixed(2)}`;
+      summary += "\n";
+    });
+    return summary;
+  }
+
+  // On checkout form submission, add the cart summary to a hidden input field
+  $('#checkout-form').on('submit', function() {
+    // Make sure hidden input with name="cart_summary" and id="cart_summary" exists in your form
+    $('#cart_summary').val(getCartSummary());
+  });
+
 });
