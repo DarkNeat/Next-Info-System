@@ -652,39 +652,6 @@ h5, h6, .fw-medium {
   flex: 1 1 auto;
 }
 
-#checkout-cart-items {
-  max-height: 380px;      /* Fixed max height */
-  overflow-y: auto;       /* Scroll vertically if overflow */
-  padding-right: 10px;    /* Space for scrollbar so no content clipped */
-  scrollbar-width: thin;  /* Firefox thin scrollbar */
-}
-
-/* Webkit browsers scrollbar styling */
-#checkout-cart-items::-webkit-scrollbar {
-  width: 6px;
-}
-
-#checkout-cart-items::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-#checkout-cart-items::-webkit-scrollbar-thumb {
-  background-color: var(--primary, #06A3DA);
-  border-radius: 20px;
-}
-
-#checkout-cart-items:hover::-webkit-scrollbar-thumb {
-  background-color: var(--primary, #06A3DA);
-}
-
-/* Optionally hide scrollbar when not hovered (webkit browsers) */
-#checkout-cart-items::-webkit-scrollbar {
-  background: transparent;
-}
-
-#checkout-cart-items:hover::-webkit-scrollbar {
-  background: transparent;
-}
 
 
 
