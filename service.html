@@ -585,69 +585,101 @@
 
 
   <!-- Our Services Section -->
-  <section class="container py-5" aria-label="Our Services">
-    <div class="section-title text-center mx-auto" style="max-width: 600px; margin-bottom: 60px;">
-      <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
-      <h1 class="mb-0">Custom IT Solutions for Your Successful Business</h1>
-    </div>
+<section class="container py-5" aria-label="Our Services">
+  <div class="section-title text-center mx-auto" style="max-width: 600px; margin-bottom: 60px;">
+    <h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
+    <h1 class="mb-0">Custom IT Solutions for Your Successful Business</h1>
+  </div>
 
-    <div class="row g-5" id="servicesGrid" role="list">
-      <!-- Service boxes -->
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="0" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc0" aria-label="Cyber Security service">
-        <i class="fa fa-shield-alt fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>Cyber Security</h5>
-      </article>
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="1" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc1" aria-label="Data Analytics service">
-        <i class="fa fa-chart-pie fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>Data Analytics</h5>
-      </article>
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="2" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc2" aria-label="Web Development service">
-        <i class="fa fa-code fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>Web Development</h5>
-      </article>
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="3" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc3" aria-label="Apps Development service">
-        <i class="fab fa-android fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>Apps Development</h5>
-      </article>
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="4" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc4" aria-label="SEO Optimization service">
-        <i class="fa fa-search fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>SEO Optimization</h5>
-      </article>
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="5" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc5" aria-label="Cloud Services service">
-        <i class="fa fa-cloud fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>Cloud Services</h5>
-      </article>
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="6" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc6" aria-label="IT Consultancy service">
-        <i class="fa fa-laptop fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>IT Consultancy</h5>
-      </article>
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="7" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc7" aria-label="Mobile Marketing service">
-        <i class="fa fa-mobile-alt fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>Mobile Marketing</h5>
-      </article>
-      <article tabindex="0" class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-pointer" data-index="8" aria-expanded="false" role="listitem" aria-controls="serviceDetail" aria-describedby="serviceDesc8" aria-label="Customer Support service">
-        <i class="fa fa-headset fa-4x mb-3 text-primary" aria-hidden="true"></i>
-        <h5>Customer Support</h5>
-      </article>
-    </div>
+  <!-- First row of service boxes -->
+  <div class="row g-5">
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-cash-register fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>POS Systems</h5>
+    </article>
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-print fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>Printing Solutions</h5>
+    </article>
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-code fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>Software Development</h5>
+    </article>
+  </div>
 
-    <!-- Detailed Panel (hidden initially) -->
-    <section id="serviceDetail" class="mt-5 p-4 border rounded shadow-sm" role="region" aria-live="polite" aria-atomic="true" aria-label="Service details" aria-hidden="true">
-      <h3 id="serviceDetailTitle" class="text-primary fw-bold mb-3"></h3>
+  <!-- Details for first row -->
+  <div class="row mt-3 mb-5 gx-5">
+    <article class="col-lg-4 col-md-6">
+      <p>Efficient point-of-sale solutions tailored for your retail and hospitality business with advanced hardware and software.</p>
+    </article>
+    <article class="col-lg-4 col-md-6">
+      <p>Comprehensive printing services including hardware, software, and consumables support to keep your business productive.</p>
+    </article>
+    <article class="col-lg-4 col-md-6">
+      <p>Custom software crafted to streamline operations and empower your business growth through scalable and reliable solutions.</p>
+    </article>
+  </div>
 
-      <div id="serviceCarousel" class="carousel slide mb-3" data-bs-ride="carousel" aria-label="Service images carousel">
-        <div class="carousel-inner"></div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#serviceCarousel" data-bs-slide="prev" aria-label="Previous image">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#serviceCarousel" data-bs-slide="next" aria-label="Next image">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-      </div>
+  <!-- Second row of service boxes -->
+  <div class="row g-5">
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-headset fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>IT Support Services</h5>
+    </article>
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-video fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>CCTV Solution</h5>
+    </article>
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-bullhorn fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>Collaborative Marketing Services</h5>
+    </article>
+  </div>
 
-      <p id="serviceDetailDescription" class="mb-0"></p>
-    </section>
-  </section>
+  <!-- Details for second row -->
+  <div class="row mt-3 mb-5 gx-5">
+    <article class="col-lg-4 col-md-6">
+      <p>Reliable IT support ensuring smooth technology operations, proactive maintenance, and quick issue resolution.</p>
+    </article>
+    <article class="col-lg-4 col-md-6">
+      <p>Advanced video surveillance solutions with HD cameras and remote monitoring to protect and secure your assets.</p>
+    </article>
+    <article class="col-lg-4 col-md-6">
+      <p>Integrated marketing strategies that amplify your brand presence across digital and traditional channels.</p>
+    </article>
+  </div>
+
+  <!-- Third row of service boxes -->
+  <div class="row g-5">
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-globe fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>Web Development</h5>
+    </article>
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-network-wired fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>Networking Services</h5>
+    </article>
+    <article class="service-box col-lg-4 col-md-6 text-center rounded shadow-sm p-4 cursor-default">
+      <i class="fa fa-boxes fa-4x mb-3 text-primary" aria-hidden="true"></i>
+      <h5>Wholesale Distribution</h5>
+    </article>
+  </div>
+
+  <!-- Details for third row -->
+  <div class="row mt-3 gx-5">
+    <article class="col-lg-4 col-md-6">
+      <p>Modern, responsive websites optimized for SEO and designed to deliver seamless user experiences and drive engagement.</p>
+    </article>
+    <article class="col-lg-4 col-md-6">
+      <p>Professional network design and management ensuring secure, scalable, and efficient connectivity for your business.</p>
+    </article>
+    <article class="col-lg-4 col-md-6">
+      <p>Reliable wholesale distribution services focused on timely delivery, inventory management, and client satisfaction.</p>
+    </article>
+  </div>
+</section>
+
+
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -847,188 +879,77 @@
   <script src="js/main.js"></script>
 
   <script>
-    // Cart functionality
-    const sideCart = document.getElementById("side-cart");
-    const cartBtn = document.getElementById("cart-btn");
-    const closeCartBtn = document.getElementById("close-cart");
-    const cartOverlay = document.getElementById("cart-overlay");
-    const continueShoppingBtn = document.getElementById("continue-shopping-btn");
+// Cart functionality
+const sideCart = document.getElementById("side-cart");
+const cartBtn = document.getElementById("cart-btn");
+const closeCartBtn = document.getElementById("close-cart");
+const cartOverlay = document.getElementById("cart-overlay");
+const continueShoppingBtn = document.getElementById("continue-shopping-btn");
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    function updateCartDisplay() {
-      let totalAmount = 0;
-      let totalItems = 0;
-      const cartItemsDiv = document.getElementById("cart-items");
-      cartItemsDiv.innerHTML = "";
+function updateCartDisplay() {
+  let totalAmount = 0;
+  let totalItems = 0;
+  const cartItemsDiv = document.getElementById("cart-items");
+  cartItemsDiv.innerHTML = "";
 
-      if (cart.length === 0) {
-        cartItemsDiv.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
-      } else {
-        cart.forEach((item, index) => {
-          totalAmount += (item.price || 0) * (item.qty || 1);
-          totalItems += item.qty || 1;
+  if (cart.length === 0) {
+    cartItemsDiv.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+  } else {
+    cart.forEach((item, index) => {
+      totalAmount += (item.price || 0) * (item.qty || 1);
+      totalItems += item.qty || 1;
 
-          const div = document.createElement("div");
-          div.className = "cart-item";
-          div.innerHTML = `
-            <div class="item-info">
-              <div class="item-name">${item.name || "Unnamed Item"}</div>
-              <div class="item-qty">Quantity: ${item.qty || 1}</div>
-            </div>
-            <div class="item-price">$${((item.price || 0) * (item.qty || 1)).toFixed(2)}</div>
-            <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}" title="Remove item">&times;</button>
-          `;
-          cartItemsDiv.appendChild(div);
-        });
-      }
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <div class="item-info">
+          <div class="item-name">${item.name || "Unnamed Item"}</div>
+          <div class="item-qty">Quantity: ${item.qty || 1}</div>
+        </div>
+        <div class="item-price">$${((item.price || 0) * (item.qty || 1)).toFixed(2)}</div>
+        <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}" title="Remove item">&times;</button>
+      `;
+      cartItemsDiv.appendChild(div);
+    });
+  }
 
-      document.getElementById("cart-amount").textContent = "Amount: $" + totalAmount.toFixed(2);
-      document.getElementById("cart-count").textContent = totalItems;
-      document.getElementById("cart-total").textContent = "$" + totalAmount.toFixed(2);
+  document.getElementById("cart-amount").textContent = "Amount: $" + totalAmount.toFixed(2);
+  document.getElementById("cart-count").textContent = totalItems;
+  document.getElementById("cart-total").textContent = "$" + totalAmount.toFixed(2);
 
-      document.querySelectorAll(".remove-item").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const idx = parseInt(e.target.getAttribute("data-index"));
-          cart.splice(idx, 1);
-          localStorage.setItem("cart", JSON.stringify(cart));
-          updateCartDisplay();
-        });
-      });
-    }
-
-    function openCart() {
-      sideCart.classList.add("open");
-      cartOverlay.style.display = "block";
-      sideCart.setAttribute("aria-hidden", "false");
-    }
-
-    function closeCart() {
-      sideCart.classList.remove("open");
-      cartOverlay.style.display = "none";
-      sideCart.setAttribute("aria-hidden", "true");
-    }
-
-    cartBtn.addEventListener("click", openCart);
-    closeCartBtn.addEventListener("click", closeCart);
-    cartOverlay.addEventListener("click", closeCart);
-    continueShoppingBtn.addEventListener("click", closeCart);
-
-    document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".remove-item").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const idx = parseInt(e.target.getAttribute("data-index"));
+      cart.splice(idx, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
       updateCartDisplay();
     });
+  });
+}
 
-    // Services detail panel functionality
-    const services = [
-      {
-        title: "Cyber Security",
-        description:
-          "Protect your business with cutting-edge cybersecurity solutions to safeguard your data and network.",
-        images: ["img/services/cybersec1.jpg", "img/services/cybersec2.jpg", "img/services/cybersec3.jpg"],
-      },
-      {
-        title: "Data Analytics",
-        description:
-          "Harness your data potential to drive better decision-making and business growth through analytics.",
-        images: ["img/services/data1.jpg", "img/services/data2.jpg", "img/services/data3.jpg"],
-      },
-      {
-        title: "Web Development",
-        description:
-          "Create responsive, SEO-friendly, and engaging websites tailored for your needs.",
-        images: ["img/services/webdev1.jpg", "img/services/webdev2.jpg", "img/services/webdev3.jpg"],
-      },
-      {
-        title: "Apps Development",
-        description:
-          "Develop stunning and functional mobile apps on Android and iOS platforms.",
-        images: ["img/services/apps1.jpg", "img/services/apps2.jpg", "img/services/apps3.jpg"],
-      },
-      {
-        title: "SEO Optimization",
-        description:
-          "Boost your online presence and improve search rankings with our SEO strategies.",
-        images: ["img/services/seo1.jpg", "img/services/seo2.jpg", "img/services/seo3.jpg"],
-      },
-      {
-        title: "Cloud Services",
-        description:
-          "Scale with reliable and secure cloud computing services customized for your business.",
-        images: ["img/services/cloud1.jpg", "img/services/cloud2.jpg", "img/services/cloud3.jpg"],
-      },
-      {
-        title: "IT Consultancy",
-        description:
-          "Expert advice to optimize your IT infrastructure and strategy.",
-        images: ["img/services/consultancy1.jpg", "img/services/consultancy2.jpg", "img/services/consultancy3.jpg"],
-      },
-      {
-        title: "Mobile Marketing",
-        description:
-          "Engage customers effectively with targeted mobile marketing campaigns.",
-        images: ["img/services/marketing1.jpg", "img/services/marketing2.jpg", "img/services/marketing3.jpg"],
-      },
-      {
-        title: "Customer Support",
-        description:
-          "Provide excellent 24/7 customer support tailored to your business operations.",
-        images: ["img/services/support1.jpg", "img/services/support2.jpg", "img/services/support3.jpg"],
-      },
-    ];
+function openCart() {
+  sideCart.classList.add("open");
+  cartOverlay.style.display = "block";
+  sideCart.setAttribute("aria-hidden", "false");
+}
 
-    const serviceBoxes = document.querySelectorAll("#servicesGrid article.service-box");
-    const detailPanel = document.getElementById("serviceDetail");
-    const detailTitle = document.getElementById("serviceDetailTitle");
-    const detailDescription = document.getElementById("serviceDetailDescription");
-    const carouselInner = document.querySelector("#serviceCarousel .carousel-inner");
+function closeCart() {
+  sideCart.classList.remove("open");
+  cartOverlay.style.display = "none";
+  sideCart.setAttribute("aria-hidden", "true");
+}
 
-    serviceBoxes.forEach((box) => {
-      box.addEventListener("click", () => {
-        const idx = parseInt(box.getAttribute("data-index"), 10);
-        if (detailPanel.classList.contains("d-none") || detailPanel.getAttribute("data-current") != idx) {
-          showDetail(idx);
-        } else {
-          hideDetail();
-        }
-      });
-      box.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          box.click();
-        }
-      });
-    });
+cartBtn.addEventListener("click", openCart);
+closeCartBtn.addEventListener("click", closeCart);
+cartOverlay.addEventListener("click", closeCart);
+continueShoppingBtn.addEventListener("click", closeCart);
 
-    function showDetail(index) {
-      const service = services[index];
-      detailTitle.textContent = service.title;
-      detailDescription.textContent = service.description;
-      detailPanel.setAttribute("data-current", index);
-      detailPanel.classList.remove("d-none");
-      detailPanel.setAttribute("aria-hidden", "false");
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartDisplay();
+});
 
-      // Build carousel items
-      carouselInner.innerHTML = "";
-      service.images.forEach((src, i) => {
-        const div = document.createElement("div");
-        div.className = "carousel-item" + (i === 0 ? " active" : "");
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = `${service.title} image ${i + 1}`;
-        div.appendChild(img);
-        carouselInner.appendChild(div);
-      });
-
-      // Reset carousel to first slide
-      const bsCarousel = bootstrap.Carousel.getInstance(document.getElementById("serviceCarousel"));
-      if (bsCarousel) bsCarousel.to(0);
-    }
-
-    function hideDetail() {
-      detailPanel.classList.add("d-none");
-      detailPanel.removeAttribute("data-current");
-      detailPanel.setAttribute("aria-hidden", "true");
-    }
   </script>
 </body>
 

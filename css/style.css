@@ -661,4 +661,18 @@ h5, h6, .fw-medium {
   color: transparent;
 }
 
+.variant-box.active img {
+  border-color: #06A3DA !important;
+  box-shadow: 0 0 6px 2px rgba(6, 163, 218, 0.7);
+}
 
+
+.contact-icon {
+  font-size: 3rem;
+}
+.contact-heading {
+  font-size: 1.75rem;
+}
+.contact-text {
+  font-size: 1.25rem;
+}

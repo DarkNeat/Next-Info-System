@@ -39,7 +39,7 @@
     <!-- Spinner End -->
 
 
-  <!-- Topbar Start -->
+<!-- Topbar Start -->
   <div class="container-fluid bg-dark px-5 d-none d-lg-block">
     <div class="row gx-0">
       <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
@@ -49,7 +49,7 @@
             United Arab Emirates</small
           >
           <small class="me-3 text-light"
-            ><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small
+            ><i class="fa fa-phone-alt me-2"></i>+971 54 995 4914</small
           >
           <small class="text-light"
             ><i class="fa fa-envelope-open me-2"></i>sales@nextinfosystem.com</small
@@ -89,196 +89,243 @@
   </div>
   <!-- Topbar End -->
 
-  <!-- Navbar & Carousel Start -->
-  <div class="container-fluid position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-      <a href="index.html" class="navbar-brand p-0">
-        <h1 class="m-0">
-          <i class="fa fa-user-tie me-2"></i>Startup
-        </h1>
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
-        <span class="fa fa-bars"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto py-0">
-          <a href="index.html" class="nav-item nav-link ">Home</a>
-          <a href="about.html" class="nav-item nav-link">About</a>
-          <a href="service.html" class="nav-item nav-link active">Services</a>
-          <a href="product.html" class="nav-item nav-link">Products</a>
-          <a href="contact.html" class="nav-item nav-link">Contact</a>
-        </div>
-        <button
-          type="button"
-          class="btn text-primary ms-3"
-          data-bs-toggle="modal"
-          data-bs-target="#searchModal"
-        >
-          <i class="fa fa-search"></i>
-        </button>
+<!-- Navbar & Carousel Start -->
+<div class="container-fluid position-relative p-0">
+  <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center p-0">
+      <img src="img/NIS Icon.png" alt="Next Info Systems Logo" style="width:40px; height:auto; margin-right:10px;" />
+      <span class="fs-4 fw-bold gradient-gold-text" style="font-family: 'Rubik', sans-serif;">
+        Next Info Systems
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="fa fa-bars"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-0">
+        <a href="index.html" class="nav-item nav-link">Home</a>
+        <a href="about.html" class="nav-item nav-link ">About</a>
+        <a href="service.html" class="nav-item nav-link ">Services</a>
+        <a href="product.html" class="nav-item nav-link">Products</a>
+        <a href="contact.html" class="nav-item nav-link active">Contact</a>
+      </div>
 
-     <!-- Cart display -->
-        <div class="d-flex align-items-center ms-3">
-          <button
-            id="cart-btn"
-            class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
-            aria-label="Open cart"
+      <!-- Cart display -->
+      <div class="d-flex align-items-center ms-3">
+        <button
+          id="cart-btn"
+          class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
+          aria-label="Open cart"
+        >
+          <i class="fa fa-shopping-cart"></i>
+          <span
+            id="cart-count-badge"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="font-size:0.8em; display:none; min-width:22px; min-height:22px; line-height:22px; padding:0;"
           >
-            <i class="fa fa-shopping-cart"></i>
-            <span id="cart-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-              style="font-size:0.8em; display:none; min-width:22px; min-height:22px; line-height:22px; padding:0;">
-              0
-            </span>
-          </button>
+            0
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Optional Header/banner area (transparent navbar overlays) -->
+  <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+      <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+        <h1 class="display-4 text-white animated zoomIn">Services</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Navbar End -->
+
+<style>
+  /* Gold gradient text for navbar brand name */
+  .gradient-gold-text {
+    background: linear-gradient(to bottom, #FFD700 0%, #B8860B 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+
+<!-- Contact Info Section Start -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+  <div class="container py-5">
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+      <h5 class="fw-bold text-primary text-uppercase" style="font-size: 2rem;">Contact Us</h5>
+      <h1 class="mb-0" style="font-size: 3rem;">If You Have Any Query, Feel Free To Contact Us</h1>
+    </div>
+    <div class="row g-5 text-center">
+      <div class="col-lg-4">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fa fa-map-marker-alt text-primary mb-3" style="font-size: 3rem;"></i>
+          <h5 class="mb-2 fw-semibold" style="font-size: 1.75rem;">Visit our Dubai Branch</h5>
+          <p style="font-size: 1.25rem;">Dubai Branch Building, Mankhool, Dubai, United Arab Emirates</p>
         </div>
       </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-      <div class="row py-5">
-        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-          <h1 class="display-4 text-white animated zoomIn">Our Products</h1>
+      <div class="col-lg-4">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fa fa-phone-alt text-primary mb-3" style="font-size: 3rem;"></i>
+          <h5 class="mb-2 fw-semibold" style="font-size: 1.75rem;">Call to ask any question</h5>
+          <p style="font-size: 1.25rem;">+971 54 995 4914</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fa fa-envelope-open text-primary mb-3" style="font-size: 3rem;"></i>
+          <h5 class="mb-2 fw-semibold" style="font-size: 1.75rem;">Email us</h5>
+          <p style="font-size: 1.25rem;">sales@nextinfosystem.com</p>
         </div>
       </div>
     </div>
   </div>
-  <!-- Navbar End -->
+</div>
+<!-- Contact Info Section End -->
 
 
-    <!-- Full Screen Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex align-items-center justify-content-center">
-                    <div class="input-group" style="max-width: 600px;">
-                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-            </div>
+
+
+<!-- Quote Start -->
+<div id="request-quote" class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" style="background: #f0f8ff;">
+  <div class="container py-5">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <div class="section-title position-relative pb-3 mb-5">
+          <h5 class="fw-bold text-primary text-uppercase">Request A Quote</h5>
+          <h1 class="mb-0">Need A Free Quote? Please Feel Free to Contact Us</h1>
         </div>
-    </div>
-    <!-- Full Screen Search End -->
-
-
-    <!-- Contact Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Contact Us</h5>
-                <h1 class="mb-0">If You Have Any Query, Feel Free To Contact Us</h1>
-            </div>
-            <div class="row g-5 mb-5">
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center wow fadeIn" data-wow-delay="0.1s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-phone-alt text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center wow fadeIn" data-wow-delay="0.4s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-envelope-open text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Email to get free quote</h5>
-                            <h4 class="text-primary mb-0">info@example.com</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center wow fadeIn" data-wow-delay="0.8s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-map-marker-alt text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Visit our office</h5>
-                            <h4 class="text-primary mb-0">123 Street, NY, USA</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Your Name" style="height: 55px;">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Subject" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="Message"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
-                    <iframe class="position-relative rounded w-100 h-100"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                        frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
-                        tabindex="0"></iframe>
-                </div>
-            </div>
+        <div class="row gx-3">
+          <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+            <h5 class="mb-4">
+              <i class="fab fa-whatsapp text-primary me-3"></i>
+              <a href="https://wa.me/971549954914" target="_blank" class="text-decoration-none text-primary" aria-label="Chat on WhatsApp">
+                +971 54 995 4914
+              </a>
+            </h5>
+          </div>
+          <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
+            <h5 class="mb-4">
+              <i class="fa fa-clock text-primary me-3"></i>We reply within 24 hours
+            </h5>
+          </div>
         </div>
-    </div>
-    <!-- Contact End -->
-
-
-    <!-- Vendor Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5 mb-5">
-            <div class="bg-white">
-                <div class="owl-carousel vendor-carousel">
-                    <img src="img/vendor-1.jpg" alt="">
-                    <img src="img/vendor-2.jpg" alt="">
-                    <img src="img/vendor-3.jpg" alt="">
-                    <img src="img/vendor-4.jpg" alt="">
-                    <img src="img/vendor-5.jpg" alt="">
-                    <img src="img/vendor-6.jpg" alt="">
-                    <img src="img/vendor-7.jpg" alt="">
-                    <img src="img/vendor-8.jpg" alt="">
-                    <img src="img/vendor-9.jpg" alt="">
-                </div>
+        <p class="mb-4" style="color:#555;">
+          We are committed to providing timely, personalized support to our valued clients. Contact us with your requirements and receive a detailed, tailored quote promptly.
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <div
+          class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn"
+          data-wow-delay="0.9s"
+        >
+          <form 
+            method="POST" 
+            action="https://formcarry.com/s/1JWOxOGgO2I" 
+            accept-charset="UTF-8" 
+            autocomplete="on" 
+            class="w-100"
+            onsubmit="return this.checkValidity()"
+          >
+            <div class="row g-3">
+              <div class="col-xl-12">
+                <input
+                  type="text"
+                  name="user_name"
+                  class="form-control bg-light border-0"
+                  placeholder="Your Name"
+                  required
+                  style="height: 55px"
+                />
+              </div>
+              <div class="col-12">
+                <input
+                  type="email"
+                  name="user_email"
+                  class="form-control bg-light border-0"
+                  placeholder="Your Email"
+                  required
+                  style="height: 55px"
+                />
+              </div>
+              <div class="col-12">
+                <select
+                  name="service"
+                  class="form-select bg-light border-0"
+                  style="height: 55px"
+                  required
+                >
+                  <option value="" disabled selected>Select A Service</option>
+                  <option value="POS Systems">POS Systems</option>
+                  <option value="Printing Solutions">Printing Solutions</option>
+                  <option value="Software Development">Software Development</option>
+                  <option value="IT Support Services">IT Support Services</option>
+                  <option value="CCTV Solution">CCTV Solution</option>
+                  <option value="Collaborative Marketing Services">Collaborative Marketing Services</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="Networking Services">Networking Services</option>
+                  <option value="Wholesale Distribution">Wholesale Distribution</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <input
+                  type="text"
+                  name="additional_services"
+                  class="form-control bg-light border-0"
+                  placeholder="Additional Services (optional)"
+                  style="height: 55px"
+                />
+              </div>
+              <div class="col-12">
+                <textarea
+                  name="message"
+                  class="form-control bg-light border-0"
+                  rows="3"
+                  placeholder="Message"
+                  required
+                ></textarea>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-dark w-100 py-3" type="submit">
+                  Request A Quote
+                </button>
+              </div>
             </div>
+          </form>
         </div>
+      </div>
     </div>
-    <!-- Vendor End -->
+  </div>
+</div>
+<!-- Quote End -->
+
+
+
+
     
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
   <div class="container">
     <div class="row gx-5">
-      <!-- About Section -->
+
+      <!-- Company Info column with blue background only on inner box -->
       <div class="col-lg-4 col-md-6 footer-about">
-        <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded">
+        <div 
+          class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded"
+          style="min-height: 365px; max-height: 365px; overflow: hidden; box-sizing: border-box;"
+        >
           <a href="index.html" class="navbar-brand mb-3">
-            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+            <!-- Replace Startup text with your company logo and name -->
+            <img src="img/NIS Logo.png" alt="Next Info Systems Logo" style="width:150px; height:auto;" />
+            <!-- Optionally add a company name next to or below if you want text -->
+            <!-- <h1 class="m-0 text-white">Next Info Systems</h1> -->
           </a>
           <p class="mb-4 px-lg-3" style="color: #e1e1e1; font-size: 0.95rem;">
-            We provide innovative IT solutions and outstanding service with over 10 years of experience to help your business grow.
+            We provide innovative IT solutions and outstanding service with over decades of experience to help your business grow.
           </p>
           <form action="" class="w-100" style="max-width: 400px;">
             <div class="input-group">
@@ -357,7 +404,7 @@
             </div>
           </div>
 
-          <!-- Popular Links (copy of Quick Links for consistent UX) -->
+          <!-- Popular Links (same as Quick Links for UX consistency) -->
           <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
             <div class="section-title section-title-sm position-relative pb-3 mb-4">
               <h3 class="text-light mb-0">Popular Links</h3>
@@ -406,7 +453,10 @@
           <a
             class="text-white border-bottom"
             href="https://themewagon.com"
-            target="_blank
+            target="_blank"
+            rel="noopener noreferrer"
+            >UMBRA</a
+          >.
         </p>
       </div>
     </div>
