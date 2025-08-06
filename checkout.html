@@ -5,7 +5,6 @@
   <title>Checkout | Next Info Systems</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <link href="img/favicon.ico" rel="icon" />
-
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,105 +21,152 @@
   <link href="css/style.css" rel="stylesheet" />
 
   <style>
-    html, body { height: 100%; }
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
     body {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       background: #f8f9fa;
     }
-    .checkout-wrapper { flex: 1 0 auto; }
+
+    /* Main container */
+    .checkout-wrapper {
+      display: flex;
+      flex: 1 0 auto;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 48px 0;
+      width: 100%;
+    }
+
     .checkout-main {
       display: flex;
+      gap: 16px;
+      max-width: 900px;
+      width: 100%;
       justify-content: center;
-      padding: 50px 0 60px 0;
-      gap: 32px;
+      align-items: stretch; /* equal height columns */
+
+      /* Increased height for better fit */
+      max-height: 640px;
     }
+
     @media (max-width: 991px) {
-      .checkout-main { flex-direction: column; gap: 0; }
+      .checkout-main {
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+        max-height: none;
+      }
     }
+
     .checkout-card, .cart-summary {
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 1px 16px 1px rgba(0,0,0,0.08);
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+
+      /* Increased height */
+      height: 640px;
+      overflow: hidden;
     }
+
+    @media (max-width: 991px) {
+      .checkout-card, .cart-summary {
+        height: auto;
+        max-width: 600px;
+        width: 100%;
+        margin-bottom: 24px;
+      }
+    }
+
     .checkout-card {
-      padding: 36px 32px 28px;
       max-width: 475px;
       width: 100%;
-      margin-bottom: 24px;
+      padding: 36px 32px 28px;
     }
+
     .checkout-form-title {
       font-size: 1.3rem;
       font-weight: 800;
-      color: var(--primary, #06A3DA);
+      color: #06A3DA;
       margin-bottom: 1.6rem;
       letter-spacing: 0.03em;
     }
+
     .cart-summary {
       max-width: 350px;
       width: 100%;
       padding: 32px 26px;
-      margin-bottom: 24px;
-      border-left: 4px solid var(--primary, #06A3DA);
-      display: flex;
+      border-left: 4px solid #06A3DA;
       flex-direction: column;
     }
-    @media (max-width:991px) {
-      .cart-summary { border-left: none; border-top: 4px solid var(--primary, #06A3DA);}
+
+    @media (max-width: 991px) {
+      .cart-summary {
+        border-left: none;
+        border-top: 4px solid #06A3DA;
+      }
     }
+
     #checkout-cart-items {
+      flex-grow: 1;
       overflow-y: auto;
-      max-height: 380px;
       padding-right: 10px;
       scrollbar-width: thin;
-      flex-grow: 1;
     }
-    #checkout-cart-items::-webkit-scrollbar {
-      width: 6px;
-    }
-    #checkout-cart-items::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    #checkout-cart-items::-webkit-scrollbar-thumb {
-      background-color: var(--primary, #06A3DA);
-      border-radius: 20px;
-    }
-    #checkout-cart-items:hover::-webkit-scrollbar-thumb {
-      background-color: var(--primary, #06A3DA);
-    }
+
     #checkout-cart-items .cart-product-row {
       display: flex;
       align-items: center;
       gap: 14px;
-      border-bottom: 1px solid #f1f1f1;
-      padding: 12px 0;
+      border-bottom: 1px solid #06A3DA; /* Blue divider */
+      padding: 24px 0;
+      min-height: 110px; /* fixed row height */
+      box-sizing: border-box;
     }
-    #checkout-cart-items .cart-product-row:last-child { border-bottom: none; }
+
+    #checkout-cart-items .cart-product-row:last-child {
+      border-bottom: none;
+    }
+
     #checkout-cart-items img {
-      width: 54px; height: 54px;
+      width: 54px;
+      height: 54px;
       object-fit: cover;
       border-radius: 8px;
       border: 1px solid #eee;
       flex-shrink: 0;
       background: #f7fafd;
     }
+
     #checkout-cart-items .cart-info {
       flex: 1 1 auto;
     }
+
     #checkout-cart-items .cart-info strong {
-      display: block; font-weight:700; margin-bottom:2px;
-      font-size:1.11em;
+      display: block;
+      font-weight: 700;
+      margin-bottom: 2px;
+      font-size: 1.11em;
     }
+
     #checkout-cart-items .cart-info .desc {
-      font-size: 0.97em; color: #555; margin-bottom: 6px;
+      font-size: 0.97em;
+      color: #555;
+      margin-bottom: 6px;
     }
+
     #checkout-cart-items .cart-info .qty-controls {
       display: flex;
       align-items: center;
       gap: 6px;
     }
+
     #checkout-cart-items .cart-info .qty-controls button {
       width: 26px;
       height: 26px;
@@ -129,9 +175,9 @@
       font-weight: 700;
       font-size: 18px;
       line-height: 1;
-      border: 1px solid var(--primary, #06A3DA);
+      border: 1px solid #06A3DA;
       background: white;
-      color: var(--primary, #06A3DA);
+      color: #06A3DA;
       cursor: pointer;
       display: flex;
       justify-content: center;
@@ -139,55 +185,45 @@
       user-select: none;
       transition: background-color 0.2s ease;
     }
+
     #checkout-cart-items .cart-info .qty-controls button:hover {
-      background-color: var(--primary, #06A3DA);
+      background-color: #06A3DA;
       color: white;
     }
-    #checkout-cart-items .cart-info .qty-controls .qty-value {
-      min-width: 28px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 1em;
-      color: #065ba6;
-      user-select: none;
-    }
+
     #checkout-cart-items .cart-info .remove-item {
       margin-left: 12px;
       border-color: #dc3545;
       color: #dc3545;
     }
+
     #checkout-cart-items .cart-info .remove-item:hover {
       background-color: #dc3545;
       color: white;
     }
+
     #checkout-cart-items .cart-price {
       text-align: right;
       font-weight: bold;
-      color: var(--primary, #06A3DA);
+      color: #06A3DA;
       min-width: 70px;
     }
+
     #checkout-cart-items .empty {
-      padding: 28px; text-align: center;
+      padding: 28px;
+      text-align: center;
       background: #fff0f0;
       border-radius: 10px;
-      color: #c43c38; font-weight: 700;
+      color: #c43c38;
+      font-weight: 700;
       margin-bottom: 24px;
       margin-top: 24px;
       font-size: 1.07em;
     }
-    .cart-summary .total-row {
-      font-weight: 700;
-      font-size: 1.09rem;
-      color: #091E3E;
-      border-top: 2px solid #bbe3f6;
-      margin-top: 18px;
-      padding-top: 8px;
-      display: flex;
-      justify-content: space-between;
-    }
   </style>
 </head>
 <body>
+
   <!-- Topbar Start -->
   <div class="container-fluid bg-dark px-5 d-none d-lg-block">
     <div class="row gx-0">
@@ -232,7 +268,8 @@
   </nav>
 
   <div class="checkout-wrapper">
-    <main class="checkout-main container">
+    <div class="checkout-main">
+
       <!-- Checkout Form Card -->
       <div class="checkout-card">
         <h2 class="mb-4 text-center text-primary">Checkout</h2>
@@ -240,42 +277,46 @@
           <input type="hidden" name="cart_summary" id="cart_summary" />
 
           <div class="checkout-form-title mb-4">Contact Information</div>
+
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="name" name="user_name" placeholder="Full Name" required autocomplete="name" />
             <label for="name">Full Name</label>
           </div>
+
           <div class="form-floating mb-3">
             <input type="email" class="form-control" id="email" name="user_email" placeholder="Email Address" required autocomplete="email" />
             <label for="email">Email Address</label>
           </div>
+
           <div class="form-floating mb-3">
             <input type="tel" class="form-control" id="phone" name="user_phone" placeholder="Phone Number" required autocomplete="tel" />
             <label for="phone">Phone Number</label>
           </div>
+
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="company" name="company" placeholder="Company (optional)" />
             <label for="company">Company (optional)</label>
           </div>
+
           <div class="form-floating mb-4">
             <textarea class="form-control" id="message" name="message" style="height: 80px;" placeholder="Additional Message"></textarea>
             <label for="message">Additional Message</label>
           </div>
+
           <button type="submit" class="btn btn-primary w-100 py-2 fw-bold position-relative" id="submit-btn">
             <span id="submit-btn-text">Submit Request</span>
             <span id="submit-btn-spinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
           </button>
         </form>
       </div>
-      <!-- Cart Preview Summary Card -->
+
+      <!-- Cart Summary Card -->
       <aside class="cart-summary">
         <h5 class="mb-3"><i class="fa fa-shopping-cart me-2"></i>Your Cart</h5>
         <div id="checkout-cart-items"></div>
-        <div class="total-row" id="checkout-total-row" style="display:none;">
-          <span class="total-label">Total</span>
-          <span class="total-value" id="cart-total-amount"></span>
-        </div>
       </aside>
-    </main>
+
+    </div>
   </div>
 
   <!-- Footer Start -->
@@ -302,21 +343,18 @@
     function renderCheckoutCart() {
       const cart = JSON.parse(localStorage.getItem("cart") || "[]");
       const container = document.getElementById("checkout-cart-items");
-      const totalRow = document.getElementById("checkout-total-row");
-      const totalAmount = document.getElementById("cart-total-amount");
-      let total = 0;
       if (!container) return;
+
       if (!cart.length) {
         container.innerHTML = '<div class="empty"><i class="fa fa-exclamation-circle me-2"></i>Your cart is empty.</div>';
-        if (totalRow) totalRow.style.display = "none";
         document.getElementById('submit-btn').disabled = true;
         return;
       }
+
       document.getElementById('submit-btn').disabled = false;
 
       let rows = cart.map((item, idx) => {
         let price = item.price ? Number(item.price) : 0;
-        total += price * (item.qty || 1);
         return `
           <div class="cart-product-row" data-index="${idx}">
             <img src="${item.img || ''}" alt="${item.name || 'Product'}" />
@@ -335,11 +373,8 @@
         `;
       }).join('');
       container.innerHTML = rows;
-      if (totalRow && totalAmount) {
-        totalAmount.innerHTML = "$" + total.toFixed(2);
-        totalRow.style.display = "";
-      }
-      // Add events for new buttons
+
+      // Add quantity and remove item event listeners
       container.querySelectorAll('.qty-increase').forEach(button => {
         button.addEventListener('click', () => {
           let idx = parseInt(button.closest('.cart-product-row').dataset.index);
@@ -419,18 +454,14 @@
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       }).then(response => {
+        document.getElementById('submit-btn').disabled = false;
+        document.getElementById('submit-btn-spinner').classList.add('d-none');
+        document.getElementById('submit-btn-text').innerText = "Submit Request";
         if(response.ok){
-          document.getElementById('checkout-confirm-msg').style.display = "block";
-          document.getElementById('checkout-error-msg').style.display = "none";
           localStorage.removeItem("cart");
           setTimeout(() => { form.reset(); renderCheckoutCart(); }, 1500);
-          document.getElementById('submit-btn').disabled = false;
-          document.getElementById('submit-btn-spinner').classList.add('d-none');
-          document.getElementById('submit-btn-text').innerText = "Submit Request";
-        } else throw new Error();
-      }).catch(()=>{
-        document.getElementById('checkout-confirm-msg').style.display = "none";
-        document.getElementById('checkout-error-msg').style.display = "block";
+        }
+      }).catch(() => {
         document.getElementById('submit-btn').disabled = false;
         document.getElementById('submit-btn-spinner').classList.add('d-none');
         document.getElementById('submit-btn-text').innerText = "Submit Request";
