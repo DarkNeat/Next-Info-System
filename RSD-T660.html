@@ -296,6 +296,16 @@
 </head>
 
 <body>
+
+    <!-- Spinner Start -->
+  <div
+    id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+  >
+    <div class="spinner"></div>
+  </div>
+  <!-- Spinner End -->
+
   <!-- Topbar -->
   <div class="container-fluid bg-dark px-5 d-none d-lg-block">
     <div class="row gx-0">
@@ -880,6 +890,14 @@ jQuery(function($) {
   // Initialize page with Black color active
   switchToBlack();
 });
+
+jQuery(function($) {
+  // Remove spinner after a delay, e.g., 1 or 2 seconds
+  setTimeout(function() {
+    $("#spinner").removeClass("show");
+  }, 1000); // Adjust delay (ms) as needed
+});
+
 
   </script>
 
