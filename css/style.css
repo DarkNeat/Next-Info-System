@@ -653,5 +653,12 @@ h5, h6, .fw-medium {
 }
 
 
+.gradient-gold {
+  background: linear-gradient(to bottom, #FFD700 0%, #B8860B 50%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+  color: transparent;
+}
 
 

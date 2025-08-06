@@ -283,7 +283,7 @@
             United Arab Emirates</small
           >
           <small class="me-3 text-light"
-            ><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small
+            ><i class="fa fa-phone-alt me-2"></i>+971 54 995 4914</small
           >
           <small class="text-light"
             ><i class="fa fa-envelope-open me-2"></i>sales@nextinfosystem.com</small
@@ -323,140 +323,137 @@
   </div>
   <!-- Topbar End -->
 
-  <!-- Navbar & Carousel Start -->
-  <div class="container-fluid position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-      <a href="index.html" class="navbar-brand p-0">
-        <h1 class="m-0">
-          <i class="fa fa-user-tie me-2"></i>Startup
-        </h1>
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
-        <span class="fa fa-bars"></span>
+<!-- Navbar & Carousel Start -->
+<div class="container-fluid position-relative p-0">
+  <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center p-0">
+      <img src="img/NIS Icon.png" alt="Next Info Systems Logo" style="width:40px; height:auto; margin-right:10px;" />
+      <span class="fs-4 fw-bold gradient-gold-text" style="font-family: 'Rubik', sans-serif;">
+        Next Info Systems
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="fa fa-bars"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-0">
+        <a href="index.html" class="nav-item nav-link">Home</a>
+        <a href="about.html" class="nav-item nav-link active">About</a>
+        <a href="service.html" class="nav-item nav-link">Services</a>
+        <a href="product.html" class="nav-item nav-link">Products</a>
+        <a href="contact.html" class="nav-item nav-link">Contact</a>
+      </div>
+      <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+        <i class="fa fa-search"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto py-0">
-          <a href="index.html" class="nav-item nav-link ">Home</a>
-          <a href="about.html" class="nav-item nav-link active">About</a>
-          <a href="service.html" class="nav-item nav-link">Services</a>
-          <a href="product.html" class="nav-item nav-link">Products</a>
-          <a href="contact.html" class="nav-item nav-link">Contact</a>
-        </div>
+
+      <!-- Cart display -->
+      <div class="d-flex align-items-center ms-3">
         <button
-          type="button"
-          class="btn text-primary ms-3"
-          data-bs-toggle="modal"
-          data-bs-target="#searchModal"
+          id="cart-btn"
+          class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
+          aria-label="Open cart"
         >
-          <i class="fa fa-search"></i>
-        </button>
-
-     <!-- Cart display -->
-        <div class="d-flex align-items-center ms-3">
-          <button
-            id="cart-btn"
-            class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
-            aria-label="Open cart"
+          <i class="fa fa-shopping-cart"></i>
+          <span
+            id="cart-count-badge"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="font-size:0.8em; display:none; min-width:22px; min-height:22px; line-height:22px; padding:0;"
           >
-            <i class="fa fa-shopping-cart"></i>
-            <span id="cart-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.8em; display:none; min-width:22px; min-height:22px; line-height:22px; padding:0;">
-              0
-            </span>
-          </button>
-        </div>
+            0
+          </span>
+        </button>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Optional Header/banner area (transparent navbar overlays) -->
-    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-      <div class="row py-5">
-        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-          <h1 class="display-4 text-white animated zoomIn">About Us</h1>
-        </div>
+  <!-- Optional Header/banner area (transparent navbar overlays) -->
+  <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+      <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+        <h1 class="display-4 text-white animated zoomIn">About Us</h1>
       </div>
     </div>
   </div>
-  <!-- Navbar End -->
+</div>
+<!-- Navbar End -->
 
-  <!-- Full Screen Search Modal -->
-  <div class="modal fade" id="searchModal" tabindex="-1">
-    <div class="modal-dialog modal-fullscreen">
-      <div class="modal-content" style="background: rgba(9, 30, 62, 0.7);">
-        <div class="modal-header border-0">
-          <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<style>
+  /* Gold gradient text for navbar brand name */
+  .gradient-gold-text {
+    background: linear-gradient(to bottom, #FFD700 0%, #B8860B 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+
+
+<!-- Modernized About Us Section -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+  <div class="container py-5">
+    <div class="row align-items-center g-5">
+      <!-- Left content -->
+      <div class="col-lg-7">
+        <div class="section-title mb-4 position-relative">
+          <h5 class="fw-semibold text-primary text-uppercase">About Us</h5>
+          <h1 class="display-5 fw-bold">
+            The Best IT Solutions With 10 Years of Experience
+          </h1>
         </div>
-        <div class="modal-body d-flex align-items-center justify-content-center">
-          <div class="input-group" style="max-width: 600px;">
-            <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword" />
-            <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+        <p class="lead" style="line-height: 1.6; color: #555;">
+          We provide innovative and tailored IT solutions to empower your business growth and efficiency. Our expert team is committed to delivering high-quality services with professionalism and integrity.
+        </p>
+
+        <div class="d-flex flex-wrap gap-4 mb-4">
+          <div class="d-flex align-items-center gap-2">
+            <i class="fa fa-award text-primary fs-4"></i>
+            <span>Industry Recognized Excellence</span>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="fa fa-user-cog text-primary fs-4"></i>
+            <span>Experienced and Certified Professionals</span>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="fa fa-headset text-primary fs-4"></i>
+            <span>24/7 Dedicated Customer Support</span>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <i class="fa fa-shield-alt text-primary fs-4"></i>
+            <span>Secure, Reliable & Affordable</span>
           </div>
         </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div>
+            <p class="mb-1 fw-semibold">Chat with us on WhatsApp</p>
+            <a href="https://wa.me/971549954914" target="_blank" rel="noopener noreferrer" class="h4 text-decoration-none text-primary">
+              +971 54 995 4914
+            </a>
+          </div>
+        </div>
+
+        <a href="index.html#quote" class="btn btn-primary py-3 px-5 mt-4 d-inline-block">
+          Request A Quote
+        </a>
+      </div>
+      <!-- Right image -->
+      <div class="col-lg-5 text-center text-lg-end">
+        <img
+          src="img/about.jpg"
+          alt="About Us"
+          class="rounded shadow-lg w-100"
+          style="object-fit: cover; max-height: 500px;"
+        />
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Modernized About Us Section -->
-  <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container py-5">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-7">
-          <div class="section-title mb-4 position-relative">
-            <h5 class="fw-semibold text-primary text-uppercase">About Us</h5>
-            <h1 class="display-5 fw-bold">
-              The Best IT Solution With 10 Years of Experience
-            </h1>
-          </div>
-          <p class="lead" style="line-height: 1.6; color: #555;">
-            Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit.
-            Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit,
-            sed stet no labore lorem sit.
-          </p>
-
-          <div class="d-flex flex-wrap gap-4 mb-4">
-            <div class="d-flex align-items-center gap-2">
-              <i class="fa fa-check-circle text-primary fs-4"></i>
-              <span>Award Winning</span>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="fa fa-user-tie text-primary fs-4"></i>
-              <span>Professional Staff</span>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="fa fa-headset text-primary fs-4"></i>
-              <span>24/7 Support</span>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="fa fa-tags text-primary fs-4"></i>
-              <span>Fair Prices</span>
-            </div>
-          </div>
-
-          <div class="d-flex align-items-center gap-3">
-            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-              <i class="fa fa-phone-alt"></i>
-            </div>
-            <div>
-              <p class="mb-1 fw-semibold">Call to ask any question</p>
-              <a href="tel:+0123456789" class="h4 text-decoration-none text-primary">+012 345 6789</a>
-            </div>
-          </div>
-
-          <a href="quote.html" class="btn btn-primary py-3 px-5 mt-4 d-inline-block">
-            Request A Quote
-          </a>
-        </div>
-
-        <div class="col-lg-5 text-center text-lg-end">
-          <img src="img/about.jpg" alt="About Us" class="rounded shadow-lg w-100" style="object-fit: cover; max-height: 500px;" />
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Our Approach Section (without add to cart buttons) -->
   <div class="container-fluid py-5 bg-light wow fadeInUp" data-wow-delay="0.15s">
@@ -532,19 +529,41 @@
       </div>
     </div>
 
-    <!-- Technologies & Tools -->
-    <div class="mb-5 text-center">
-      <h5 class="fw-semibold text-primary mb-3">Technologies & Tools We Use</h5>
-      <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
-        <img src="img/tool-aws.png" alt="AWS" style="height: 40px;" title="AWS Cloud">
-        <img src="img/tool-microsoft.png" alt="Microsoft" style="height: 40px;" title="Microsoft Suite">
-        <img src="img/tool-oracle.png" alt="Oracle" style="height: 40px;" title="Oracle Hospitality">
-        <img src="img/tool-pos.png" alt="POS" style="height: 40px;" title="POS Integrations">
-        <img src="img/tool-slack.png" alt="Slack" style="height: 40px;" title="Slack Collaboration">
-        <img src="img/tool-wordpress.png" alt="WordPress" style="height: 40px;" title="WordPress">
-        <!-- Add or revise logos as needed -->
-      </div>
-    </div>
+<!-- Include FontAwesome & Devicon CSS in <head> -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+<!-- Technologies & Tools Section -->
+<div class="mb-5 text-center">
+  <h5 class="fw-semibold text-primary mb-3" style="letter-spacing: 2px; text-transform: uppercase;">Technologies & Tools We Use</h5>
+  <div class="d-flex flex-wrap justify-content-center align-items-center gap-4" style="font-size: 3rem; color: #0d6efd;">
+    <!-- Hardware & Devices -->
+    <i class="fas fa-cash-register" title="POS"></i>
+    <i class="fas fa-box-open" title="Cash Drawer"></i>
+    <i class="fas fa-print" title="Printer"></i>
+    <i class="fas fa-video" title="CCTV"></i>
+    <i class="fas fa-laptop" title="Laptop"></i>
+
+    <!-- Programming Languages & Web -->
+    <i class="devicon-java-plain colored" title="Java"></i>
+    <i class="devicon-html5-plain colored" title="HTML5"></i>
+    <i class="devicon-mysql-plain colored" title="SQL"></i>
+    <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+    <i class="devicon-css3-plain colored" title="CSS3"></i>
+
+    <!-- Platforms and IDEs -->
+    <i class="fab fa-microsoft" title="Microsoft"></i>
+    <i class="devicon-oracle-original colored" title="Oracle"></i>
+    <i class="devicon-hp-original colored" title="HP"></i>
+    <i class="devicon-netbeans-plain colored" title="NetBeans"></i>
+    <i class="devicon-android-plain colored" title="Android Studio"></i>
+    <i class="devicon-visualstudio-plain colored" title="Visual Studio"></i>
+  </div>
+</div>
+
+
+
+
     
     <!-- Our Process -->
     <div class="mb-2 text-center">
@@ -615,14 +634,21 @@
 <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
   <div class="container">
     <div class="row gx-5">
-      <!-- About Section -->
+
+      <!-- Company Info column with blue background only on inner box -->
       <div class="col-lg-4 col-md-6 footer-about">
-        <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded">
+        <div 
+          class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded"
+          style="min-height: 365px; max-height: 365px; overflow: hidden; box-sizing: border-box;"
+        >
           <a href="index.html" class="navbar-brand mb-3">
-            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+            <!-- Replace Startup text with your company logo and name -->
+            <img src="img/NIS Logo.png" alt="Next Info Systems Logo" style="width:150px; height:auto;" />
+            <!-- Optionally add a company name next to or below if you want text -->
+            <!-- <h1 class="m-0 text-white">Next Info Systems</h1> -->
           </a>
           <p class="mb-4 px-lg-3" style="color: #e1e1e1; font-size: 0.95rem;">
-            We provide innovative IT solutions and outstanding service with over 10 years of experience to help your business grow.
+            We provide innovative IT solutions and outstanding service with over decades of experience to help your business grow.
           </p>
           <form action="" class="w-100" style="max-width: 400px;">
             <div class="input-group">
@@ -701,7 +727,7 @@
             </div>
           </div>
 
-          <!-- Popular Links (copy of Quick Links for consistent UX) -->
+          <!-- Popular Links (same as Quick Links for UX consistency) -->
           <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
             <div class="section-title section-title-sm position-relative pb-3 mb-4">
               <h3 class="text-light mb-0">Popular Links</h3>

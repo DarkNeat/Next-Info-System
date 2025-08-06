@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Startup - Services</title>
+  <title>Next Info Systems - Services</title>
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <meta content="Free HTML Templates" name="keywords" />
   <meta content="Free HTML Templates" name="description" />
@@ -191,7 +191,6 @@
 
     /* Detail panel */
     #serviceDetail {
-      display: none;
       border-radius: 12px;
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
       background: #fff;
@@ -238,7 +237,7 @@
             United Arab Emirates</small
           >
           <small class="me-3 text-light"
-            ><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small
+            ><i class="fa fa-phone-alt me-2"></i>+971 54 995 4914</small
           >
           <small class="text-light"
             ><i class="fa fa-envelope-open me-2"></i>sales@nextinfosystem.com</small
@@ -278,69 +277,71 @@
   </div>
   <!-- Topbar End -->
 
-  <!-- Navbar & Carousel Start -->
-  <div class="container-fluid position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-      <a href="index.html" class="navbar-brand p-0">
-        <h1 class="m-0">
-          <i class="fa fa-user-tie me-2"></i>Startup
-        </h1>
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
-        <span class="fa fa-bars"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto py-0">
-          <a href="index.html" class="nav-item nav-link ">Home</a>
-          <a href="about.html" class="nav-item nav-link">About</a>
-          <a href="service.html" class="nav-item nav-link active">Services</a>
-          <a href="product.html" class="nav-item nav-link">Products</a>
-          <a href="contact.html" class="nav-item nav-link">Contact</a>
-        </div>
-        <button
-          type="button"
-          class="btn text-primary ms-3"
-          data-bs-toggle="modal"
-          data-bs-target="#searchModal"
-        >
-          <i class="fa fa-search"></i>
-        </button>
-
-     <!-- Cart display -->
-        <div class="d-flex align-items-center ms-3">
-          <button
-            id="cart-btn"
-            class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
-            aria-label="Open cart"
-          >
-            <i class="fa fa-shopping-cart"></i>
-            <span id="cart-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-      style="font-size:0.8em; display:none; min-width:22px; min-height:22px; line-height:22px; padding:0;">
-      0
-    </span>
-          </button>
-        </div>
+<!-- Navbar & Carousel Start -->
+<div class="container-fluid position-relative p-0">
+  <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center p-0">
+      <img src="img/NIS Icon.png" alt="Next Info Systems Logo" style="width:40px; height:auto; margin-right:10px;" />
+      <span class="fs-4 fw-bold gradient-gold-text" style="font-family: 'Rubik', sans-serif;">
+        Next Info Systems
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="fa fa-bars"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-0">
+        <a href="index.html" class="nav-item nav-link">Home</a>
+        <a href="about.html" class="nav-item nav-link ">About</a>
+        <a href="service.html" class="nav-item nav-link active">Services</a>
+        <a href="product.html" class="nav-item nav-link">Products</a>
+        <a href="contact.html" class="nav-item nav-link">Contact</a>
       </div>
-    </nav>
+      <button type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+        <i class="fa fa-search"></i>
+      </button>
 
-    <!-- Header Banner -->
-    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-      <div class="row py-5">
-        <div class="col-12 text-center">
-          <h1 class="display-4 text-white animated zoomIn">Services</h1>
-          <a href="index.html" class="h5 text-white">Home</a>
-          <i class="far fa-circle text-white px-2"></i>
-          <a href="service.html" class="h5 text-white">Services</a>
-        </div>
+      <!-- Cart display -->
+      <div class="d-flex align-items-center ms-3">
+        <button
+          id="cart-btn"
+          class="btn btn-outline-light btn-sm btn-sm-square rounded-circle position-relative"
+          aria-label="Open cart"
+        >
+          <i class="fa fa-shopping-cart"></i>
+          <span
+            id="cart-count-badge"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="font-size:0.8em; display:none; min-width:22px; min-height:22px; line-height:22px; padding:0;"
+          >
+            0
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Optional Header/banner area (transparent navbar overlays) -->
+  <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+      <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+        <h1 class="display-4 text-white animated zoomIn">Services</h1>
       </div>
     </div>
   </div>
-  <!-- Navbar End -->
+</div>
+<!-- Navbar End -->
+
+<style>
+  /* Gold gradient text for navbar brand name */
+  .gradient-gold-text {
+    background: linear-gradient(to bottom, #FFD700 0%, #B8860B 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
 
   <!-- Modal Search -->
   <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true" aria-labelledby="searchModalLabel">
@@ -652,14 +653,21 @@
 <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
   <div class="container">
     <div class="row gx-5">
-      <!-- About Section -->
+
+      <!-- Company Info column with blue background only on inner box -->
       <div class="col-lg-4 col-md-6 footer-about">
-        <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded">
+        <div 
+          class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded"
+          style="min-height: 365px; max-height: 365px; overflow: hidden; box-sizing: border-box;"
+        >
           <a href="index.html" class="navbar-brand mb-3">
-            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+            <!-- Replace Startup text with your company logo and name -->
+            <img src="img/NIS Logo.png" alt="Next Info Systems Logo" style="width:150px; height:auto;" />
+            <!-- Optionally add a company name next to or below if you want text -->
+            <!-- <h1 class="m-0 text-white">Next Info Systems</h1> -->
           </a>
           <p class="mb-4 px-lg-3" style="color: #e1e1e1; font-size: 0.95rem;">
-            We provide innovative IT solutions and outstanding service with over 10 years of experience to help your business grow.
+            We provide innovative IT solutions and outstanding service with over decades of experience to help your business grow.
           </p>
           <form action="" class="w-100" style="max-width: 400px;">
             <div class="input-group">
@@ -738,7 +746,7 @@
             </div>
           </div>
 
-          <!-- Popular Links (copy of Quick Links for consistent UX) -->
+          <!-- Popular Links (same as Quick Links for UX consistency) -->
           <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
             <div class="section-title section-title-sm position-relative pb-3 mb-4">
               <h3 class="text-light mb-0">Popular Links</h3>
