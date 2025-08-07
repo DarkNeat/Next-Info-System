@@ -676,3 +676,47 @@ h5, h6, .fw-medium {
 .contact-text {
   font-size: 1.25rem;
 }
+
+
+@media (max-width: 991.98px) {
+
+  .product-left {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .product-thumbnails {
+    flex-direction: row !important;
+    width: 100% !important;
+    max-width: unset !important;
+    margin-bottom: 15px;
+    justify-content: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .product-thumbnails img {
+    width: 50px !important;
+    height: 50px !important;
+    margin-right: 8px !important;
+    margin-bottom: 0 !important;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .product-main-image {
+    width: 90% !important;
+    max-height: none !important;
+    margin-bottom: 15px;
+    height: auto !important;
+  }
+
+  .product-main-image img {
+    width: 100% !important;
+    max-height: 350px !important;
+    object-fit: contain !important;
+  }
+}
+
