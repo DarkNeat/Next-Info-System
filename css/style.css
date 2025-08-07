@@ -720,3 +720,15 @@ h5, h6, .fw-medium {
   }
 }
 
+
+@media (max-width: 991.98px) {
+  .navbar-collapse .navbar-nav {
+    justify-content: flex-end !important;
+    text-align: right;
+  }
+
+  .navbar-collapse .nav-link {
+    text-align: right;
+  }
+}
+
