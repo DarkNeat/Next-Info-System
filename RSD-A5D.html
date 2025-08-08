@@ -432,14 +432,18 @@
       </div>
 
       <!-- Add to Cart Button -->
-      <button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
-        data-id="RSD-A5D"
-        data-name="RSD-A5D – Black"
-        data-price="0"
-        type="button"
-        aria-label="Add RSD-A5D to cart">
-        Add to Cart
-      </button>
+<button id="addToCartBtn" 
+  class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
+  data-id="RSD-A5D"
+  data-name="RSD-A5D – Black"
+  data-price="0"
+  data-img="img/products/POS System/RSD-A5D/Black/pos 2d.jpg"
+  data-desc="15&quot; Dual Screen POS System with Touch Display"
+  type="button"
+  aria-label="Add RSD-A5D to cart">
+  Add to Cart
+</button>
+
 
       <p class="product-short-description mb-4">
         15" Dual-screen POS Terminal (main + 12" customer display) with industrial LCD, flat capacitive touch, aluminum alloy housing, and high-performance industrial motherboard.
@@ -870,71 +874,77 @@ jQuery(function($) {
 
   let activeColor = "black";
 
-  // Thumbnail click handler - only on visible thumbnails
+  function switchToBlack() {
+    if (activeColor === "black") return;
+    activeColor = "black";
+
+    $thumbsActiveBlack.show();
+    $thumbsActiveWhite.hide();
+    $thumbsInactiveWhite.show();
+    $thumbsInactiveBlack.hide();
+
+    $btnBlack.addClass("active").attr("aria-pressed", "true");
+    $btnWhite.removeClass("active").attr("aria-pressed", "false");
+
+    const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
+    $mainImage.attr("src", firstBlackSrc);
+
+    $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
+
+    // Update add-to-cart button attributes
+    $addToCartBtn.data("name", "RSD-A5D – Black");
+    $addToCartBtn.data("img", firstBlackSrc);
+  }
+
+  function switchToWhite() {
+    if (activeColor === "white") return;
+    activeColor = "white";
+
+    $thumbsActiveWhite.show();
+    $thumbsActiveBlack.hide();
+    $thumbsInactiveBlack.show();
+    $thumbsInactiveWhite.hide();
+
+    $btnWhite.addClass("active").attr("aria-pressed", "true");
+    $btnBlack.removeClass("active").attr("aria-pressed", "false");
+
+    const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
+    $mainImage.attr("src", firstWhiteSrc);
+
+    $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
+
+    // Update add-to-cart button attributes
+    $addToCartBtn.data("name", "RSD-A5D – White");
+    $addToCartBtn.data("img", firstWhiteSrc);
+  }
+
+  // Bind the buttons
+  $btnBlack.on("click", switchToBlack);
+  $btnWhite.on("click", switchToWhite);
+
+  // Optional: Update main image and add-to-cart img on clicking thumbnails inside active groups
   $(".product-thumbnails > div").on("click", "img", function () {
     if ($(this).parent().is(":hidden")) return;
     const src = $(this).data("large");
     if (!src) return;
+
     $mainImage.attr("src", src);
+
     if (activeColor === "black") {
       $thumbsActiveBlack.find("img").removeClass("active");
     } else {
       $thumbsActiveWhite.find("img").removeClass("active");
     }
     $(this).addClass("active");
+
+    // Update add-to-cart img to selected thumbnail
+    $addToCartBtn.data("img", src);
   });
 
-  // Keyboard access (Enter / Space)
-  $(".product-thumbnails img").attr("tabindex", "0").on("keypress", function (e) {
-    if (e.which === 13 || e.which === 32) {
-      $(this).trigger("click");
-    }
-  });
-
-  function switchToBlack() {
-    if (activeColor === "black") return;
-    activeColor = "black";
-    $thumbsActiveBlack.show();
-    $thumbsActiveWhite.hide();
-    $thumbsInactiveWhite.show();
-    $thumbsInactiveBlack.hide();
-    $btnBlack.addClass("active").attr("aria-pressed", "true");
-    $btnWhite.removeClass("active").attr("aria-pressed", "false");
-    const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
-    $mainImage.attr("src", firstBlackSrc);
-    $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
-    $addToCartBtn.data("name", "RSD-A5D – Black");
-  }
-
-  function switchToWhite() {
-    if (activeColor === "white") return;
-    activeColor = "white";
-    $thumbsActiveWhite.show();
-    $thumbsActiveBlack.hide();
-    $thumbsInactiveBlack.show();
-    $thumbsInactiveWhite.hide();
-    $btnWhite.addClass("active").attr("aria-pressed", "true");
-    $btnBlack.removeClass("active").attr("aria-pressed", "false");
-    const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
-    $mainImage.attr("src", firstWhiteSrc);
-    $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
-    $addToCartBtn.data("name", "RSD-A5D – White");
-  }
-
-  $btnBlack.on("click", switchToBlack);
-  $btnWhite.on("click", switchToWhite);
-
-  // Initialize on page load
-  $addToCartBtn.data("name", "RSD-A5D – Black");
+  // Initialize on page load with Black variant active
   switchToBlack();
 });
 
-jQuery(function($) {
-  // Remove spinner after a delay, e.g., 1 or 2 seconds
-  setTimeout(function() {
-    $("#spinner").removeClass("show");
-  }, 1000); // Adjust delay (ms) as needed
-});
 
 
   </script>

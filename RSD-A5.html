@@ -452,15 +452,22 @@
         <button id="btn-white" class="btn btn-outline-primary" aria-pressed="false" type="button">White</button>
       </div>
 
-      <!-- Add to Cart Button -->
-      <button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
-        data-id="RSD-A5"
-        data-name="RSD-A5 – Black"
-        data-price="0"
-        type="button"
-        aria-label="Add RSD-A5 to cart">
-        Add to Cart
-      </button>
+ 
+<!-- Add to Cart Button -->
+<button id="addToCartBtn" 
+  class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
+  data-id="RSD-A5"
+  data-name="RSD-A5 – Black"
+  data-price="0"
+  data-img="img/products/POS System/RSD-A5/Black/pos 1a.jpg"
+  data-desc="15&quot; Retail POS System with Aluminium Alloy Housing"
+  type="button"
+  aria-label="Add RSD-A5 to cart">
+  Add to Cart
+</button>
+
+
+
 
       <p class="product-short-description mb-4">
         Industrial POS Terminal with LCD, Capacitive Touchscreen, High-End Aluminium Housing, Multiple I/O Ports.
@@ -895,35 +902,38 @@ jQuery(function($) {
     }
   });
 
-  function switchToBlack() {
-    if (activeColor === "black") return;
-    activeColor = "black";
-    $thumbsActiveBlack.show();
-    $thumbsActiveWhite.hide();
-    $thumbsInactiveWhite.show();
-    $thumbsInactiveBlack.hide();
-    $btnBlack.addClass("active").attr("aria-pressed", "true");
-    $btnWhite.removeClass("active").attr("aria-pressed", "false");
-    const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
-    $mainImage.attr("src", firstBlackSrc);
-    $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
-    $addToCartBtn.data("name", "RSD-A5 – Black");
-  }
+function switchToBlack() {
+  if (activeColor === "black") return;
+  activeColor = "black";
+  $thumbsActiveBlack.show();
+  $thumbsActiveWhite.hide();
+  $thumbsInactiveWhite.show();
+  $thumbsInactiveBlack.hide();
+  $btnBlack.addClass("active").attr("aria-pressed", "true");
+  $btnWhite.removeClass("active").attr("aria-pressed", "false");
+  const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
+  $mainImage.attr("src", firstBlackSrc);
+  $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
+  $addToCartBtn.data("name", "RSD-A5 – Black");
+  $addToCartBtn.data("img", firstBlackSrc);  // <-- Add this line
+}
 
-  function switchToWhite() {
-    if (activeColor === "white") return;
-    activeColor = "white";
-    $thumbsActiveWhite.show();
-    $thumbsActiveBlack.hide();
-    $thumbsInactiveBlack.show();
-    $thumbsInactiveWhite.hide();
-    $btnWhite.addClass("active").attr("aria-pressed", "true");
-    $btnBlack.removeClass("active").attr("aria-pressed", "false");
-    const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
-    $mainImage.attr("src", firstWhiteSrc);
-    $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
-    $addToCartBtn.data("name", "RSD-A5 – White");
-  }
+function switchToWhite() {
+  if (activeColor === "white") return;
+  activeColor = "white";
+  $thumbsActiveWhite.show();
+  $thumbsActiveBlack.hide();
+  $thumbsInactiveBlack.show();
+  $thumbsInactiveWhite.hide();
+  $btnWhite.addClass("active").attr("aria-pressed", "true");
+  $btnBlack.removeClass("active").attr("aria-pressed", "false");
+  const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
+  $mainImage.attr("src", firstWhiteSrc);
+  $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
+  $addToCartBtn.data("name", "RSD-A5 – White");
+  $addToCartBtn.data("img", firstWhiteSrc);  // <-- Add this line
+}
+
 
   $btnBlack.on("click", switchToBlack);
   $btnWhite.on("click", switchToWhite);

@@ -446,14 +446,17 @@
       </div>
 
       <!-- Add to Cart Button -->
-      <button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
-        data-id="RSD-S900"
-        data-name="RSD-S900 – Without Card Reader"
-        data-price="0"
-        type="button"
-        aria-label="Add RSD-S900 to cart">
-        Add to Cart
-      </button>
+<button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
+  data-id="RSD-S900"
+  data-name="RSD-S900 – Without Card Reader"
+  data-price="0"
+  data-img="img/products/POS System/RSD-S900/xcr/pos 6a.jpg"
+  data-desc="15.6&quot; POS System with Optional Card Reader"
+  type="button"
+  aria-label="Add RSD-S900 Without Card Reader to cart">
+  Add to Cart
+</button>
+
 
       <p class="product-short-description mb-4" id="product-description">
         All-in-one capacitive touchscreen POS system with industrial-grade 15" LED, robust CPU options, in plastic case plus metal base.
@@ -881,179 +884,85 @@
 
 
   <script>
-jQuery(function($){
+jQuery(function($) {
+  const $btnXcr = $("#btn-xcr");      // Button for "Without Card Reader"
+  const $btnCr = $("#btn-cr");        // Button for "With Card Reader"
 
-  const $btnXcr = $("#btn-xcr");
-  const $btnCr = $("#btn-cr");
-
-  const $thumbsXcr = $("#thumbs-xcr");
-  const $thumbsCr = $("#thumbs-cr");
+  const $thumbsXcr = $("#thumbs-xcr");  // Thumbnails without card reader
+  const $thumbsCr = $("#thumbs-cr");    // Thumbnails with card reader
 
   const $mainImage = $("#main-product-image");
   const $addToCartBtn = $("#addToCartBtn");
 
-  const $productSubtitle = $("#product-subtitle");
-  const $productDescription = $("#product-description");
-  const $highlightedSpecs = $("#highlighted-specs");
-  const $fullSpecs = $("#full-specs");
+  // Short descriptions for cart's data-desc attribute per variant
+  const descXcr = "15.6\" POS System with Optional Card Reader";
+  const descCr = "15.6\" POS System with Integrated Card Reader";
 
-  // Content for With Card Reader
-  const crDescription = "All-in-one capacitive touchscreen POS system with integrated MSR/i-Button card reader, industrial-grade 15\" LED, robust CPU options, plastic case plus metal base.";
-  
-  const crHighlightedSpecs = `
-    <ul class="mb-0">
-      <li>15" Industrial Grade A LED (4:3), 400 nits brightness</li>
-      <li>10-Point Capacitive Touchscreen</li>
-      <li>CPU Options: Intel Celeron J1900 / J4125 / J6412 / 5205U; Intel Core i3/i5/i7 (4th to 10th Gen)</li>
-      <li>DDR3 2GB/4GB/8GB/16GB Optional Memory</li>
-      <li>SSD 32GB/64GB/128GB/256GB/512GB Optional Storage</li>
-      <li>Multiple I/O Ports: USB x6, RJ45 x1, COM x1, VGA x1, PS/2 x2, LPT x1, MIC x1, Audio x2 (COM x2 Optional)</li>
-      <li>Integrated MSR/i-Button Card Reader</li>
-      <li>Plastic Case + Metal Base Housing</li>
-      <li>OS Support: Windows 10</li>
-      <li>Black Color</li>
-    </ul>
-  `;
-
-  const crFullSpecs = `
-    <p><strong>Model No.:</strong> RSD-S900</p>
-    <p><strong>Feature:</strong> All-in-one Capacitive Touch POS System with Aluminum Alloy Housing</p>
-    <p><strong>Display:</strong> 15" Industrial Grade A LED (4:3)</p>
-    <p><strong>Resolution:</strong> 1024 x 768 Pixels</p>
-    <p><strong>Brightness:</strong> 400 CD/㎡</p>
-    <p><strong>CPU:</strong> Intel Celeron J1900 / J4125 / J6412 / 5205U; Intel Core i3/i5/i7 (4th/6th/8th/10th Gen) Optional</p>
-    <p><strong>Memory:</strong> DDR3 2GB/4GB/8GB/16GB Optional</p>
-    <p><strong>Storage:</strong> SSD 32GB/64GB/128GB/256GB/512GB Optional</p>
-    <p><strong>I/O:</strong> USB x6; RJ45 x1; COM x1; VGA x1; PS/2 x2; LPT x1; MIC x1; Audio x2 (COM x2 Optional)</p>
-    <p><strong>Touchscreen:</strong> 10-Point Capacitive Touchscreen</p>
-    <p><strong>Customer Display:</strong> Integrated MSR/i-Button Card Reader</p>
-    <p><strong>OS Support:</strong> Windows 10</p>
-    <p><strong>Power Supply:</strong> 100-260VAC 50-60Hz, 12V 5A (UL Certified)</p>
-    <p><strong>Color:</strong> Black</p>
-    <p><strong>Material of Housing:</strong> Plastic Case + Metal Base</p>
-    <p><strong>Accessories (Optional):</strong> Cash Drawer, Thermal Printer (58 mm/80 mm), Barcode Scanner (1D/2D), Card Reader (Integrated MSR/i-Button), Wifi/3G</p>
-    <p><strong>Packing:</strong> Single Box with Inner Foam (430*290*430mm, G.W.: 6.5 KGS)</p>
-    <p><strong>Service:</strong> Generic products / OEM Service Offer</p>
-    <p><strong>Warranty:</strong> Two Years Warranty</p>
-    <p><strong>Advantages:</strong> Extensive productive experience, high quality materials, fast lead times, long term maintenance, customizable</p>
-  `;
-
-  // Content for Without Card Reader
-  const xcrDescription = "All-in-one capacitive touchscreen POS system without card reader, industrial-grade 15\" LED, robust CPU options, plastic case plus metal base.";
-  
-  const xcrHighlightedSpecs = `
-    <ul class="mb-0">
-      <li>15" Industrial Grade A LED (4:3), 400 nits brightness</li>
-      <li>10-Point Capacitive Touchscreen</li>
-      <li>CPU Options: Intel Celeron J1900 / J4125 / J6412 / 5205U; Intel Core i3/i5/i7 (4th to 10th Gen)</li>
-      <li>DDR3 2GB/4GB/8GB/16GB Optional Memory</li>
-      <li>SSD 32GB/64GB/128GB/256GB/512GB Optional Storage</li>
-      <li>Multiple I/O Ports: USB x6, RJ45 x1, COM x1, VGA x1, PS/2 x2, LPT x1, MIC x1, Audio x2 (COM x2 Optional)</li>
-      <li>No Card Reader</li>
-      <li>Plastic Case + Metal Base Housing</li>
-      <li>OS Support: Windows 10</li>
-      <li>Black Color</li>
-    </ul>
-  `;
-
-  const xcrFullSpecs = `
-    <p><strong>Model No.:</strong> RSD-S900</p>
-    <p><strong>Feature:</strong> All-in-one Capacitive Touch POS System with Aluminum Alloy Housing</p>
-    <p><strong>Display:</strong> 15" Industrial Grade A LED (4:3)</p>
-    <p><strong>Resolution:</strong> 1024 x 768 Pixels</p>
-    <p><strong>Brightness:</strong> 400 CD/㎡</p>
-    <p><strong>CPU:</strong> Intel Celeron J1900 / J4125 / J6412 / 5205U; Intel Core i3/i5/i7 (4th/6th/8th/10th Gen) Optional</p>
-    <p><strong>Memory:</strong> DDR3 2GB/4GB/8GB/16GB Optional</p>
-    <p><strong>Storage:</strong> SSD 32GB/64GB/128GB/256GB/512GB Optional</p>
-    <p><strong>I/O:</strong> USB x6; RJ45 x1; COM x1; VGA x1; PS/2 x2; LPT x1; MIC x1; Audio x2 (COM x2 Optional)</p>
-    <p><strong>Touchscreen:</strong> 10-Point Capacitive Touchscreen</p>
-    <p><strong>Customer Display:</strong> None</p>
-    <p><strong>OS Support:</strong> Windows 10</p>
-    <p><strong>Power Supply:</strong> 100-260VAC 50-60Hz, 12V 5A (UL Certified)</p>
-    <p><strong>Color:</strong> Black</p>
-    <p><strong>Material of Housing:</strong> Plastic Case + Metal Base</p>
-  `;
-
-  // Switch to Without Card Reader
-  function switchToXcr(){
+  // Switch to Without Card Reader variant
+  function switchToXcr() {
     $btnXcr.addClass("active").attr("aria-pressed", "true");
     $btnCr.removeClass("active").attr("aria-pressed", "false");
 
     $thumbsXcr.show();
     $thumbsCr.hide();
 
-    // Update main image and active thumbnail
-    let firstSrc = $thumbsXcr.find("img").first().data("large");
+    const firstSrc = $thumbsXcr.find("img").first().data("large");
     $mainImage.attr("src", firstSrc);
     $thumbsXcr.find("img").removeClass("active").first().addClass("active");
 
-    // Update Add to Cart data and label
     $addToCartBtn.data("name", "RSD-S900 – Without Card Reader");
+    $addToCartBtn.data("img", firstSrc);
+    $addToCartBtn.data("desc", descXcr);
     $addToCartBtn.attr("aria-label", "Add RSD-S900 Without Card Reader to cart");
-
-    // Update texts
-    $productSubtitle.text("All-in-One Capacitive Touch POS System with Aluminum Alloy Housing");
-    $productDescription.text(xcrDescription);
-    $highlightedSpecs.html(xcrHighlightedSpecs);
-    $fullSpecs.html(xcrFullSpecs);
   }
 
-  // Switch to With Card Reader
-  function switchToCr(){
+  // Switch to With Card Reader variant
+  function switchToCr() {
     $btnCr.addClass("active").attr("aria-pressed", "true");
     $btnXcr.removeClass("active").attr("aria-pressed", "false");
 
     $thumbsCr.show();
     $thumbsXcr.hide();
 
-    // Update main image and active thumbnail
-    let firstSrc = $thumbsCr.find("img").first().data("large");
+    const firstSrc = $thumbsCr.find("img").first().data("large");
     $mainImage.attr("src", firstSrc);
     $thumbsCr.find("img").removeClass("active").first().addClass("active");
 
-    // Update Add to Cart data and label
     $addToCartBtn.data("name", "RSD-S900 – With Card Reader");
+    $addToCartBtn.data("img", firstSrc);
+    $addToCartBtn.data("desc", descCr);
     $addToCartBtn.attr("aria-label", "Add RSD-S900 With Card Reader to cart");
-
-    // Update texts
-    $productSubtitle.text("All-in-One Capacitive Touch POS System with Aluminum Alloy Housing (with Card Reader)");
-    $productDescription.text(crDescription);
-    $highlightedSpecs.html(crHighlightedSpecs);
-    $fullSpecs.html(crFullSpecs);
   }
 
-  // Thumbnail click handler - update main image and active thumbnail
-  $(".product-thumbnails > div").on("click", "img", function(){
-    if($(this).parent().is(":hidden")) return;
-    let src = $(this).data("large");
-    if(!src) return;
+  // Thumbnail click: update main image and active thumbnail in visible group
+  $(".product-thumbnails > div").on("click", "img", function() {
+    if ($(this).parent().is(":hidden")) return;
+    const src = $(this).data("large");
+    if (!src) return;
     $mainImage.attr("src", src);
+
     $(this).siblings().removeClass("active");
     $(this).addClass("active");
+
+    // Update add-to-cart image data to selected thumbnail
+    $addToCartBtn.data("img", src);
   });
 
-  // Keyboard accessibility for thumbnails
-  $(".product-thumbnails img").attr("tabindex", "0").on("keypress", function(e){
-    if(e.which === 13 || e.which === 32){
+  // Keyboard accessibility for thumbnail images
+  $(".product-thumbnails img").attr("tabindex", "0").on("keypress", function(e) {
+    if(e.which === 13 || e.which === 32) {
       $(this).trigger("click");
     }
   });
 
-  // Event Listener for toggle buttons
+  // Bind button click handlers
   $btnXcr.on("click", switchToXcr);
   $btnCr.on("click", switchToCr);
 
-  // Initialize default state to Without Card Reader
+  // Initialize page to "Without Card Reader"
   switchToXcr();
-  
 });
 
-jQuery(function($) {
-  // Remove spinner after a delay, e.g., 1 or 2 seconds
-  setTimeout(function() {
-    $("#spinner").removeClass("show");
-  }, 1000); // Adjust delay (ms) as needed
-});
 
 
   </script>

@@ -417,14 +417,17 @@
       <!-- No color toggle buttons since only black -->
 
       <!-- Add to Cart Button -->
-      <button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
-        data-id="RSD-A8"
-        data-name="RSD-A8 – Black"
-        data-price="0"
-        type="button"
-        aria-label="Add RSD-A8 to cart">
-        Add to Cart
-      </button>
+<button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
+  data-id="RSD-A8"
+  data-name="RSD-A8 – Black"
+  data-price="0"
+  data-img="img/products/POS System/RSD-A8/pos 3a.jpg"
+  data-desc="15.6&quot; Slim All-in-One POS Terminal"
+  type="button"
+  aria-label="Add RSD-A8 to cart">
+  Add to Cart
+</button>
+
 
       <p class="product-short-description mb-4">
         Smart design fanless 15" Industrial POS Terminal with ultra-narrow bezel PCAP touch, foldable and height-adjustable metal base, aluminum alloy housing, and high-performance Intel Core i5 processors.
@@ -846,29 +849,29 @@ jQuery(function($) {
     $mainImage.attr("src", src);
     $thumbsActiveBlack.find("img").removeClass("active");
     $(this).addClass("active");
+
+    // Update Add to Cart button image data
+    $addToCartBtn.data("img", src);
   });
 
-  // Keyboard access (Enter / Space)
+  // Keyboard access support for thumbnails
   $(".product-thumbnails img").attr("tabindex", "0").on("keypress", function (e) {
     if (e.which === 13 || e.which === 32) {
       $(this).trigger("click");
     }
   });
 
-  // Initialize Add to Cart button data-name and active thumbnail on page load
+  // Initialize add to cart button data-name and first active thumbnail on page load
   $addToCartBtn.data("name", "RSD-A8 – Black");
-
+  
   const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
   $mainImage.attr("src", firstBlackSrc);
   $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
+
+  // Make sure Add to Cart button data-img matches the initial image
+  $addToCartBtn.data("img", firstBlackSrc);
 });
 
-jQuery(function($) {
-  // Remove spinner after a delay, e.g., 1 or 2 seconds
-  setTimeout(function() {
-    $("#spinner").removeClass("show");
-  }, 1000); // Adjust delay (ms) as needed
-});
 
 
   </script>

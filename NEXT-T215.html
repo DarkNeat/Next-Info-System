@@ -9,7 +9,7 @@
   <meta name="description" content="Free HTML Templates" />
 
   <!-- Favicon -->
-  <link href="img/favicon.ico" rel="icon" />
+<link rel="icon" href="img/NIS Icon.png" type="image/png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -409,14 +409,18 @@
       </h2>
 
       <!-- Add to Cart Button -->
-      <button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
+<button id="addToCartBtn" 
+        class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
         data-id="NEXT-T215"
         data-name="NEXT-T215"
         data-price="0"
-        type="button"
-        aria-label="Add NEXT-T215 to cart">
-        Add to Cart
-      </button>
+        data-img="img/products/AIO/NEXT-T215/aio c1.jpg"
+        data-desc="17&quot; AIO, Metal Alloy Housing, Wall Mount"
+        aria-label="Add NEXT-T215 to cart"
+        type="button">
+  Add to Cart
+</button>
+
 
       <p class="product-short-description mb-4">
         17" True-flat capacitive touchscreen POS system, metal alloy housing, VESA 100x100 wall-mountable, Wi-Fi and built-in speaker optional.
@@ -827,86 +831,158 @@
 </script>
 
 
-  <script>
+<script>
 jQuery(function($) {
-  const $thumbsActiveBlack = $("#thumbs-active-black");
-  const $thumbsActiveWhite = $("#thumbs-active-white");
-  const $thumbsInactiveWhite = $("#thumbs-inactive-white");
-  const $thumbsInactiveBlack = $("#thumbs-inactive-black");
+  const $thumbsActiveAll = $("#thumbs-active-all");
   const $mainImage = $("#main-product-image");
-  const $btnBlack = $("#btn-black");
-  const $btnWhite = $("#btn-white");
   const $addToCartBtn = $("#addToCartBtn");
 
-  let activeColor = "black";
+  // Initialize thumbnails
+  const thumbnails = $thumbsActiveAll.find("img");
 
-  // Thumbnail click handler - only on visible thumbnails
-  $(".product-thumbnails > div").on("click", "img", function () {
-    if ($(this).parent().is(":hidden")) return;
-    const src = $(this).data("large");
-    if (!src) return;
-    $mainImage.attr("src", src);
-    if (activeColor === "black") {
-      $thumbsActiveBlack.find("img").removeClass("active");
+  // Thumbnail click handler to update main image and sync Add to Cart img data
+  thumbnails.on("click keypress", function(e) {
+    if (e.type === "click" || e.key === "Enter" || e.key === " " || e.which === 13) {
+      const src = $(this).data("large");
+      if (!src) return;
+      $mainImage.attr("src", src);
+      thumbnails.removeClass("active");
+      $(this).addClass("active");
+
+      // Update Add to Cart button image data attribute
+      $addToCartBtn.data("img", src);
+    }
+  });
+
+  // Make thumbnails keyboard-focusable for accessibility
+  thumbnails.attr("tabindex", 0);
+
+  // Initialize main image and active thumbnail & Add to Cart image on page load
+  const firstSrc = thumbnails.first().data("large");
+  $mainImage.attr("src", firstSrc);
+  thumbnails.removeClass("active").first().addClass("active");
+  $addToCartBtn.data("img", firstSrc);
+
+  // Cart management
+  const cartKey = "cart";
+  let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+  function saveCart() {
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+  }
+
+  function updateCartUI() {
+    const $badge = $("#cart-count");
+    const $badgeNavbar = $("#cart-count-badge");
+    const $totalDisplay = $("#cart-total-items");
+    const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+
+    if (totalQty > 0) {
+      $badge.text(totalQty).show();
+      if ($badgeNavbar.length) $badgeNavbar.text(totalQty).show();
+      if ($totalDisplay.length) $totalDisplay.text(totalQty);
     } else {
-      $thumbsActiveWhite.find("img").removeClass("active");
+      $badge.hide();
+      if ($badgeNavbar.length) $badgeNavbar.hide();
+      if ($totalDisplay.length) $totalDisplay.text(0);
     }
-    $(this).addClass("active");
-  });
 
-  // Keyboard access (Enter / Space)
-  $(".product-thumbnails img").attr("tabindex", "0").on("keypress", function (e) {
-    if (e.which === 13 || e.which === 32) {
-      $(this).trigger("click");
-    }
-  });
-
-  function switchToBlack() {
-    if (activeColor === "black") return;
-    activeColor = "black";
-    $thumbsActiveBlack.show();
-    $thumbsActiveWhite.hide();
-    $thumbsInactiveWhite.show();
-    $thumbsInactiveBlack.hide();
-    $btnBlack.addClass("active").attr("aria-pressed", "true");
-    $btnWhite.removeClass("active").attr("aria-pressed", "false");
-    const firstBlackSrc = $thumbsActiveBlack.find("img").first().data("large");
-    $mainImage.attr("src", firstBlackSrc);
-    $thumbsActiveBlack.find("img").removeClass("active").first().addClass("active");
-    $addToCartBtn.data("name", "RSD-A5 – Black");
+    renderCartItems();
   }
 
-  function switchToWhite() {
-    if (activeColor === "white") return;
-    activeColor = "white";
-    $thumbsActiveWhite.show();
-    $thumbsActiveBlack.hide();
-    $thumbsInactiveBlack.show();
-    $thumbsInactiveWhite.hide();
-    $btnWhite.addClass("active").attr("aria-pressed", "true");
-    $btnBlack.removeClass("active").attr("aria-pressed", "false");
-    const firstWhiteSrc = $thumbsActiveWhite.find("img").first().data("large");
-    $mainImage.attr("src", firstWhiteSrc);
-    $thumbsActiveWhite.find("img").removeClass("active").first().addClass("active");
-    $addToCartBtn.data("name", "RSD-A5 – White");
+  function renderCartItems() {
+    const $cartItems = $("#cart-items");
+    $cartItems.empty();
+
+    if (cart.length === 0) {
+      $cartItems.html('<p class="text-muted">Your cart is empty.</p>');
+      return;
+    }
+
+    cart.forEach((item, i) => {
+      const itemHtml = `
+        <div class="cart-item d-flex align-items-center border-bottom py-2" style="gap:10px;">
+          <img src="${item.img || ''}" alt="${item.name}" style="width:50px; height:50px; object-fit:contain; border-radius:6px;" />
+          <div style="flex-grow:1;">
+            <strong>${item.name}</strong><br />
+            <small>${item.desc || ''}</small><br />
+            Qty: ${item.qty}
+          </div>
+          <button class="btn btn-sm btn-danger ms-2" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
+        </div>`;
+      $cartItems.append(itemHtml);
+    });
+
+    // Remove button handlers
+    $cartItems.find("button").on("click", function() {
+      const idx = $(this).data("index");
+      if (idx !== undefined) {
+        cart.splice(idx, 1);
+        saveCart();
+        updateCartUI();
+      }
+    });
   }
 
-  $btnBlack.on("click", switchToBlack);
-  $btnWhite.on("click", switchToWhite);
+  // Add to Cart button click handler
+  $(document).on("click", ".add-to-cart-btn", function() {
+    const id = $(this).data("id");
+    const name = $(this).data("name");
+    const img = $(this).data("img") || "";
+    const desc = $(this).data("desc") || "";
+    const price = 0; // Price hidden or unused
 
-  // Initialize on page load
-  $addToCartBtn.data("name", "RSD-A5 – Black");
-  switchToBlack();
-});
+    if (!id || !name) return;
 
-jQuery(function($) {
-  // Remove spinner after a delay, e.g., 1 or 2 seconds
-  setTimeout(function() {
+    const existing = cart.find(item => item.id === id && item.name === name);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ id, name, img, desc, qty: 1, price });
+    }
+
+    saveCart();
+    updateCartUI();
+    openCart();
+  });
+
+  // Functions to open/close cart sidebar
+  function openCart() {
+    $("#side-cart").addClass("open").attr("aria-hidden", "false");
+    $("#cart-overlay").show();
+  }
+
+  function closeCart() {
+    $("#side-cart").removeClass("open").attr("aria-hidden", "true");
+    $("#cart-overlay").hide();
+  }
+
+  // Bind open/close event handlers
+  $("#cart-btn").on("click", openCart);
+  $("#cart-count, #cart-count-badge").on("click", openCart);
+  $("#cart-close-btn, #cart-continue-btn, #cart-overlay").on("click", closeCart);
+  $("#cart-close-btn, #cart-continue-btn").on("keypress", e => {
+    if (e.key === "Enter" || e.key === "Escape") closeCart();
+  });
+  $("#cart-overlay").on("keydown", e => {
+    if (e.key === "Escape") closeCart();
+  });
+
+  // Checkout button navigation
+  $("#cart-checkout-btn").on("click", () => {
+    window.location.href = "checkout.html";
+  });
+
+  // Initialize cart UI once on document ready
+  updateCartUI();
+
+  // Remove spinner after delay
+  setTimeout(() => {
     $("#spinner").removeClass("show");
-  }, 1000); // Adjust delay (ms) as needed
+  }, 1000);
 });
+</script>
 
-  </script>
   
 
 </body>

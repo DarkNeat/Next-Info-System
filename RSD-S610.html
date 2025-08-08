@@ -443,10 +443,16 @@
       </div>
 
       <!-- Add to Cart Button -->
-      <button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn" data-id="RSD-S610"
-        data-name="RSD-S610 – S610" data-price="0" type="button" aria-label="Add RSD-S610 to cart">
-        Add to Cart
-      </button>
+<button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn" 
+  data-id="RSD-S610"
+  data-name="RSD-S610 – S610"
+  data-price="0"
+  data-img="img/products/POS System/RSD-S610/RSD-S610/pos 4a.jpg"
+  data-desc="15&quot; All-in-One Capacitive Touch POS Terminal"
+  type="button" aria-label="Add RSD-S610 to cart">
+  Add to Cart
+</button>
+
 
       <p class="product-short-description mb-4" id="product-description">
         All-in-one POS system featuring a 15" industrial-grade capacitive touchscreen, robust Intel CPUs, and multiple I/O ports in a plastic case with aluminum alloy housing.
@@ -920,25 +926,23 @@ jQuery(function($) {
   const s610plusDescription = "All-in-one POS system featuring a 15\" industrial-grade capacitive touchscreen, versatile Intel processors options (including i7), and expanded memory/storage options with a metal base for enhanced durability.";
 
   // Switch to S610
-  function switchToS610(){
+  function switchToS610() {
     $btnS610.addClass("active").attr("aria-pressed", "true");
     $btnS610plus.removeClass("active").attr("aria-pressed", "false");
     $thumbsS610.show();
     $thumbsS610plus.hide();
 
-    // Set main image to first S610 thumbnail
     const firstSrc = $thumbsS610.find("img").first().data("large");
     $mainImage.attr("src", firstSrc);
     $thumbsS610.find("img").removeClass("active").first().addClass("active");
 
-    // Update Add to Cart data
     $addToCartBtn.data("name", "RSD-S610 – S610");
+    $addToCartBtn.data("img", firstSrc);
     $addToCartBtn.attr("aria-label", "Add RSD-S610 S610 to cart");
 
-    // Update info text
-    $("#product-subtitle").text("All-in-One Capacitive Touch POS System with Aluminum Alloy Housing");
-    $("#product-description").text("All-in-one POS system featuring a 15\" industrial-grade capacitive touchscreen, robust Intel CPUs, and multiple I/O ports in a plastic case with aluminum alloy housing.");
-    $("#highlighted-specs").html(`
+    $productSubtitle.text("All-in-One Capacitive Touch POS System with Aluminum Alloy Housing");
+    $productDescription.text("All-in-one POS system featuring a 15\" industrial-grade capacitive touchscreen, robust Intel CPUs, and multiple I/O ports in a plastic case with aluminum alloy housing.");
+    $highlightedSpecs.html(`
       <ul class="mb-0">
         <li>15" Industrial Grade A LCD Display (4:3), 400 nits brightness</li>
         <li>Capacitive 10-Point Touchscreen</li>
@@ -951,67 +955,57 @@ jQuery(function($) {
         <li>Windows 10 OS Supported</li>
       </ul>
     `);
-    $("#full-specs").html(`
-      <p><strong>Model No.:</strong> CJ-S610</p>
-      <p><strong>Feature:</strong> All-in-one Capacitive Touch POS System with Aluminum Alloy Housing</p>
-      <p><strong>Display:</strong> 15" Industrial Grade A LED (4:3)</p>
-      <p><strong>Resolution:</strong> 1024 x 768 Pixels</p>
-      <p><strong>Brightness:</strong> 400 CD/㎡</p>
-      <p><strong>CPU:</strong> Intel Celeron J1900 Dual-core 2.0GHz / Intel Core i3-4030U</p>
-      <p><strong>Memory:</strong> Tigo DDR3 4GB</p>
-      <p><strong>Storage:</strong> Phison SSD 128GB</p>
-      <p><strong>I/O:</strong> USB x 6; RJ45 x 1; COM x 1; VGA x 1; PS/2 x 2; LPT x 1; MIC x 1; Audio x 2 (COM x 2 Optional)</p>
-      <p><strong>Touchscreen:</strong> 10-Point Capacitive Touchscreen</p>
-      <p><strong>Customer Display:</strong> 8 Digit Display</p>
-      <p><strong>OS Support:</strong> Windows 10</p>
-      <p><strong>Power Supply:</strong> 100-260VAC 50-60Hz, 12V 5A</p>
-      <p><strong>Color:</strong> Black</p>
-      <p><strong>Material of Housing:</strong> Plastic Case + Plastic Base + Aluminum Alloy Housing</p>
-      <p><strong>Accessories (Optional):</strong> Cash Drawer, Thermal Printer (58 mm/80 mm), Barcode Scanner (1D/2D), Card Reader (Integrated MSR), Wifi/3G</p>
-      <p><strong>Packing:</strong> Single Box with Inner Foam (430*290*430mm, G.W.: 6.5 KGS)</p>
-      <p><strong>Service:</strong> Generic products / OEM Service Offer</p>
-      <p><strong>Warranty:</strong> Two Years Warranty</p>
-      <p><strong>Advantages:</strong> Extensive product experience, high-quality parts, fast lead time, long-term maintenance, customization available</p>
-    `);
+    $fullSpecs.html(s610plusFullSpecs.replace("S610+", "S610")); // ensure consistent full specs for S610
   }
 
   // Switch to S610+
-  function switchToS610plus(){
+  function switchToS610plus() {
     $btnS610plus.addClass("active").attr("aria-pressed", "true");
     $btnS610.removeClass("active").attr("aria-pressed", "false");
     $thumbsS610plus.show();
     $thumbsS610.hide();
 
-    // Set main image to first S610+ thumbnail
     const firstSrc = $thumbsS610plus.find("img").first().data("large");
     $mainImage.attr("src", firstSrc);
     $thumbsS610plus.find("img").removeClass("active").first().addClass("active");
 
-    // Update Add to Cart data
     $addToCartBtn.data("name", "RSD-S610 – S610+");
+    $addToCartBtn.data("img", firstSrc);
     $addToCartBtn.attr("aria-label", "Add RSD-S610 S610+ to cart");
 
-    // Update info text
-    $("#product-subtitle").text("All-in-One Capacitive Touch POS System with Aluminum Alloy Housing");
-    $("#product-description").text(s610plusDescription);
-    $("#highlighted-specs").html(s610plusHighlightedSpecs);
-    $("#full-specs").html(s610plusFullSpecs);
+    $productSubtitle.text("All-in-One Capacitive Touch POS System with Aluminum Alloy Housing");
+    $productDescription.text(s610plusDescription);
+    $highlightedSpecs.html(s610plusHighlightedSpecs);
+    $fullSpecs.html(s610plusFullSpecs);
   }
 
-  // Event bindings for toggle buttons
+  // Bind buttons
   $btnS610.on("click", switchToS610);
   $btnS610plus.on("click", switchToS610plus);
+
+  // Thumbnail click updates main image and add-to-cart img
+  $(".product-thumbnails > div").on("click", "img", function () {
+    if ($(this).parent().is(":hidden")) return;
+    const src = $(this).data("large");
+    if (!src) return;
+
+    $mainImage.attr("src", src);
+
+    if ($thumbsS610.is(":visible")) {
+      $thumbsS610.find("img").removeClass("active");
+    } else {
+      $thumbsS610plus.find("img").removeClass("active");
+    }
+    $(this).addClass("active");
+
+    // Update add to cart button image data for current variant
+    $addToCartBtn.data("img", src);
+  });
 
   // Initialize page with S610 selected
   switchToS610();
 });
 
-jQuery(function($) {
-  // Remove spinner after a delay, e.g., 1 or 2 seconds
-  setTimeout(function() {
-    $("#spinner").removeClass("show");
-  }, 1000); // Adjust delay (ms) as needed
-});
 
 
   </script>

@@ -456,14 +456,17 @@
       </div>
 
       <!-- Add to Cart Button -->
-      <button id="addToCartBtn-rsd-t660" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
-              data-id="RSD-T660"
-              data-name="RSD-T660 – Black"
-              data-price="0"
-              type="button"
-              aria-label="Add RSD-T660 to cart">
-        Add to Cart
-      </button>
+<button id="addToCartBtn-rsd-t660" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
+  data-id="RSD-T660"
+  data-name="RSD-T660 – Black"
+  data-price="0"
+  data-img="img/products/POS System/RSD-T660/Black/pos 8a.jpg"
+  data-desc="15.6&quot; Ultra-thin POS System with Dual Display Option"
+  type="button"
+  aria-label="Add RSD-T660 Black to cart">
+  Add to Cart
+</button>
+
 
       <p class="product-short-description mb-4">
         Intel® Celeron J1900 Quad-core 2.0 GHz, Industrial Grade Motherboard, Kingston 4GB DDR3, Kingston SSD 64GB, 15" Industrial Grade A LED (4:3) Capacitive Touchscreen.
@@ -760,188 +763,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-  // Thumbnail click & keyboard navigation for main image
-  $(function() {
-    const $thumbsBlack = $("#thumbs-black-rsd-t660");
-    const $thumbsWhite = $("#thumbs-white-rsd-t660");
-    const $thumbsInactiveWhite = $("#thumbs-inactive-white-rsd-t660");
-    const $thumbsInactiveBlack = $("#thumbs-inactive-black-rsd-t660");
-    const $mainImage = $("#main-product-image-rsd-t660");
-
-    const $btnBlack = $("#btn-black-rsd-t660");
-    const $btnWhite = $("#btn-white-rsd-t660");
-    const $addToCartBtn = $("#addToCartBtn-rsd-t660");
-
-    let activeColor = "black";
-
-    // Handle thumbnail clicks and keypress (Enter/Space)
-    $(".product-thumbnails > div").on("click keypress", "img", function(e) {
-      if (e.type === 'click' || e.key === 'Enter' || e.key === ' ') {
-        if ($(this).parent().is(":hidden")) return;
-        const src = $(this).data("large");
-        if (!src) return;
-        $mainImage.attr("src", src);
-
-        if (activeColor === "black") {
-          $thumbsBlack.find("img").removeClass("active");
-        } else {
-          $thumbsWhite.find("img").removeClass("active");
-        }
-        $(this).addClass("active");
-      }
-    }).find("img").attr("tabindex", "0");
-
-    // Switch to Black variant
-    function switchToBlack() {
-      if (activeColor === "black") return;
-      activeColor = "black";
-
-      $thumbsBlack.show();
-      $thumbsWhite.hide();
-
-      $thumbsInactiveWhite.show();
-      $thumbsInactiveBlack.hide();
-
-      $btnBlack.addClass("active").attr("aria-pressed", "true");
-      $btnWhite.removeClass("active").attr("aria-pressed", "false");
-
-      const firstBlackSrc = $thumbsBlack.find("img").first().data("large");
-      $mainImage.attr("src", firstBlackSrc);
-      $thumbsBlack.find("img").removeClass("active").first().addClass("active");
-
-      $addToCartBtn.data("name", "RSD-T660 – Black");
-      $addToCartBtn.attr("aria-label", "Add RSD-T660 Black to cart");
-    }
-
-    // Switch to White variant
-    function switchToWhite() {
-      if (activeColor === "white") return;
-      activeColor = "white";
-
-      $thumbsWhite.show();
-      $thumbsBlack.hide();
-
-      $thumbsInactiveBlack.show();
-      $thumbsInactiveWhite.hide();
-
-      $btnWhite.addClass("active").attr("aria-pressed", "true");
-      $btnBlack.removeClass("active").attr("aria-pressed", "false");
-
-      const firstWhiteSrc = $thumbsWhite.find("img").first().data("large");
-      $mainImage.attr("src", firstWhiteSrc);
-      $thumbsWhite.find("img").removeClass("active").first().addClass("active");
-
-      $addToCartBtn.data("name", "RSD-T660 – White");
-      $addToCartBtn.attr("aria-label", "Add RSD-T660 White to cart");
-    }
-
-    // Bind color toggle buttons to switch handlers
-    $btnBlack.on("click", switchToBlack);
-    $btnWhite.on("click", switchToWhite);
-
-    // Initialize with Black variant active
-    switchToBlack();
-
-    // --- Cart Management ---
-
-    const cartKey = "cart";
-    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
-    function saveCart() {
-      localStorage.setItem(cartKey, JSON.stringify(cart));
-    }
-
-    function updateCartUI() {
-      const $badge = $("#cart-count-badge");
-      const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
-      if (totalQty > 0) {
-        $badge.text(totalQty).show();
-      } else {
-        $badge.hide();
-      }
-      renderCartItems();
-    }
-
-    function renderCartItems() {
-      const $cartItems = $("#cart-items");
-      $cartItems.empty();
-
-      if (cart.length === 0) {
-        $cartItems.html('<p class="text-muted">Your cart is empty.</p>');
-        return;
-      }
-
-      cart.forEach((item, i) => {
-        const itemDiv = $(`
-          <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-2">
-            <div><strong>${item.name}</strong><br />Qty: ${item.qty}</div>
-            <div>
-              $${(item.price * item.qty).toFixed(2)}
-              <button class="btn btn-sm btn-danger ms-2" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
-            </div>
-          </div>`);
-        $cartItems.append(itemDiv);
-      });
-
-      // Remove item handlers
-      $cartItems.find("button").on("click", function() {
-        const idx = $(this).data("index");
-        if (idx !== undefined) {
-          cart.splice(idx, 1);
-          saveCart();
-          updateCartUI();
-        }
-      });
-    }
-
-    // Add to Cart button handler
-    $(document).on("click", ".add-to-cart-btn", function() {
-      const id = $(this).data("id");
-      const name = $(this).data("name");
-      const price = parseFloat($(this).data("price")) || 0;
-      if (!id || !name) return;
-
-      const found = cart.find(item => item.id === id && item.name === name);
-      if (found) {
-        found.qty++;
-      } else {
-        cart.push({ id, name, price, qty: 1 });
-      }
-      saveCart();
-      updateCartUI();
-      openCart();
-    });
-
-    function openCart() {
-      $("#side-cart").addClass("open").attr("aria-hidden", "false");
-      $("#cart-overlay").show();
-    }
-
-    function closeCart() {
-      $("#side-cart").removeClass("open").attr("aria-hidden", "true");
-      $("#cart-overlay").hide();
-    }
-
-    $("#cart-btn").on("click", openCart);
-    $("#cart-close-btn, #cart-continue-btn, #cart-overlay").on("click", closeCart);
-
-    $("#cart-checkout-btn").on("click", function() {
-      window.location.href = "checkout.html";
-    });
-
-    // Initialize cart UI on document ready
-    $(function() {
-      updateCartUI();
-    });
-
-    // Remove spinner after page load delay
-    setTimeout(() => $("#spinner").removeClass("show"), 1000);
-  });
-</script>
-
-
-  <script>
-jQuery(function($) {
+$(function() {
   const $thumbsBlack = $("#thumbs-black-rsd-t660");
   const $thumbsWhite = $("#thumbs-white-rsd-t660");
   const $thumbsInactiveWhite = $("#thumbs-inactive-white-rsd-t660");
@@ -954,33 +776,29 @@ jQuery(function($) {
 
   let activeColor = "black";
 
-  // Thumbnail click handler - change main image
-  $(".product-thumbnails > div").on("click", "img", function () {
-    if ($(this).parent().is(":hidden")) return;
+  // Thumbnail click and keypress - update main image and active state
+  $(".product-thumbnails > div").on("click keypress", "img", function(e) {
+    if (e.type === "click" || e.key === "Enter" || e.key === " ") {
+      if ($(this).parent().is(":hidden")) return;
+      const src = $(this).data("large");
+      if (!src) return;
+      $mainImage.attr("src", src);
 
-    const src = $(this).data("large");
-    if (!src) return;
-    $mainImage.attr("src", src);
+      if (activeColor === "black") {
+        $thumbsBlack.find("img").removeClass("active");
+      } else {
+        $thumbsWhite.find("img").removeClass("active");
+      }
+      $(this).addClass("active");
 
-    if (activeColor === "black") {
-      $thumbsBlack.find("img").removeClass("active");
-    } else {
-      $thumbsWhite.find("img").removeClass("active");
+      // Update Add to Cart button image data on thumbnail selection
+      $addToCartBtn.data("img", src);
     }
-    $(this).addClass("active");
-  });
+  }).find("img").attr("tabindex", "0");
 
-  // Keyboard navigation for thumbnails (Enter/Space)
-  $(".product-thumbnails img").attr("tabindex", "0").on("keypress", function (e) {
-    if (e.which === 13 || e.which === 32) {
-      $(this).trigger("click");
-    }
-  });
-
-  // Switch to Black color
+  // Switch to Black variant
   function switchToBlack() {
     if (activeColor === "black") return;
-
     activeColor = "black";
 
     $thumbsBlack.show();
@@ -992,19 +810,21 @@ jQuery(function($) {
     $btnBlack.addClass("active").attr("aria-pressed", "true");
     $btnWhite.removeClass("active").attr("aria-pressed", "false");
 
-    const firstBlackSrc = $thumbsBlack.find("img").first().data("large");
-    $mainImage.attr("src", firstBlackSrc);
-
+    const firstSrc = $thumbsBlack.find("img").first().data("large");
+    $mainImage.attr("src", firstSrc);
     $thumbsBlack.find("img").removeClass("active").first().addClass("active");
 
+    // Update Add to Cart button data attributes
     $addToCartBtn.data("name", "RSD-T660 – Black");
+    $addToCartBtn.data("img", firstSrc);
+    $addToCartBtn.data("desc", "15.6\" Ultra-thin POS System - Black");
+    $addToCartBtn.data("price", 0);
     $addToCartBtn.attr("aria-label", "Add RSD-T660 Black to cart");
   }
 
-  // Switch to White color
+  // Switch to White variant
   function switchToWhite() {
     if (activeColor === "white") return;
-
     activeColor = "white";
 
     $thumbsWhite.show();
@@ -1016,28 +836,316 @@ jQuery(function($) {
     $btnWhite.addClass("active").attr("aria-pressed", "true");
     $btnBlack.removeClass("active").attr("aria-pressed", "false");
 
-    const firstWhiteSrc = $thumbsWhite.find("img").first().data("large");
-    $mainImage.attr("src", firstWhiteSrc);
-
+    const firstSrc = $thumbsWhite.find("img").first().data("large");
+    $mainImage.attr("src", firstSrc);
     $thumbsWhite.find("img").removeClass("active").first().addClass("active");
 
+    // Update Add to Cart button data attributes
     $addToCartBtn.data("name", "RSD-T660 – White");
+    $addToCartBtn.data("img", firstSrc);
+    $addToCartBtn.data("desc", "15.6\" Ultra-thin POS System - White");
+    $addToCartBtn.data("price", 0);
     $addToCartBtn.attr("aria-label", "Add RSD-T660 White to cart");
   }
 
-  // Color toggle button event listeners
+  // Button bindings
   $btnBlack.on("click", switchToBlack);
   $btnWhite.on("click", switchToWhite);
 
-  // Initialize page with Black color active
+  // Initialize with Black variant active
   switchToBlack();
-});
 
+  // --- Cart Management ---
+  const cartKey = "cart";
+  let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+  function saveCart() {
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+  }
+
+  function updateCartUI() {
+    const $badge = $("#cart-count-badge");
+    const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+    if (totalQty > 0) {
+      $badge.text(totalQty).show();
+    } else {
+      $badge.hide();
+    }
+    renderCartItems();
+  }
+
+  function renderCartItems() {
+    const $cartItems = $("#cart-items");
+    $cartItems.empty();
+
+    if (cart.length === 0) {
+      $cartItems.html('<p class="text-muted">Your cart is empty.</p>');
+      return;
+    }
+
+    cart.forEach((item, i) => {
+      const itemHtml = `
+        <div class="cart-item d-flex align-items-center border-bottom py-2" style="gap:10px;">
+          <img src="${item.img || ''}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: contain; border-radius: 6px;" />
+          <div style="flex-grow:1;">
+            <strong>${item.name}</strong><br />
+            <small>${item.desc || ''}</small><br />
+            Qty: ${item.qty}
+          </div>
+          <button class="btn btn-sm btn-danger ms-2" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
+        </div>`;
+      $cartItems.append(itemHtml);
+    });
+
+    // Remove items event
+    $cartItems.find("button").on("click", function() {
+      const idx = $(this).data("index");
+      if (idx !== undefined) {
+        cart.splice(idx, 1);
+        saveCart();
+        updateCartUI();
+      }
+    });
+  }
+
+  // Add to Cart button handler
+  $(document).on("click", ".add-to-cart-btn", function() {
+    const id = $(this).data("id");
+    const name = $(this).data("name");
+    const img = $(this).data("img") || "";
+    const desc = $(this).data("desc") || "";
+    const price = 0; // not used/shown
+
+    if (!id || !name) return;
+
+    const existingItem = cart.find(item => item.id === id && item.name === name);
+    if (existingItem) {
+      existingItem.qty++;
+    } else {
+      cart.push({ id, name, img, desc, qty: 1, price });
+    }
+    saveCart();
+    updateCartUI();
+    openCart();
+  });
+
+  function openCart() {
+    $("#side-cart").addClass("open").attr("aria-hidden", "false");
+    $("#cart-overlay").show();
+  }
+
+  function closeCart() {
+    $("#side-cart").removeClass("open").attr("aria-hidden", "true");
+    $("#cart-overlay").hide();
+  }
+
+  $("#cart-btn").on("click", openCart);
+  $("#cart-close-btn, #cart-continue-btn, #cart-overlay").on("click", closeCart);
+
+  // Initial cart UI update
+  updateCartUI();
+
+  // Remove spinner after delay
+  setTimeout(() => $("#spinner").removeClass("show"), 1000);
+});
+</script>
+
+
+
+  <script>
 jQuery(function($) {
-  // Remove spinner after a delay, e.g., 1 or 2 seconds
-  setTimeout(function() {
-    $("#spinner").removeClass("show");
-  }, 1000); // Adjust delay (ms) as needed
+  const $thumbsBlack = $("#thumbs-black-rsd660");
+  const $thumbsWhite = $("#thumbs-white-rsd660");
+  const $thumbsInactiveWhite = $("#thumbs-inactive-white-rsd660");
+  const $thumbsInactiveBlack = $("#thumbs-inactive-black-rsd660");
+  const $mainImage = $("#main-image-rsd660");
+
+  const $btnBlack = $("#btn-black-rsd660");
+  const $btnWhite = $("#btn-white-rsd660");
+  const $addToCartBtn = $("#addToCartBtn-rsd660");
+
+  // IDs corrected per your markup (ensure IDs consistent)
+
+  let activeColor = "black";
+
+  // Utility: sanitize price to 0 or explicitly omit if no price is needed
+  const defaultPrice = 0;
+
+  // Thumbnail click updates main image and Add to Cart image data
+  $(".product-thumbnails > div").on("click keypress", "img", function(e) {
+    if (e.type === "click" || e.key === "Enter" || e.key === " ") {
+      if ($(this).parent().is(":hidden")) return;
+      const src = $(this).data("large");
+      if (!src) return;
+      $mainImage.attr("src", src);
+
+      if (activeColor === "black") {
+        $thumbsBlack.find("img").removeClass("active");
+      } else {
+        $thumbsWhite.find("img").removeClass("active");
+      }
+      $(this).addClass("active");
+
+      // Update Add to Cart image
+      $addToCartBtn.data("img", src);
+    }
+  }).find("img").attr("tabindex", "0");
+
+  // Switch to Black variant
+  function switchToBlack() {
+    if (activeColor === "black") return;
+    activeColor = "black";
+
+    $thumbsBlack.show();
+    $thumbsWhite.hide();
+
+    $thumbsInactiveWhite.show();
+    $thumbsInactiveBlack.hide();
+
+    $btnBlack.addClass("active").attr("aria-pressed", "true");
+    $btnWhite.removeClass("active").attr("aria-pressed", "false");
+
+    const firstSrc = $thumbsBlack.find("img").first().data("large");
+    $mainImage.attr("src", firstSrc);
+
+    $thumbsBlack.find("img").removeClass("active");
+    $thumbsBlack.find("img").first().addClass("active");
+
+    // Update Add to Cart data attributes
+    $addToCartBtn.data("name", "RSD-660 – Black");
+    $addToCartBtn.data("img", firstSrc);
+    $addToCartBtn.data("desc", "15.6\" Ultra-thin POS System - Black");
+    $addToCartBtn.data("price", defaultPrice);
+    $addToCartBtn.attr("aria-label", "Add RSD-660 Black to cart");
+  }
+
+  // Switch to White variant
+  function switchToWhite() {
+    if (activeColor === "white") return;
+    activeColor = "white";
+
+    $thumbsWhite.show();
+    $thumbsBlack.hide();
+
+    $thumbsInactiveBlack.show();
+    $thumbsInactiveWhite.hide();
+
+    $btnWhite.addClass("active").attr("aria-pressed", "true");
+    $btnBlack.removeClass("active").attr("aria-pressed", "false");
+
+    const firstSrc = $thumbsWhite.find("img").first().data("large");
+    $mainImage.attr("src", firstSrc);
+
+    $thumbsWhite.find("img").removeClass("active");
+    $thumbsWhite.find("img").first().addClass("active");
+
+    // Update Add to Cart data attributes
+    $addToCartBtn.data("name", "RSD-660 – White");
+    $addToCartBtn.data("img", firstSrc);
+    $addToCartBtn.data("desc", "15.6\" Ultra-thin POS System - White");
+    $addToCartBtn.data("price", defaultPrice);
+    $addToCartBtn.attr("aria-label", "Add RSD-660 White to cart");
+  }
+
+  // Bind button events
+  $btnBlack.on("click", switchToBlack);
+  $btnWhite.on("click", switchToWhite);
+
+  // Initialize on page load with Black variant
+  switchToBlack();
+
+  // Cart Manager Code
+  const cartKey = "cart";
+  let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+  function saveCart() {
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+  }
+
+  function updateCartUI() {
+    const $badge = $("#cart-count-rsd660");
+    if (!$badge.length) return;
+
+    const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+    if (totalQty > 0) {
+      $badge.text(totalQty).show();
+    } else {
+      $badge.hide();
+    }
+    renderCartItems();
+  }
+
+  function renderCartItems() {
+    const $cartItems = $("#cart-items-rsd660");
+    if (!$cartItems.length) return;
+
+    $cartItems.empty();
+
+    if (cart.length === 0) {
+      $cartItems.html('<p>Your cart is empty.</p>');
+      return;
+    }
+
+    cart.forEach(function(item, i) {
+      // Render without price or amount, just image, name, desc, and quantity
+      const itemHtml = `
+        <div class="cart-item d-flex align-items-center" style="gap:10px; padding:5px 0; border-bottom:1px solid #ddd;">
+          <img src="${item.img}" alt="${item.name}" style="width:50px; height:50px; object-fit:contain; border-radius:6px;">
+          <div style="flex-grow:1;">
+            <strong>${item.name}</strong><br>
+            <small>${item.desc || ''}</small><br>
+            Qty: ${item.qty}
+          </div>
+          <button class="btn btn-sm btn-danger" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
+        </div>`;
+      $cartItems.append(itemHtml);
+    });
+
+    // Remove item event
+    $cartItems.find("button").on("click", function() {
+      const idx = $(this).data("index");
+      if (idx !== undefined) {
+        cart.splice(idx, 1);
+        saveCart();
+        updateCartUI();
+      }
+    });
+  }
+
+  $(document).on("click", "#addToCartBtn-rsd660", function() {
+    const id = $(this).data("id");
+    const name = $(this).data("name");
+    const img = $(this).data("img");
+    const desc = $(this).data("desc");
+    const price = 0;  // no price shown or used
+
+    if (!id || !name) return;
+
+    const existingItem = cart.find(item => item.id === id && item.name === name);
+    if (existingItem) {
+      existingItem.qty += 1;
+    } else {
+      cart.push({ id, name, img, desc, qty: 1, price });
+    }
+    saveCart();
+    updateCartUI();
+    openCart();
+  });
+
+  // open/close cart handlers
+  function openCart() {
+    $("#side-cart-rsd660").addClass("open");
+    $("#cart-overlay-rsd660").show();
+  }
+  function closeCart() {
+    $("#side-cart-rsd660").removeClass("open");
+    $("#cart-overlay-rsd660").hide();
+  }
+
+  $("#cart-btn-rsd660").on("click", openCart);
+  $("#cart-close-btn-rsd660, #cart-overlay-rsd660").on("click", closeCart);
+
+  updateCartUI();
 });
 
 

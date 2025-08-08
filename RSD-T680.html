@@ -9,7 +9,7 @@
   <meta name="description" content="Free HTML Templates" />
 
   <!-- Favicon -->
-  <link href="img/favicon.ico" rel="icon" />
+<link rel="icon" href="img/NIS Icon.png" type="image/png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -415,14 +415,18 @@
       <!-- No color toggle - single black color -->
 
       <!-- Add to Cart Button -->
-      <button id="addToCartBtn-rsd-t680" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
-        data-id="RSD-T680"
-        data-name="RSD-T680 – Black"
+<button id="addToCartBtn" 
+        class="btn btn-outline-primary w-100 fw-semibold btn-hover-scale mb-2 add-to-cart-btn"
+        data-id="RSD-680"
+        data-name="RSD-680 – Black"
         data-price="0"
+        data-img="img/products/POS System/RSD-T680/pos 10a.jpg"
+        data-desc="18.5&quot; Wide-Screen POS System for Retail"
         type="button"
-        aria-label="Add RSD-T680 to cart">
-        Add to Cart
-      </button>
+        aria-label="Add RSD-680 – Black to cart">
+  Add to Cart
+</button>
+
 
       <p class="product-short-description mb-4">
         12" Industrial LED (4:3) POS System with optional Windows/Android OS, multiple CPU options, SSD storage upgrades, and a sturdy plastic case with aluminum alloy stand.
@@ -485,16 +489,6 @@
 
     <div class="col-6 col-md-4 col-lg-2">
       <div class="card card-product h-100">
-        <img src="img/products/POS System/RSD-A5/Black/pos 1a.jpg" alt="RSD-A5" class="card-img-top" />
-        <div class="card-body text-center">
-          <h5 class="card-title">RSD-A5</h5>
-          <a href="RSD-A5.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View RSD-A5 Product">View Product</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="card card-product h-100">
         <img src="img/products/POS System/RSD-A5D/Black/pos 2d.jpg" alt="RSD-A5D" class="card-img-top" />
         <div class="card-body text-center">
           <h5 class="card-title">RSD-A5D</h5>
@@ -515,20 +509,30 @@
 
     <div class="col-6 col-md-4 col-lg-2">
       <div class="card card-product h-100">
-        <img src="img/products/POS System/RSD-T660/Black/pos 8a.jpg" alt="RSD-T660" class="card-img-top" />
+        <img src="img/products/POS System/RSD-S800/xcd/pos 5a.jpg" alt="RSD-S800" class="card-img-top" />
         <div class="card-body text-center">
-          <h5 class="card-title">RSD-T660</h5>
-          <a href="RSD-T660.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View RSD-T660 Product">View Product</a>
+          <h5 class="card-title">RSD-S800</h5>
+          <a href="RSD-S800.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View RSD-S800 Product">View Product</a>
         </div>
       </div>
     </div>
 
     <div class="col-6 col-md-4 col-lg-2">
       <div class="card card-product h-100">
-        <img src="img/products/POS System/RSD-T670/pos 9a.jpg" alt="RSD-T670" class="card-img-top" />
+        <img src="img/products/POS System/RSD-T610/pos 7a.jpg" alt="RSD-T610" class="card-img-top" />
         <div class="card-body text-center">
-          <h5 class="card-title">RSD-T670</h5>
-          <a href="RSD-T670.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View RSD-T670 Product">View Product</a>
+          <h5 class="card-title">RSD-T610</h5>
+          <a href="RSD-T610.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View RSD-T610 Product">View Product</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+      <div class="card card-product h-100">
+        <img src="img/products/POS System/RSD-T680/pos 10a.jpg" alt="RSD-T680" class="card-img-top" />
+        <div class="card-body text-center">
+          <h5 class="card-title">RSD-T680</h5>
+          <a href="RSD-T680.html" class="btn btn-primary btn-sm w-100 fw-semibold" aria-label="View RSD-T680 Product">View Product</a>
         </div>
       </div>
     </div>
@@ -715,177 +719,284 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-  // Thumbnail click and keyboard accessibility for main image update
   jQuery(function($) {
-    const $thumbsBlack = $("#thumbs-black-rsd-t680 img");
-    const $mainImage = $("#main-product-image-rsd-t680");
-    const $addToCartBtn = $("#addToCartBtn-rsd-t680");
+    const $thumbsBlack = $("#thumbs-black-rsd-t670");
+    const $mainImage = $("#main-product-image-rsd-t670");
+    const $addToCartBtn = $("#addToCartBtn-rsd-t670");
 
-    // On click or Enter/Space keypress, update main image and active thumbnail
-    $thumbsBlack.on("click keypress", function(e) {
+    // Click or Enter key to select thumbnail and update main image
+    $thumbsBlack.on("click keypress", "img", function(e) {
       if (e.type === "click" || e.key === "Enter" || e.key === " ") {
         const largeSrc = $(this).data("large");
         if (!largeSrc) return;
 
         $mainImage.attr("src", largeSrc);
-        $thumbsBlack.removeClass("active");
+
+        $thumbsBlack.find("img").removeClass("active");
         $(this).addClass("active");
+
+        // Sync Add to Cart button image data when user picks a thumbnail
+        $addToCartBtn.data("img", largeSrc);
       }
     });
 
-    // Make thumbnails keyboard focusable
-    $thumbsBlack.attr("tabindex", "0");
+    // Keyboard accessibility for thumbnails
+    $thumbsBlack.find("img").attr("tabindex", "0");
 
     // Initialize Add to Cart button attributes
-    $addToCartBtn.data("name", "RSD-T680 – Black");
-    $addToCartBtn.attr("aria-label", "Add RSD-T680 to cart");
+    $addToCartBtn.data("name", "RSD-T670 – Black");
+    $addToCartBtn.attr("aria-label", "Add RSD-T670 Black to cart");
+    // Initialize Add to Cart image data to first thumbnail on page load
+    const firstSrc = $thumbsBlack.find("img").first().data("large");
+    $addToCartBtn.data("img", firstSrc);
 
-    // Set initial main image & active thumbnail
-    const firstSrc = $thumbsBlack.first().data("large");
+    // Initialize main image and highlight first thumbnail
     $mainImage.attr("src", firstSrc);
-    $thumbsBlack.removeClass("active").first().addClass("active");
-  });
+    $thumbsBlack.find("img").removeClass("active").first().addClass("active");
 
-  // Cart Manager for add-to-cart, removal, persistence, and UI updates
-  (function() {
-    const cartKey = "cart";
-    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    // Cart Manager
+    (function() {
+      const cartKey = "cart";
+      let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-    function saveCart() {
-      localStorage.setItem(cartKey, JSON.stringify(cart));
-    }
-
-    function updateCartUI() {
-      const $badge = $("#cart-count-badge");
-      const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
-      if (totalQty > 0) {
-        $badge.text(totalQty).show();
-      } else {
-        $badge.hide();
-      }
-      renderCartItems();
-    }
-
-    function renderCartItems() {
-      const $cartItems = $("#cart-items");
-      $cartItems.empty();
-
-      if (cart.length === 0) {
-        $cartItems.html('<p class="text-muted">Your cart is empty.</p>');
-        return;
+      function saveCart() {
+        localStorage.setItem(cartKey, JSON.stringify(cart));
       }
 
-      cart.forEach((item, i) => {
-        const itemDiv = $(`
-          <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-2">
-            <div><strong>${item.name}</strong><br />Qty: ${item.qty}</div>
-            <div>
-              $${(item.price * item.qty).toFixed(2)}
-              <button class="btn btn-sm btn-danger ms-2" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
-            </div>
-          </div>`);
-        $cartItems.append(itemDiv);
-      });
-
-      $cartItems.find("button").on("click", function() {
-        const idx = $(this).data("index");
-        if (idx !== undefined) {
-          cart.splice(idx, 1);
-          saveCart();
-          updateCartUI();
+      function updateCartUI() {
+        const $badge = $("#cart-count-badge");
+        let totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+        if (totalQty > 0) {
+          $badge.text(totalQty).show();
+        } else {
+          $badge.hide();
         }
-      });
-    }
-
-    // Add to Cart button click handler
-    $(document).on("click", ".add-to-cart-btn", function() {
-      const id = $(this).data("id");
-      const name = $(this).data("name");
-      const price = parseFloat($(this).data("price")) || 0;
-      if (!id || !name) return;
-
-      const found = cart.find(item => item.id === id && item.name === name);
-      if (found) {
-        found.qty++;
-      } else {
-        cart.push({ id, name, price, qty: 1 });
+        renderCartItems();
       }
-      saveCart();
-      updateCartUI();
-      openCart();
+
+      function renderCartItems() {
+        const $cartItems = $("#cart-items");
+        $cartItems.empty();
+
+        if (cart.length === 0) {
+          $cartItems.html('<p class="text-muted">Your cart is empty.</p>');
+          return;
+        }
+
+        cart.forEach((item, i) => {
+          const itemDiv = $(`
+            <div class="cart-item d-flex align-items-center border-bottom py-2" style="gap:10px;">
+              <img src="${item.img || ''}" alt="${item.name}" style="width:50px; height:50px; object-fit: contain; border-radius:6px;" />
+              <div style="flex-grow: 1;">
+                <strong>${item.name}</strong><br />
+                <small>${item.desc || ''}</small><br />
+                Qty: ${item.qty}
+              </div>
+              <button class="btn btn-sm btn-danger ms-2" aria-label="Remove ${item.name}" data-index="${i}">&times;</button>
+            </div>`);
+          $cartItems.append(itemDiv);
+        });
+
+        // Remove item handlers
+        $cartItems.find("button").on("click", function() {
+          const idx = $(this).data("index");
+          if (idx !== undefined) {
+            cart.splice(idx, 1);
+            saveCart();
+            updateCartUI();
+          }
+        });
+      }
+
+      // Add to Cart button handler
+      $(document).on("click", ".add-to-cart-btn", function() {
+        const id = $(this).data("id");
+        const name = $(this).data("name");
+        const price = 0; // not used, price hidden
+        const img = $(this).data("img") || "";
+        const desc = $(this).data("desc") || "";
+
+        if (!id || !name) return;
+
+        const found = cart.find(item => item.id === id && item.name === name);
+        if (found) {
+          found.qty++;
+        } else {
+          cart.push({ id, name, img, desc, qty: 1, price });
+        }
+        saveCart();
+        updateCartUI();
+        openCart();
+      });
+
+      function openCart() {
+        $("#side-cart").addClass("open").attr("aria-hidden", "false");
+        $("#cart-overlay").show();
+      }
+
+      function closeCart() {
+        $("#side-cart").removeClass("open").attr("aria-hidden", "true");
+        $("#cart-overlay").hide();
+      }
+
+      $("#cart-btn").on("click", openCart);
+      $("#cart-close-btn, #cart-continue-btn, #cart-overlay").on("click", closeCart);
+
+      $("#cart-checkout-btn").on("click", function() {
+        window.location.href = "checkout.html";
+      });
+
+      // Initialize cart UI on page load
+      $(function() {
+        updateCartUI();
+      });
+    })();
+
+    // Remove spinner after a short delay
+    jQuery(function($) {
+      setTimeout(() => {
+        $("#spinner").removeClass("show");
+      }, 1000);
     });
-
-    function openCart() {
-      $("#side-cart").addClass("open").attr("aria-hidden", "false");
-      $("#cart-overlay").show();
-    }
-
-    function closeCart() {
-      $("#side-cart").removeClass("open").attr("aria-hidden", "true");
-      $("#cart-overlay").hide();
-    }
-
-    $("#cart-btn").on("click", openCart);
-    $("#cart-close-btn, #cart-continue-btn, #cart-overlay").on("click", closeCart);
-
-    $("#cart-checkout-btn").on("click", function() {
-      window.location.href = "checkout.html";
-    });
-
-    // Initialize cart UI on page load
-    $(function() {
-      updateCartUI();
-    });
-  })();
-
-  // Remove page loading spinner after a short delay
-  jQuery(function($) {
-    setTimeout(() => $("#spinner").removeClass("show"), 1000);
   });
 </script>
 
 
-  <script>
+
+<script>
 jQuery(function($) {
-  const $thumbsBlack = $("#thumbs-black-rsd-t680 img");
+  // Select thumbnails under #thumbs-black-rsd-t680 and main product image
+  const $thumbs = $("#thumbs-black-rsd-t680 img");
   const $mainImage = $("#main-product-image-rsd-t680");
-  const $addToCartBtn = $("#addToCartBtn-rsd-t680");
+  const $addToCartBtn = $("#addToCartBtn");
 
-  // Thumbnail click or keyboard (Enter/Space) updates main image and active highlight
-  $thumbsBlack.on("click keypress", function(e) {
-    if (e.type === "click" || e.key === "Enter" || e.key === 13) {
-      const largeSrc = $(this).data("large");
-      if (!largeSrc) return;
-
-      $mainImage.attr("src", largeSrc);
-      $thumbsBlack.removeClass("active");
+  // Thumbnail click or keyboard navigation updates main image and marks thumbnail active
+  $thumbs.on("click keypress", function(e) {
+    if (e.type === "click" || e.key === "Enter" || e.key === " ") {
+      const src = $(this).data("large");
+      if (!src) return;
+      $mainImage.attr("src", src);
+      $thumbs.removeClass("active");
       $(this).addClass("active");
+
+      // Update the add-to-cart button image data to sync with main image
+      $addToCartBtn.data("img", src);
     }
   });
 
-  // Make thumbnails keyboard focusable
-  $thumbsBlack.attr("tabindex", "0");
+  // Make thumbnails keyboard accessible
+  $thumbs.attr("tabindex", 0);
 
-  // Set the Add to Cart button's data-name and aria-label on load
-  $addToCartBtn.data("name", "RSD-T680 – Black");
-  $addToCartBtn.attr("aria-label", "Add RSD-T680 to cart");
-
-  // Initialize main image and active thumbnail
-  const firstSrc = $thumbsBlack.first().data("large");
+  // Initialize main image and highlight first thumbnail on page load
+  const firstSrc = $thumbs.first().data("large");
   $mainImage.attr("src", firstSrc);
-  $thumbsBlack.removeClass("active").first().addClass("active");
+  $thumbs.removeClass("active").first().addClass("active");
+  $addToCartBtn.data("img", firstSrc);
+
+  // Initialize Add to Cart button name and aria-label (should match your button’s data-name exactly)
+  $addToCartBtn.data("name", "RSD-680 – Black");
+  $addToCartBtn.attr("aria-label", "Add RSD-680 – Black to cart");
+
+  // Cart management logic
+  const CART_KEY = "cart";
+  let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+
+  function saveCart() {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }
+
+  function updateCartUI() {
+    const $badge = $("#cart-count");
+    if (!$badge.length) return;
+    const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+    if (totalQty > 0) {
+      $badge.text(totalQty).show();
+    } else {
+      $badge.hide();
+    }
+    renderCartItems();
+  }
+
+  function renderCartItems() {
+    const $cartItems = $("#cart-items");
+    if (!$cartItems.length) return;
+
+    $cartItems.empty();
+
+    if (!cart.length) {
+      $cartItems.html('<p>Your cart is empty</p>');
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const html = `
+        <div class="cart-item d-flex align-items-center" style="gap:10px; border-bottom:1px solid #ddd; padding:5px 0;">
+          <img src="${item.img || ''}" alt="${item.name}" style="width:50px; height:50px; object-fit:contain; border-radius:6px;">
+          <div style="flex-grow:1;">
+            <strong>${item.name}</strong><br>
+            <small>${item.desc || ''}</small><br>
+            Qty: ${item.qty}
+          </div>
+          <button class="btn btn-sm btn-danger" data-index="${index}" aria-label="Remove ${item.name}">&times;</button>
+        </div>
+      `;
+      $cartItems.append(html);
+    });
+
+    // Remove buttons event handler
+    $cartItems.find("button").on("click", function() {
+      const idx = $(this).data("index");
+      if (typeof idx !== "undefined") {
+        cart.splice(idx, 1);
+        saveCart();
+        updateCartUI();
+      }
+    });
+  }
+
+  // Add to Cart button click handler
+  $addToCartBtn.on("click", function() {
+    const id = $(this).data("id");
+    const name = $(this).data("name");
+    const img = $(this).data("img") || "";
+    const desc = $(this).data("desc") || "";
+    const price = 0; // Price unused or hidden
+
+    if (!id || !name) return;
+
+    const existing = cart.find(item => item.id === id && item.name === name);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ id, name, img, desc, qty: 1, price });
+    }
+    saveCart();
+    updateCartUI();
+    openCart();
+  });
+
+  // Cart open and close functions
+  function openCart() {
+    $("#side-cart").addClass("open").attr("aria-hidden", "false");
+    $("#cart-overlay").show();
+  }
+  function closeCart() {
+    $("#side-cart").removeClass("open").attr("aria-hidden", "true");
+    $("#cart-overlay").hide();
+  }
+
+  // Bind cart open/close controls
+  $("#cart-btn").on("click", openCart);
+  $("#cart-close-btn, #cart-continue-btn, #cart-overlay").on("click", closeCart);
+
+  // Initialize the cart UI state on page load
+  updateCartUI();
+
+  // Remove spinner after a delay
+  setTimeout(() => $("#spinner").removeClass("show"), 1000);
 });
+</script>
 
-jQuery(function($) {
-  // Remove spinner after a delay, e.g., 1 or 2 seconds
-  setTimeout(function() {
-    $("#spinner").removeClass("show");
-  }, 1000); // Adjust delay (ms) as needed
-});
-
-
-
-  </script>
 
 </body>
 
