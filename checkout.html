@@ -298,41 +298,46 @@
       <!-- Checkout Form Card -->
       <div class="checkout-card">
         <h2 class="mb-4 text-center text-primary">Checkout</h2>
-        <form id="checkout-form" method="POST" action="https://formcarry.com/s/1JWOxOGgO2I" accept-charset="UTF-8" autocomplete="on">
-          <input type="hidden" name="cart_summary" id="cart_summary" />
+<form id="checkout-form" method="POST" action="https://formcarry.com/s/1JWOxOGgO2I" accept-charset="UTF-8" autocomplete="on">
+  <input type="hidden" name="cart_summary" id="cart_summary" />
 
-          <div class="checkout-form-title mb-4">Contact Information</div>
+  <div class="checkout-form-title mb-4">Contact Information</div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" name="user_name" placeholder="Full Name" required autocomplete="name" />
-            <label for="name">Full Name</label>
-          </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="name" name="user_name" placeholder="Full Name" required autocomplete="name" />
+    <label for="name">Full Name</label>
+  </div>
 
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" name="user_email" placeholder="Email Address" required autocomplete="email" />
-            <label for="email">Email Address</label>
-          </div>
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="email" name="user_email" placeholder="Email Address" required autocomplete="email" />
+    <label for="email">Email Address</label>
+  </div>
 
-          <div class="form-floating mb-3">
-            <input type="tel" class="form-control" id="phone" name="user_phone" placeholder="Phone Number" required autocomplete="tel" />
-            <label for="phone">Phone Number</label>
-          </div>
+  <div class="form-floating mb-3">
+    <input type="tel" class="form-control" id="phone" name="user_phone" placeholder="Phone Number" required autocomplete="tel" />
+    <label for="phone">Phone Number</label>
+  </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="company" name="company" placeholder="Company (optional)" />
-            <label for="company">Company (optional)</label>
-          </div>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="company" name="company" placeholder="Company (optional)" />
+    <label for="company">Company (optional)</label>
+  </div>
 
-          <div class="form-floating mb-4">
-            <textarea class="form-control" id="message" name="message" style="height: 80px;" placeholder="Additional Message"></textarea>
-            <label for="message">Additional Message</label>
-          </div>
+  <div class="form-floating mb-4">
+    <textarea class="form-control" id="message" name="message" style="height: 80px;" placeholder="Additional Message"></textarea>
+    <label for="message">Additional Message</label>
+  </div>
 
-          <button type="submit" class="btn btn-primary w-100 py-2 fw-bold position-relative" id="submit-btn">
-            <span id="submit-btn-text">Submit Request</span>
-            <span id="submit-btn-spinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
-          </button>
-        </form>
+  <!-- Google reCAPTCHA widget -->
+  <div class="mb-3">
+    <div class="g-recaptcha" data-sitekey="6LchpaIrAAAAANVZ46BgeX0kLhCguejfarTvXaUV"></div>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100 py-2 fw-bold position-relative" id="submit-btn">
+    <span id="submit-btn-text">Submit Request</span>
+    <span id="submit-btn-spinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+  </button>
+</form>
       </div>
 
       <!-- Cart Summary Card -->
@@ -361,6 +366,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Add this script near the bottom of your body tag -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
