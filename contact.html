@@ -219,18 +219,19 @@
         </p>
       </div>
       <div class="col-lg-5">
-        <div
-          class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn"
-          data-wow-delay="0.9s"
-        >
+        <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
           <form 
             method="POST" 
             action="https://formcarry.com/s/1JWOxOGgO2I" 
             accept-charset="UTF-8" 
             autocomplete="on" 
             class="w-100"
-            onsubmit="return this.checkValidity()"
+            onsubmit="return this.checkValidity();"
           >
+            <!-- Honeypot anti-spam field (hide with CSS) -->
+            <div style="display:none;">
+              <input type="text" name="website" tabindex="-1" autocomplete="off" />
+            </div>
             <div class="row g-3">
               <div class="col-xl-12">
                 <input
@@ -248,6 +249,18 @@
                   name="user_email"
                   class="form-control bg-light border-0"
                   placeholder="Your Email"
+                  required
+                  style="height: 55px"
+                />
+              </div>
+              <div class="col-12">
+                <input
+                  type="tel"
+                  name="user_phone"
+                  class="form-control bg-light border-0"
+                  placeholder="Your Phone Number"
+                  pattern="[0-9+\s]{7,20}"
+                  title="Please enter a valid phone number"
                   required
                   style="height: 55px"
                 />
@@ -290,6 +303,10 @@
                 ></textarea>
               </div>
               <div class="col-12">
+                <!-- Google reCAPTCHA widget (Site Key below) -->
+                <div class="g-recaptcha" data-sitekey="6LchpaIrAAAAANVZ46BgeX0kLhCguejfarTvXaUV"></div>
+              </div>
+              <div class="col-12">
                 <button class="btn btn-dark w-100 py-3" type="submit">
                   Request A Quote
                 </button>
@@ -302,6 +319,8 @@
   </div>
 </div>
 <!-- Quote End -->
+
+
 
 
 
@@ -479,7 +498,8 @@
     <button class="continue btn btn-outline-light w-100 mt-2" id="continue-shopping-btn" type="button">Continue Shopping</button>
   </footer>
 </div>
-
+<!-- Load Google reCAPTCHA JS (put before closing </body> tag) -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
 
