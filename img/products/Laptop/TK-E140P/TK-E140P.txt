@@ -1,0 +1,18 @@
+Screen Size 14 inch Fingerprint NA
+ Touch screen Yes Backlit keyboard Yes
+ Screen resolution IPS 2240*1440 Keyboard Language Detachable Keyboard
+ OS support Windows 10 & 11 Shell Material Aluminum alloy
+ System language Support multi-languages Speaker Built-in, 8Ω1W
+ CPU Intel N95 Laptop Weight 0.9kg (keyboard not included)
+ 2.05kg (keyboard included)
+ GPU Intel® UHD Graphics Laptop Size keyboard not included: 315.5*211.5*10.6mm
+ keyboard included: 326*236*30mm
+ Base Frequency of CPU  (GHz) 1.70 GHz Wifi 2.4G + 5.0G
+ Maximum Frequency of CPU  (GHz) 3.40 GHz Bluetooth Version BT4.2
+ Number of CPU Cores 4 Battery 7.7V 4500mah
+ Number of CPU Threads 4 Charging port DC
+ RAM 8GB/16GB/32GB optional Charger plug standard US/EU/UK/AU (support customization)
+ SSD 128GB/256GB/512GB/1TB/2TB optional Input 100-240V  50/60Hz
+ Support Type of RAM DDR4 3200 MT/s Output 12V/3A
+ Support Type of SSD M.2 SATA Cooling system Built-in fan
+ Camera Front 2MP, Rear 5MP Other Function Features Foldable

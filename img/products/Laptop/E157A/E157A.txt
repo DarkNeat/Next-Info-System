@@ -1,0 +1,18 @@
+Screen Size 15.6inch Fingerprint YES
+ Touch screen NA Backlit keyboard YES
+ Screen resolution IPS 1920*1080 Keybaord Type built-in Keyboard
+ OS support Windows 11 Shell Material Plastic
+ System language Support multi-language Speaker Built-in, 8Ω 1W
+ CPU AMD R5 7430U Laptop Weight 1.71KG
+ GPU AMD Radeon™ Graphics Laptop Size 365*228*24MM
+ Base Frequency of CPU  (GHz) 2.3 GHz Wifi 2.4G + 5.0G
+ Maximum Frequency of CPU  (GHz) 4.3 GHz Bluetooth Version BT5.0
+ Number of CPU Cores 6 Battery 11.55V/5000mAH
+ Number of CPU Threads 12 Charging port Type-c
+ RAM*2 8GB/16GB/32GB/64GB Charger plug standard US/EU/UK/AU (support customization)
+ SSD*2 128GB/256GB/512GB/1TB/2TB optional Input 100-240V  50/60Hz
+ Support Type of RAM Outpu 2x1R up to DDR4-3200 t PD-MAX 65W
+ Support Type of SSD    
+ Cooling syste 1*PCIE3.0*4
+ 1*PCIE3.0*4/SATA m Built-in fan
+ Camera Front 2.0MP Other Function Features

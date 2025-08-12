@@ -1,0 +1,16 @@
+Screen Size 15.6 inch Fingerprint Yes
+ Touch screen optional Backlit keyboard Yes
+ Screen resolution IPS 1920*1080 Keyboard Language English (support customization)
+ OS support Windows 10 & 11 Shell Material Plastic
+ System language Support multi-language Speaker Built-in, 8Ω1W
+ CPU   Laptop Weigh IntelN5095(N100/N105 optional) t 1.59kg
+ GPU Intel® UHD Graphics Laptop Size 360*230*20MM
+ Base Frequency of CPU  (GHz) 2.0 GHz Wifi 2.4G + 5.0G
+ Maximum Frequency of CPU  (GHz) 2.9 GHz Bluetooth Version BT4.2
+ Number of CPU Cores 4 Battery 7.7V/5000mAh
+ Number of CPU Threads 4 Charging port DC
+ RAM 8/16/32GB optional Charger plug standard US/EU/UK/AU (support customization)
+ SSD 128GB/256GB/512GB/1TB/2TB optional Input 100-240V  50/60Hz
+ Support Type of RAM Outpu DDR4 up to 3200MT/s t 12V/3A
+ Support Type of SSD  Built-in fa Coolingsyste N5095：M.2 SATA N100/N150：M.2 SATA/NVME m n
+ Camera Other Function Feature Front0.3MP(2.0MP optional) s 180 degree open

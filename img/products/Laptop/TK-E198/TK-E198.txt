@@ -1,0 +1,17 @@
+Screen Size 15.6 inch Fingerprint Yes
+ Touch screen NA Backlit keyboard Yes
+ Screen resolution IPS 1920*1080 Keyboard Language English (support customization)
+ OS support Windows 10 & 11 Shell Material Metal 
+System language Support multi-language Speaker Built-in, 8Ω1W
+ CPU i9-10880H Laptop Weight 1.85kg
+ GPU Intel UHD (Comet Lake) Laptop Size 362*238*20mm
+ Base Frequency of CPU  (GHz) 2.3 GHz Wifi 2.4G + 5.0G
+ Maximum Frequency of CPU  (GHz) 5.1GHz Bluetooth Version BT4.2
+ Number of CPU Cores 8 Battery 11.55V 5000mah
+ Number of CPU Threads 16 Charging port Type-C
+ RAM*2 8GB/16GB/32GB optional Charger plug standard US/EU/UK/AU (support customization)
+ SSD 128GB/256GB/512GB/1TB/2TB optional Input 100-240V  50/60Hz Max 1.5A
+ Support Type of RAM    
+    Outpu UptoDDR43200MT/s t 19V/4.74A
+ Support Type of SSD M.2 SATA/NVMe Cooling system Built-in fan
+ Camera Front1.0MP Other Function Features

@@ -1,0 +1,34 @@
+Screen Size 18.5 inch Fingerprint Yes
+ Touch screen NA Blacklit keyboard Yes
+ Screen resolution IPS 1920*1080 Keyboard Language  
+OS suppor
+ English(supportcustomization)
+ t Windows 11 Shell Material plastic
+ System language Support multi-language Speaker 
+CP
+ Built-in,8Ω1W
+ U Intel Alder Lake N150 Laptop Weight
+ GPU Intel® UHD Graphics Laptop Size
+ Base Frequency of CPU  (GHz) 0.8 GHz Wifi  
+Maximum Frequency of CPU  (GHz
+ 2.4G+5G（WIFI 6）
+) 3.6 GHz Bluetooth Version
+ Number of CPU Core
+ BT5.3
+ s 4 Battery 7.6V/5000mAh
+ Number of CPU Threads 4 Charging port
+ RA
+ DC/TYPE-C
+ M 8/16/32/64GB optional Charger plug standard  
+SS
+ US/EU/UK/AU(supportcustomization)
+ D 128GB/256GB/512GB/1TB/2TB optional Input    
+Support Type of RA
+ 100-240V50/60HzMax1.4A
+ M Up to DDR4 3200 MT/s Output  
+Support Type of SS
+ 12V 3A/PD MAX 45W/65W
+ D 1*M.2 2280 PCIE 3.0 X4/SATA3 Cooling system 
+Camer
+ Built-infan
+ a Front 2.0MP(switch) Other Function Features   LargeWallScreenDisplay
