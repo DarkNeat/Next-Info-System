@@ -734,3 +734,25 @@ h5, h6, .fw-medium {
 
 
 
+/* ===== ONLY affect cards in the Other Products section ===== */
+.other-products-section .card-product .card-img-top {
+  height: 260px;           /* fixed image height */
+  object-fit: contain;     /* preserve image proportions */
+  background-color: #fff;  /* white image background */
+}
+
+.other-products-section .card-product .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* spread title + button apart */
+}
+
+
+.fact-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fact-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
