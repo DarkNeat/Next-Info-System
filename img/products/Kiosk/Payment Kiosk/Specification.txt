@@ -1,0 +1,32 @@
+Display	
+23.8"/ 27" / 32"  BOE LCD Display
+
+OS	Windows	Android
+CPU	Intel® Celeron® Processor J6412 1.5M Cache, up to 2.60 GHz	RK3568 Cortex-A55 dual-core,up to 2.0GHz
+Intel® Celeron® Processor 5205U 2M Cache, 1.90 GHz
+Intel® Celeron® Processor J4125 4M Cache, up to 2.70 GHz
+Intel® Core™ i3 Dual Core ( 4th.5th.6th.7th.8th.10th,11th Gen)
+Intel® Core™ i5 Dual Core ( 4th.5th.6th.7th.8th.10th,11th Gen)
+Intel® Core™ i7 Dual Core ( 5th.6th.7th.8th.10th,11th Gen)
+Memory	DDR3 (2GB,4GB,8GB), DDR4(4GB,8GB,16GB)	DDR4 2GB,4GB,8GB
+Hard Disk	32GB,64GB,128GB,256GB,512GB	EMMC 8GB,16GB
+Ethernet	100M/1000M Self-adaption	WiFi IEEE 802.11 b/g/n,10/100/1000M Adaptive Ethernet RJ45 connector+4-Pin POE header MiniPCI-E
+OS	Windows 10 /11	Android 11.0 / 12.0 Version
+Aspect Ratio	16: 9 ( H: V )
+Resolution	1920 x 1080 Pixels
+Brightness	300 CD/㎡
+Touch Screen	Bezel-free 10-Ponits Capacitive Touchscreen
+Housing Material	Aluminum Alloy
+I/O Ports	USB x 6 ; RJ45 x 1 ; COM x 1:COM(RJ45) x2 ; VGA  1 ; Audio x 1; DC x 1 ; on-off Switch x 1
+Power Supply	100-260V  AC ( 50-60Hz) 12V 5A
+Packing	Wooden box 
+Certification	CE/FCC/ROHS /CCC/ UL
+Accessories	80mm Receipt Thermal Printer / High speed printing up to 260mm/sec
+2D Built-in barcode scanner
+Wi-Fi / Bluetooth with External Antenna
+Built-in Camera (Optional)
+Extenal magnetic stripe Card Reader /Built-in RFID Reader (Optional)
+Installation Methods:	Wall mounted / Floor stand
+Packing	Corrugated box with Inner Foam	
+Application	Airports, Stations, Commercial buildings, Real estate, Retail shops, Supermark , shipping mall , Schools, Hospitals, Scenic spots, etc.
+Warranty	24  months
