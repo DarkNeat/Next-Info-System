@@ -3098,6 +3098,31 @@ jQuery(function ($) {
 
 </script>
 
+
+<script>
+jQuery(function ($) {
+  const params = new URLSearchParams(window.location.search);
+  const category = params.get("category");
+
+  if (!category) return;
+
+  const $targetLink = $(".category-link").filter(function () {
+    return $(this).text().trim().toLowerCase() === category.toLowerCase();
+  }).first();
+
+  if ($targetLink.length) {
+    setTimeout(function () {
+      $targetLink.trigger("click");
+    }, 50);
+  }
+
+  window.history.replaceState({}, document.title, window.location.pathname);
+});
+</script>
+
+
+
+
 </body>
 
 </html>
