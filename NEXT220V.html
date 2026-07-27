@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Next Info Systems - PD220V</title>
+  <title>Next Info Systems - NEXT220V</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="keywords" content="Free HTML Templates" />
   <meta name="description" content="Free HTML Templates" />
@@ -372,7 +372,7 @@
   
 
 
-<!-- Product Detail Container for PD220V -->
+<!-- Product Detail Container for NEXT220V -->
 <div class="container">
   <div class="row g-4 align-items-start">
     <!-- Left side: Images block -->
@@ -381,15 +381,15 @@
         
         <!-- Active thumbnails -->
         <div class="product-thumbnails d-flex flex-column flex-shrink-0 me-3" style="width: 80px;">
-          <img src="img/products/POS Peripheral/PD220V/posp a1.jpg" alt="PD220V View 1"
-            data-large="img/products/POS Peripheral/PD220V/posp a1.jpg" class="active mb-2" tabindex="0" />
-          <img src="img/products/POS Peripheral/PD220V/posp a2.jpg" alt="PD220V View 2"
-            data-large="img/products/POS Peripheral/PD220V/posp a2.jpg" class="mb-2" tabindex="0" />
+          <img src="img/products/POS Peripheral/NEXT220V/posp a1.jpg" alt="NEXT220V View 1"
+            data-large="img/products/POS Peripheral/NEXT220V/posp a1.jpg" class="active mb-2" tabindex="0" />
+          <img src="img/products/POS Peripheral/NEXT220V/posp a2.jpg" alt="NEXT220V View 2"
+            data-large="img/products/POS Peripheral/NEXT220V/posp a2.jpg" class="mb-2" tabindex="0" />
         </div>
 
         <!-- Main Image (vertically stretched) -->
         <div class="product-main-image mx-3 flex-grow-1 d-flex align-items-center">
-          <img id="main-product-image" src="img/products/POS Peripheral/PD220V/posp a1.jpg" alt="PD220V Main Image" />
+          <img id="main-product-image" src="img/products/POS Peripheral/NEXT220V/posp a1.jpg" alt="NEXT220V Main Image" />
         </div>
 
       </div>
@@ -398,17 +398,17 @@
     <!-- Right side: Product Info -->
     <div class="col-lg-5 d-flex flex-column align-items-start">
       <h2 class="product-title mb-3" style="margin-top: 0;">
-        PD220V<br />
+        NEXT220V<br />
         <small style="font-weight: 600; font-size: 1.25rem;">Vacuum Fluorescent Display Customer Pole Display</small>
       </h2>
 
       <!-- Add to Cart Button -->
       <button id="addToCartBtn" class="btn btn-primary btn-add-cart mb-3 fw-semibold add-to-cart-btn"
-        data-id="PD220V"
-        data-name="PD220V"
+        data-id="NEXT220V"
+        data-name="NEXT220V"
         data-price="0"
         type="button"
-        aria-label="Add PD220V to cart">
+        aria-label="Add NEXT220V to cart">
         Add to Cart
       </button>
 
@@ -455,7 +455,7 @@
         <p><strong>Viewing Angle:</strong> Max. 90°</p>
         <p><strong>Horizontal Rotation:</strong> Max. 355°</p>
         <p><strong>Weight:</strong> Approx. 980 grams</p>
-        <p><strong>Commands Mode:</strong> LD220, EPSON POS D101, AEDEX, UTC/S, UTC/P, ADM788, DSP800, CD5220, EMAX, LOGIC CONTROL, ICD2002, EZ-202, PL-200, PD3000</p>
+        <p><strong>Commands Mode:</strong> LD220, EPSON POS D101, AEDEX, UTC/S, UTC/P, ADM788, DSP800, CD5220, EMAX, LOGIC CONTROL, ICD2002, EZ-202, PL-200, NEXT3000</p>
         <p><strong>Language Support:</strong> FRANCE, GERMANY, U.K, DENMARKI, SWEDEN, ITALY, SPAIN, JAPAN, NORWAY, DENMARKII, SLAVONIC, RUSSIA, Portuguese, Canadian French, Nordic, Turkish, Greek, West European Latin, CP858, CP860, WPC1252, CP857(TURKISH), Polish, WPC1250, WPC1253 (GREEK), WPC1255 (Hebrew), WPC1251, CP866, CP852, CP737 (DOSgreek), CP858, CP864 (Arabic), Farsi (Iran)</p>
         <p><strong>Interface:</strong> RS-232 (serial) / USB</p>
         <p><strong>Connection Baud Rate:</strong> Direct connection 9600 or 19,200 bps</p>
@@ -715,8 +715,8 @@
       localStorage.setItem(cartKey, JSON.stringify(cart));
     }
 
-    // Update all cart UI components
-    function updateCartUI(){
+    // UNEXTate all cart UI components
+    function uNEXTateCartUI(){
       const $badge = $("#cart-count");
       const $badgeNavbar = $("#cart-count-badge"); // if present in navbar
       const $totalDisplay = $("#cart-total-items"); // optional total display element
@@ -769,7 +769,7 @@
         if(idx >= 0){
           cart.splice(idx, 1);
           saveCart();
-          updateCartUI();
+          uNEXTateCartUI();
         }
       });
     }
@@ -792,7 +792,7 @@
       }
 
       saveCart();
-      updateCartUI();
+      uNEXTateCartUI();
       openCart();
     });
 
@@ -824,7 +824,7 @@
 
     // Initialize UI on ready
     $(function(){
-      updateCartUI();
+      uNEXTateCartUI();
     });
 
   })();
