@@ -63,6 +63,7 @@ body {
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
 }
@@ -77,8 +78,8 @@ img {
 
 .container-fluid.bg-dark.px-5.topbar-wrap,
 .container-fluid.bg-dark.px-5 {
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .topbar-wrap {
@@ -347,40 +348,129 @@ img {
 }
 
 /* =====================================================
-   CAROUSEL
+   FINAL CAROUSEL FIX
    ===================================================== */
 
 #header-carousel {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  margin: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 1536px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
   padding: 0 !important;
-  overflow: hidden;
+  overflow: hidden !important;
   background: #fff !important;
 }
 
 #header-carousel .carousel-inner {
-  position: relative;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  overflow: hidden;
+  overflow: hidden !important;
   background: #fff !important;
 }
+
+/*
+   Each slide remains in the normal Bootstrap layout.
+   Do not use position:absolute here.
+*/
 
 #header-carousel .carousel-item {
-  position: relative;
-  min-height: 600px;
+  position: relative !important;
+  display: none;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
   background: #fff !important;
-  isolation: isolate;
 }
 
-/* Remove carousel tint and overlay */
+/* Only the active slide is visible normally */
+
+#header-carousel .carousel-item.active {
+  display: block !important;
+}
+
+/*
+   During the transition, both slides occupy the same
+   visual area instead of one appearing underneath.
+*/
+
+#header-carousel .carousel-item-next,
+#header-carousel .carousel-item-prev {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Keep Bootstrap's slide movement */
+
+#header-carousel .carousel-item-next {
+  transform: translateX(100%);
+}
+
+#header-carousel .carousel-item-prev {
+  transform: translateX(-100%);
+}
+
+#header-carousel .active.carousel-item-start,
+#header-carousel .active.carousel-item-end,
+#header-carousel .carousel-item-next.carousel-item-start,
+#header-carousel .carousel-item-prev.carousel-item-end {
+  transform: translateX(0);
+}
+
+/* Banner images */
+
+#header-carousel .carousel-item img {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  transform: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Ensure the transition layer does not show below the carousel */
+
+#header-carousel .carousel-item-next,
+#header-carousel .carousel-item-prev,
+#header-carousel .active.carousel-item-start,
+#header-carousel .active.carousel-item-end {
+  overflow: hidden !important;
+}
+
+/* Remove overlays, captions, and buttons */
 
 #header-carousel .carousel-item::before,
 #header-carousel .carousel-item::after,
 #header-carousel .carousel-caption::before,
-#header-carousel .carousel-caption::after {
+#header-carousel .carousel-caption::after,
+#header-carousel .carousel-buttons::before,
+#header-carousel .carousel-buttons::after {
   content: none !important;
   display: none !important;
   visibility: hidden !important;
@@ -389,33 +479,20 @@ img {
   box-shadow: none !important;
 }
 
-#header-carousel .carousel-item img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 75vh;
-  min-height: 600px;
-  object-fit: cover;
-  object-position: center;
-  opacity: 1 !important;
-  filter: none !important;
-  mix-blend-mode: normal !important;
-}
-
-/* Remove the two carousel buttons/captions */
-
 #header-carousel .carousel-caption,
 #header-carousel .carousel-buttons {
   display: none !important;
 }
 
-/* Carousel arrows */
+/* Carousel controls */
 
 #header-carousel .carousel-control-prev,
 #header-carousel .carousel-control-next {
-  z-index: 15 !important;
-  width: 8%;
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  z-index: 20 !important;
+  width: 6%;
 }
 
 /* =====================================================
@@ -423,8 +500,12 @@ img {
    ===================================================== */
 
 /*
-   The positive margin moves the fact boxes lower.
-   Increase this value for more space above them.
+   Change this one value to move the fact boxes.
+
+   0px  = directly below the banner
+   10px = slightly lower
+   25px = lower
+   40px = much lower
 */
 
 .facts {
@@ -924,17 +1005,8 @@ img {
     border-bottom: none;
   }
 
-  #header-carousel .carousel-item img {
-    height: 60vh;
-    min-height: 500px;
-  }
-
-  /*
-     Facts remain lower on tablets.
-  */
-
   .facts {
-    margin-top: -10px !important;
+    margin-top: 10px !important;
   }
 
   .facts .row {
@@ -987,17 +1059,8 @@ img {
     font-size: 0.88rem;
   }
 
-  #header-carousel .carousel-item {
-    min-height: 450px;
-  }
-
-  #header-carousel .carousel-item img {
-    height: 55vh;
-    min-height: 450px;
-  }
-
   .facts {
-    margin-top: 25px !important;
+    margin-top: 10px !important;
   }
 
   .facts .row > [class*="col-"] {
@@ -1087,7 +1150,7 @@ img {
   }
 
   .facts {
-    margin-top: 20px !important;
+    margin-top: 10px !important;
   }
 
   .facts .row > [class*="col-"] {
