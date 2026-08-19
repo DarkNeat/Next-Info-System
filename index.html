@@ -18,10 +18,10 @@
   />
   
   <!-- Icon Fonts -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-    rel="stylesheet"
-  />
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  rel="stylesheet"
+/>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
     rel="stylesheet"
@@ -40,178 +40,908 @@
 
 
   <style>
-  #side-cart {
-    position: fixed;
-    top: 0;
-    right: -350px;
-    width: 350px;
-    max-width: 90vw;
-    height: 100vh;
-    background: #fff;
-    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
-    transition: right 0.35s ease;
-    z-index: 1050;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Nunito', sans-serif;
+
+#side-cart {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  max-width: 90vw;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  transition: right 0.35s ease;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+}
+
+#side-cart.open {
+  right: 0;
+}
+
+#side-cart header {
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #0d6efd;
+}
+
+#side-cart header button {
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #0d6efd;
+  cursor: pointer;
+  line-height: 1;
+}
+
+#cart-items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+}
+
+#cart-items .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+#cart-items .cart-item:last-child {
+  border-bottom: none;
+}
+
+#cart-items .cart-item .item-info {
+  flex: 1;
+  min-width: 0;
+  padding-right: 1rem;
+}
+
+#cart-items .cart-item .item-name {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+#cart-items .cart-item .item-qty {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+#side-cart footer {
+  padding: 1rem 1.5rem;
+  background: #0d6efd;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#side-cart footer button {
+  padding: 0.6rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  border: none;
+}
+
+#side-cart footer button.checkout {
+  background-color: #fff;
+  color: #0d6efd;
+}
+
+#side-cart footer button.continue {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+#cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1040;
+  display: none;
+}
+
+.topbar-wrap {
+  position: relative;
+  z-index: 20;
+  overflow-x: auto;
+}
+
+.topbar-content {
+  min-width: max-content;
+  min-height: 45px;
+  white-space: nowrap;
+}
+
+.topbar-item {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.topbar-content a {
+  text-decoration: none;
+}
+
+.topbar-content .btn-sm-square {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section .navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.hero-section .navbar .navbar-brand {
+  white-space: nowrap;
+}
+
+.hero-section .navbar .navbar-brand img {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.hero-section .navbar .navbar-brand span {
+  color: #fff !important;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.hero-section .navbar .nav-link {
+  color: #fff !important;
+  font-size: 1rem;
+  font-weight: 600;
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+}
+
+.hero-section .navbar .nav-link:hover,
+.hero-section .navbar .nav-link.active {
+  color: #08a9e0 !important;
+}
+
+.hero-section .navbar .navbar-toggler {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero-section .navbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.hero-section .navbar .btn-outline-light {
+  border-color: #fff;
+  color: #fff;
+}
+
+.hero-section .navbar .btn-outline-light:hover {
+  background: #fff;
+  color: #28619f;
+}
+
+#cart-count-badge {
+  display: none;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 1px 6px;
+  pointer-events: none;
+}
+
+#header-carousel {
+  position: relative;
+  z-index: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#header-carousel .carousel-inner {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#header-carousel .carousel-item {
+  position: relative;
+  min-height: 600px;
+}
+
+#header-carousel .carousel-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(20, 65, 110, 0.62);
+  pointer-events: none;
+}
+
+#header-carousel .carousel-item img {
+  width: 100%;
+  height: 75vh;
+  min-height: 600px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+#header-carousel .carousel-caption {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+#header-carousel .carousel-caption h1,
+#header-carousel .carousel-caption h5 {
+  font-family: "Nunito", sans-serif;
+}
+
+#header-carousel .carousel-caption h5 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+#header-carousel .carousel-caption h1 {
+  font-size: clamp(2.8rem, 5vw, 5.3rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+#header-carousel .carousel-caption .btn {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+#header-carousel .carousel-control-prev,
+#header-carousel .carousel-control-next {
+  z-index: 3;
+  width: 8%;
+}
+
+.facts {
+  position: relative;
+  z-index: 5;
+}
+
+.facts .row {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.facts .row > [class*="col-"] {
+  flex: 1 1 0;
+  width: 16.666666%;
+  max-width: 16.666666%;
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.facts .row > [class*="col-"] > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.facts .fact-box {
+  position: relative;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100%;
+  min-width: 0;
+  height: 150px !important;
+  padding: 1rem !important;
+  gap: 0.75rem;
+  overflow: hidden !important;
+  box-sizing: border-box;
+  isolation: isolate;
+}
+
+.facts .fact-box > div:first-child {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 52px;
+  width: 52px !important;
+  height: 60px !important;
+  min-width: 52px;
+  min-height: 60px;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.facts .fact-box > div:first-child i {
+  position: relative;
+  z-index: 3;
+  display: block;
+  max-width: 100%;
+  font-size: 2rem !important;
+  line-height: 1;
+}
+
+.facts .fact-box > div:last-child {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  overflow: hidden;
+}
+
+.facts .fact-box h5 {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.facts .fact-box:hover {
+  position: relative;
+  z-index: 5;
+}
+
+.site-footer {
+  position: relative;
+  margin-top: 3.5rem;
+  padding: 0;
+  background: #071a31;
+  color: #fff;
+}
+
+.site-footer > .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.footer-main-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.footer-main-row > div {
+  display: flex;
+  align-items: stretch;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.footer-company-box {
+  width: 100%;
+  min-height: 315px;
+  margin: 0;
+  padding: 1.5rem;
+  background: #0d6efd;
+  border-radius: 0 0 6px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.footer-logo {
+  display: block;
+  width: 100%;
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.footer-logo img {
+  display: block;
+  width: 235px;
+  max-width: 100%;
+  height: 95px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.footer-description {
+  max-width: 350px;
+  margin: 0 auto 1rem;
+  color: #e1e1e1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.footer-newsletter {
+  width: 100%;
+  max-width: 360px;
+  margin-top: auto;
+}
+
+.footer-newsletter .input-group {
+  width: 100%;
+}
+
+.footer-newsletter .form-control {
+  min-width: 0;
+  height: 45px;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #fff;
+  border-radius: 4px 0 0 4px;
+  color: #333;
+  background: #fff;
+}
+
+.footer-newsletter .form-control:focus {
+  border-color: #061429;
+  box-shadow: none;
+}
+
+.footer-newsletter .btn {
+  min-width: 85px;
+  height: 45px;
+  border-radius: 0 4px 4px 0;
+  font-weight: 600;
+}
+
+.footer-column {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  text-align: left;
+}
+
+.footer-title {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.footer-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 45px;
+  height: 3px;
+  background: #0d6efd;
+}
+
+.footer-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 8px;
+  height: 8px;
+  background: #08a9e0;
+  animation: footerTitleSquare 2.5s linear infinite;
+}
+
+.footer-title h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@keyframes footerTitleSquare {
+  0% {
+    left: 0;
   }
 
-  #side-cart.open {
-    right: 0;
+  50% {
+    left: 37px;
   }
 
-  #side-cart header {
-    padding: 1rem 1.5rem;
-    background: #f8f9fa;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: #0d6efd;
+  100% {
+    left: 0;
   }
+}
 
-  #side-cart header button {
-    font-size: 1.5rem;
-    background: transparent;
-    border: none;
-    color: #0d6efd;
-    cursor: pointer;
-    line-height: 1;
-  }
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  color: #e1e1e1;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
 
-  #cart-items {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 1rem 1.5rem;
-  }
+.footer-contact-item i {
+  flex: 0 0 22px;
+  color: #0d6efd;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  text-align: center;
+}
 
-  #cart-items .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 0.5rem 0;
-    font-size: 0.95rem;
-    color: #333;
-  }
+.footer-contact-item span,
+.footer-contact-item a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #e1e1e1;
+  text-decoration: none;
+}
 
-  #cart-items .cart-item:last-child {
-    border-bottom: none;
-  }
+.footer-contact-item a:hover {
+  color: #0d6efd;
+}
 
-  #cart-items .cart-item .item-info {
-    flex: 1;
-    padding-right: 1rem;
-  }
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  margin-bottom: 0.65rem;
+  color: #e1e1e1;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
 
-  #cart-items .cart-item .item-name {
-    font-weight: 600;
-    margin-bottom: 0.2rem;
-  }
+.footer-link i {
+  color: #0d6efd;
+  font-size: 0.85rem;
+}
 
-  #cart-items .cart-item .item-qty {
+.footer-link:hover {
+  padding-left: 5px;
+  color: #0d6efd;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 0;
+  background: #061429;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #d8dee8;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.footer-bottom a,
+.footer-bottom span {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom a:hover {
+  color: #0d6efd;
+}
+
+@media (max-width: 1199px) {
+  .topbar-item {
     font-size: 0.9rem;
-    color: #777;
   }
 
-  #side-cart footer {
-    padding: 1rem 1.5rem;
-    background: #0d6efd;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
+  .hero-section .navbar .nav-link {
+    font-size: 0.95rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  .hero-section .navbar .navbar-brand span {
+    font-size: 1.15rem;
+  }
+
+  .facts .fact-box {
+    padding: 0.75rem !important;
     gap: 0.5rem;
   }
 
-  #side-cart footer button {
-    padding: 0.6rem;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    border: none;
+  .facts .fact-box > div:first-child {
+    flex-basis: 45px;
+    width: 45px !important;
+    height: 55px !important;
+    min-width: 45px;
+    min-height: 55px;
   }
 
-  #side-cart footer button.checkout {
-    background-color: #fff;
-    color: #0d6efd;
+  .facts .fact-box > div:first-child i {
+    font-size: 1.6rem !important;
   }
 
-  #side-cart footer button.continue {
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+  .facts .fact-box h5 {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-section .navbar {
+    background: rgba(20, 65, 110, 0.9) !important;
   }
 
-  #cart-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1040;
-    display: none;
+  .hero-section .navbar .navbar-collapse {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(20, 65, 110, 0.95);
   }
 
-  .navbar {
-    background: #28619f !important;
-    position: relative;
-    z-index: 2;
-    margin-bottom: 0 !important;
-  }
-
-  .navbar .nav-link,
-  .navbar .navbar-brand span {
-    color: #fff !important;
-  }
-
-  .navbar .btn-outline-light {
-    border-color: #fff;
-    color: #fff;
-  }
-
-  .navbar .btn-outline-light:hover {
-    background: #fff;
-    color: #8bbcf0;
-  }
-
-  #header-carousel {
-    position: relative;
-    z-index: 1;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  #header-carousel .carousel-inner {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+  .hero-section .navbar .nav-link {
+    padding: 0.6rem 0;
   }
 
   #header-carousel .carousel-item img {
-    width: 100%;
-    height: 75vh;
-    object-fit: cover;
-    object-position: center top;
+    height: 60vh;
+    min-height: 500px;
+  }
+
+  .facts .row {
+    flex-wrap: wrap;
+  }
+
+  .facts .row > [class*="col-"] {
+    flex: 0 0 33.333333%;
+    width: 33.333333%;
+    max-width: 33.333333%;
+  }
+
+  .facts .fact-box {
+    height: 135px !important;
+  }
+
+  .site-footer {
+    margin-top: 2.5rem;
+  }
+
+  .footer-main-row {
+    align-items: stretch;
+  }
+
+  .footer-main-row > div {
+    display: flex;
+  }
+
+  .footer-company-box {
+    min-height: 315px;
+  }
+
+  .footer-column {
+    height: 100%;
+    padding: 1.5rem 0.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar-wrap {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .topbar-item {
+    font-size: 0.85rem;
+  }
+
+  .hero-section .navbar {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .hero-section .navbar .navbar-brand img {
+    width: 60px;
+  }
+
+  .hero-section .navbar .navbar-brand span {
+    font-size: 1rem;
+  }
+
+  #header-carousel .carousel-item {
+    min-height: 450px;
+  }
+
+  #header-carousel .carousel-item img {
+    height: 55vh;
+    min-height: 450px;
+  }
+
+  #header-carousel .carousel-caption h5 {
+    font-size: 1rem;
+  }
+
+  #header-carousel .carousel-caption h1 {
+    font-size: 2.5rem;
+    line-height: 1.15;
+  }
+
+  #header-carousel .carousel-caption .btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .facts .row > [class*="col-"] {
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+  }
+
+  .facts .fact-box {
+    height: 125px !important;
+    padding: 0.7rem !important;
+  }
+
+  .facts .fact-box > div:first-child {
+    flex-basis: 42px;
+    width: 42px !important;
+    height: 50px !important;
+    min-width: 42px;
+    min-height: 50px;
+  }
+
+  .facts .fact-box > div:first-child i {
+    font-size: 1.45rem !important;
+  }
+
+  .facts .fact-box h5 {
+    font-size: 0.75rem;
+  }
+
+  .site-footer {
+    margin-top: 2.5rem;
+    padding: 0;
+  }
+
+  .footer-main-row {
     display: block;
   }
 
-  @media (max-width: 768px) {
-    #header-carousel .carousel-item img {
-      height: 38vh;
-    }
+  .footer-main-row > div {
+    display: block;
   }
 
-  #header-carousel .carousel-caption {
-    display: none !important;
+  .footer-company-box {
+    min-height: 320px;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    padding: 1.5rem;
   }
 
-  .carousel-caption h1,
-  .carousel-caption h5 {
-    font-family: 'Nunito', sans-serif;
+  .footer-logo img {
+    width: 220px;
+    height: 95px;
   }
+
+  .footer-description {
+    font-size: 0.88rem;
+  }
+
+  .footer-column {
+    height: auto;
+    padding: 0;
+    margin: 1.75rem auto 0;
+    max-width: 360px;
+    text-align: left;
+  }
+
+  .footer-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-bottom {
+    padding: 0.9rem 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #header-carousel .carousel-caption h1 {
+    font-size: 2rem;
+  }
+
+  #header-carousel .carousel-caption h5 {
+    font-size: 0.85rem;
+  }
+
+  #header-carousel .carousel-caption .btn {
+    display: block;
+    width: 75%;
+    margin: 0.5rem auto !important;
+  }
+
+  .facts .row > [class*="col-"] {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .facts .fact-box {
+    height: 95px !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .facts .fact-box > div:first-child {
+    flex-basis: 45px;
+    width: 45px !important;
+    height: 52px !important;
+    min-width: 45px;
+    min-height: 52px;
+  }
+
+  .facts .fact-box h5 {
+    font-size: 10rem;
+  }
+
+  .footer-company-box {
+    min-height: 345px;
+  }
+
+  .footer-newsletter .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-newsletter .form-control,
+  .footer-newsletter .btn {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+
+  
+}
+  
 </style>
 
 
@@ -227,38 +957,77 @@
   </div>
   <!-- Spinner End -->
 
-  <!-- Topbar Start -->
-<div class="container-fluid bg-dark px-5 d-none d-lg-block">
-    <div class="row gx-0">
-      <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-        <div class="d-inline-flex align-items-center" style="height: 45px;">
-          <small class="me-3 text-light"
-            ><i class="fa fa-map-marker-alt me-2"></i>Dubai Branch Building, Mankhool, Dubai, 
-            United Arab Emirates</small
+  
+<!-- Topbar Start -->
+<div class="container-fluid bg-dark px-5 topbar-wrap">
+  <div class="row gx-0">
+    <div class="col-12">
+      <div class="topbar-content d-flex align-items-center justify-content-start flex-nowrap">
+
+        <small class="me-4 text-light topbar-item">
+          <i class="fa fa-map-marker-alt me-2"></i>
+          Dubai Branch Building, Mankhool, Dubai, United Arab Emirates
+        </small>
+
+        <small class="me-4 text-light topbar-item">
+          <i class="fa fa-phone-alt me-2"></i>
+          +971 54 995 4914
+        </small>
+
+        <small class="me-4 text-light topbar-item">
+          <i class="fa fa-envelope-open me-2"></i>
+          <a
+            href="mailto:sales@nextinfosystem.com"
+            class="text-light text-decoration-none"
           >
-          <small class="me-3 text-light"
-            ><i class="fa fa-phone-alt me-2"></i>+971 54 995 4914</small
-          >
-          <small class="text-light"
-            ><i class="fa fa-envelope-open me-2"></i>sales@nextinfosystem.com</small
-          >
-        </div>
+            sales@nextinfosystem.com
+          </a>
+        </small>
+
+<a
+  href="https://www.tiktok.com/@next.info.systems"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2 tiktok-button"
+  aria-label="Next Info Systems on TikTok"
+>
+  <i class="fab fa-tiktok"></i>
+</a>
+
       </div>
     </div>
   </div>
-  <!-- Topbar End -->
+</div>
+<!-- Topbar End -->
 
 
 
 <!-- Navbar & Carousel Start -->
-<div class="container-fluid p-0">
+<div class="container-fluid p-0 hero-section">
+
+  <!-- Transparent Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark px-3 px-lg-5 py-3 py-lg-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center p-0 mb-2 mb-lg-0">
-      <img src="img/NIS Icon2.png" alt="Next Info Systems Logo" style="width:80px; height:auto; margin-right: 10px;" />
-      <span class="fs-4 fw-bold gradient-gold">Next Info Systems</span>
+    <a
+      href="index.html"
+      class="navbar-brand d-flex align-items-center p-0 mb-2 mb-lg-0"
+    >
+      <img
+        src="img/NIS Icon2.png"
+        alt="Next Info Systems Logo"
+        style="width: 80px; height: auto; margin-right: 10px;"
+      />
+      <span class="fw-bold gradient-gold">Next Info Systems</span>
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="fa fa-bars"></span>
     </button>
 
@@ -271,38 +1040,136 @@
         <a href="contact.html" class="nav-item nav-link">Contact</a>
       </div>
 
-      <div class="d-flex align-items-center ms-3" style="position: relative;">
-        <button id="cart-btn" class="btn btn-outline-light btn-sm btn-sm-square rounded-circle" aria-label="Open cart">
+      <div class="d-flex align-items-center ms-3 position-relative">
+        <button
+          id="cart-btn"
+          class="btn btn-outline-light btn-sm btn-sm-square rounded-circle"
+          aria-label="Open cart"
+        >
           <i class="fa fa-shopping-cart"></i>
-          <span id="cart-count-badge" class="badge bg-danger"
-            style="display: none; position: absolute; top: -5px; right: -5px; font-size: 0.7rem; border-radius: 50%; padding: 1px 6px; pointer-events: none;">0</span>
+
+          <span
+            id="cart-count-badge"
+            class="badge bg-danger"
+            style="
+              display: none;
+              position: absolute;
+              top: -5px;
+              right: -5px;
+              font-size: 0.7rem;
+              border-radius: 50%;
+              padding: 1px 6px;
+              pointer-events: none;
+            "
+          >0</span>
         </button>
       </div>
     </div>
   </nav>
 
-  <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <!-- Carousel -->
+  <div
+    id="header-carousel"
+    class="carousel slide carousel-fade"
+    data-bs-ride="carousel"
+  >
     <div class="carousel-inner">
+
       <div class="carousel-item active">
-        <img class="w-100" src="img/carousel-1.jpg" alt="Image" />
+        <img
+          src="img/carousel-1.jpg"
+          class="w-100"
+          alt="Next Info Systems digital solutions"
+        />
+
+        <div class="carousel-caption">
+          <div class="p-3" style="max-width: 1000px;">
+            <h5 class="text-white text-uppercase mb-3 animated slideInDown">
+              Creative &amp; Innovative
+            </h5>
+
+            <h1 class="text-white mb-md-4 animated zoomIn">
+              Creative &amp; Innovative<br />
+              Digital Solution
+            </h1>
+
+            <a
+              href="quote.html"
+              class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"
+            >
+              Free Quote
+            </a>
+
+            <a
+              href="contact.html"
+              class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
       </div>
+
       <div class="carousel-item">
-        <img class="w-100" src="img/carousel-2.jpg" alt="Image" />
+        <img
+          src="img/carousel-2.jpg"
+          class="w-100"
+          alt="Next Info Systems technology services"
+        />
+
+        <div class="carousel-caption">
+          <div class="p-3" style="max-width: 1000px;">
+            <h5 class="text-white text-uppercase mb-3 animated slideInDown">
+              Reliable Technology Solutions
+            </h5>
+
+            <h1 class="text-white mb-md-4 animated zoomIn">
+              Smart Solutions<br />
+              For Your Business
+            </h1>
+
+            <a
+              href="quote.html"
+              class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"
+            >
+              Free Quote
+            </a>
+
+            <a
+              href="contact.html"
+              class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
       </div>
+
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#header-carousel"
+      data-bs-slide="prev"
+    >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
 
-    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#header-carousel"
+      data-bs-slide="next"
+    >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
 </div>
 <!-- Navbar & Carousel End -->
+
 
 
 
@@ -723,148 +1590,137 @@
 
   
 <!-- Footer Start -->
-<div class="container-fluid bg-dark text-light mt-6 wow fadeInUp" data-wow-delay="0.1s">
+<footer class="site-footer wow fadeInUp" data-wow-delay="0.1s">
+
   <div class="container">
-    <div class="row gx-5">
+    <div class="row footer-main-row">
 
-      <!-- Company Info column with blue background only on inner box -->
-      <div class="col-lg-4 col-md-6 footer-about">
-        <div 
-          class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded"
-          style="min-height: 365px; max-height: 365px; overflow: hidden; box-sizing: border-box;"
-        >
-<a href="index.html" class="navbar-brand mb-4 d-block">
+      <!-- Company Information -->
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="footer-company-box">
 
-<img src="img/NIS Logo2.png" alt="Next Info Systems Logo" style="width:300px; height:150px; object-fit: contain; display:block; margin-left: 15px;" />
+          <a href="index.html" class="footer-logo">
+            <img
+              src="img/NIS Logo2.png"
+              alt="Next Info Systems Logo"
+            />
+          </a>
 
-</a>
-          <p class="mb-4 px-lg-3" style="color: #e1e1e1; font-size: 0.95rem;">
-            We provide innovative IT solutions and outstanding service with over decades of experience to help your business grow.
+          <p class="footer-description">
+            We provide innovative IT solutions and outstanding service with
+            over decades of experience to help your business grow.
           </p>
-          <form action="" class="w-100" style="max-width: 400px;">
+
+          <form action="" class="footer-newsletter">
+            <label for="footer-email" class="visually-hidden">
+              Your Email
+            </label>
+
             <div class="input-group">
               <input
+                id="footer-email"
                 type="email"
-                class="form-control border-white p-3"
+                class="form-control"
                 placeholder="Your Email"
-                aria-label="Email"
+                aria-label="Your Email"
                 required
               />
+
               <button class="btn btn-dark" type="submit">
                 Sign Up
               </button>
             </div>
           </form>
+
         </div>
       </div>
 
-      <!-- Contact Info Section -->
-      <div class="col-lg-8 col-md-6">
-        <div class="row gx-5">
-          <!-- Get In Touch -->
-          <div class="col-lg-4 col-md-12 pt-5 mb-5">
-            <div class="section-title section-title-sm position-relative pb-3 mb-4">
-              <h3 class="text-light mb-0">Get In Touch</h3>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-geo-alt text-primary me-3 fs-4"></i>
-              <p class="mb-0">Dubai Branch Building, Mankhool, Dubai, UAE</p>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-envelope-open text-primary me-3 fs-4"></i>
-              <p class="mb-0">sales@nextinfosystem.com</p>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-telephone text-primary me-3 fs-4"></i>
-              <p class="mb-0">+971 54 995 4914</p>
-            </div>
-<div class="d-flex mt-4 invisible">
-  <a class="btn btn-primary btn-square me-2" href="#" aria-label="Twitter">
-    <i class="fab fa-twitter fw-normal"></i>
-  </a>
-  <a class="btn btn-primary btn-square me-2" href="#" aria-label="Facebook">
-    <i class="fab fa-facebook-f fw-normal"></i>
-  </a>
-  <a class="btn btn-primary btn-square me-2" href="#" aria-label="LinkedIn">
-    <i class="fab fa-linkedin-in fw-normal"></i>
-  </a>
-  <a class="btn btn-primary btn-square" href="#" aria-label="Instagram">
-    <i class="fab fa-instagram fw-normal"></i>
-  </a>
-</div>
+      <!-- Get In Touch -->
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="footer-column">
+
+          <div class="footer-title">
+            <h3>Get In Touch</h3>
           </div>
 
-          <!-- Quick Links -->
-          <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-            <div class="section-title section-title-sm position-relative pb-3 mb-4">
-              <h3 class="text-light mb-0">Quick Links</h3>
-            </div>
-            <div class="d-flex flex-column link-animated">
-              <a class="text-light mb-2" href="index.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Home
-              </a>
-              <a class="text-light mb-2" href="about.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>About
-              </a>
-              <a class="text-light mb-2" href="service.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Services
-              </a>
-              <a class="text-light mb-2" href="product.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Products
-              </a>
-              <a class="text-light" href="contact.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Contact
-              </a>
-            </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-geo-alt"></i>
+            <span>
+              Dubai Branch Building, Mankhool, Dubai, UAE
+            </span>
           </div>
 
-          <!-- Popular Links (same as Quick Links for UX consistency) -->
-          <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-            <div class="section-title section-title-sm position-relative pb-3 mb-4">
-              <h3 class="text-light mb-0">Popular Links</h3>
-            </div>
-            <div class="d-flex flex-column link-animated">
-              <a class="text-light mb-2" href="index.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Home
-              </a>
-              <a class="text-light mb-2" href="about.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>About
-              </a>
-              <a class="text-light mb-2" href="service.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Services
-              </a>
-              <a class="text-light mb-2" href="product.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Products
-              </a>
-              <a class="text-light" href="contact.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Contact
-              </a>
-            </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-envelope-open"></i>
+            <a href="mailto:sales@nextinfosystem.com">
+              sales@nextinfosystem.com
+            </a>
           </div>
+
+          <div class="footer-contact-item">
+            <i class="bi bi-telephone"></i>
+            <a href="tel:+971549954914">
+              +971 54 995 4914
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="footer-column">
+
+          <div class="footer-title">
+            <h3>Quick Links</h3>
+          </div>
+
+          <a class="footer-link" href="index.html">
+            <i class="bi bi-arrow-right"></i>
+            Home
+          </a>
+
+          <a class="footer-link" href="about.html">
+            <i class="bi bi-arrow-right"></i>
+            About
+          </a>
+
+          <a class="footer-link" href="service.html">
+            <i class="bi bi-arrow-right"></i>
+            Services
+          </a>
+
+          <a class="footer-link" href="product.html">
+            <i class="bi bi-arrow-right"></i>
+            Products
+          </a>
+
+          <a class="footer-link" href="contact.html">
+            <i class="bi bi-arrow-right"></i>
+            Contact
+          </a>
+
         </div>
       </div>
 
     </div>
   </div>
-</div>
+
+</footer>
+<!-- Footer End -->
 
 <!-- Footer Bottom Bar -->
-<div class="container-fluid text-white" style="background: #061429;">
+<div class="footer-bottom">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 col-md-10 text-center py-3">
-        <p class="mb-0 small">
-          &copy; <span id="year"></span>
-          <a class="text-white border-bottom" href="index.html">nextinfosystem.com</a>. All Rights Reserved.
-          Designed by
-          <span class="text-white border-bottom">UMBRA</span>.
-          Distributed by
-          <span class="text-white border-bottom">UMBRA</span>.
-        </p>
-      </div>
-    </div>
+    <p class="mb-0">
+      &copy; <span id="year"></span>
+      <a href="index.html">nextinfosystem.com</a>.
+      All Rights Reserved.
+      Designed by <span>UMBRA</span>.
+    </p>
   </div>
 </div>
+<!-- Footer Bottom Bar End -->
 
 
 <script>
