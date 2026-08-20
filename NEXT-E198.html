@@ -9,7 +9,7 @@
   <meta name="description" content="Free HTML Templates" />
 
   <!-- Favicon -->
- <link rel="icon" href="img/NIS Icon.png" type="image/png" />
+ <link rel="icon" href="img/NIS Icon2.png" type="image/png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,269 +30,1078 @@
   <!-- Template CSS -->
   <link href="css/style.css" rel="stylesheet" />
 
-  <style>
-    /* Cart Sidebar */
-    #side-cart {
-      position: fixed;
-      top: 0;
-      right: -350px;
-      width: 350px;
-      max-width: 90vw;
-      height: 100vh;
-      background: #fff;
-      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
-      transition: right 0.3s ease;
-      z-index: 1050;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Nunito', sans-serif;
-    }
+<style>
+/* =====================================================
+   GLOBAL RESET
+   ===================================================== */
 
-    #side-cart.open {
-      right: 0;
-    }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
-    #side-cart header {
-      padding: 1rem 1.5rem;
-      background: #0d6efd;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    #side-cart header button {
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-      line-height: 1;
-    }
+body {
+  position: relative;
+  margin: 0;
+  background: #fff;
+  font-family: "Nunito", sans-serif;
+}
 
-    #cart-items {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 1rem 1.5rem;
-      font-size: 0.95rem;
-      color: #333;
-    }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-    #cart-items .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-      padding: 0.5rem 0;
-    }
+#spinner {
+  z-index: 9999;
+}
 
-    #cart-items .cart-item:last-child {
-      border-bottom: none;
-    }
+/* =====================================================
+   TOPBAR
+   ===================================================== */
 
-    #side-cart footer {
-      padding: 1rem 1.5rem;
-      background: #0d6efd;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+.container-fluid.bg-dark.px-5.topbar-wrap,
+.container-fluid.bg-dark.px-5 {
+  padding-right: 15px;
+  padding-left: 15px;
+}
 
-    #side-cart footer button {
-      padding: 0.6rem;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      border: none;
-      transition: background-color 0.3s ease;
-    }
+.topbar-wrap {
+  position: relative;
+  z-index: 50;
+  min-height: 45px;
+  overflow-x: auto;
+  background: #071f42 !important;
+}
 
-    #side-cart footer button.checkout {
-      background-color: #fff;
-      color: #0d6efd;
-    }
+.topbar-content {
+  display: flex;
+  align-items: center;
+  min-width: max-content;
+  min-height: 45px;
+  white-space: nowrap;
+}
 
-    #side-cart footer button.checkout:hover {
-      background-color: #cce5ff;
-    }
+.topbar-item {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
 
-    #side-cart footer button.continue {
-      background-color: transparent;
-      color: #fff;
-      border: 1px solid #fff;
-    }
+.topbar-content a {
+  text-decoration: none;
+}
 
-    #side-cart footer button.continue:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
+.topbar-content .btn-sm-square {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
 
-    /* Overlay behind cart */
-    #cart-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 1040;
-      display: none;
-    }
+/* =====================================================
+   CART
+   ===================================================== */
 
-    /* Thumbnails */
-    .product-thumbnails {
-      max-width: 80px;
-      user-select: none;
-    }
+#side-cart {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  max-width: 90vw;
+  height: 100vh;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  transition: right 0.35s ease;
+  font-family: "Nunito", sans-serif;
+}
 
-    .product-thumbnails img {
-      width: 70px;
-      height: 70px;
-      object-fit: cover;
-      margin-bottom: 10px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      border-radius: 6px;
-      transition: border-color 0.3s;
-    }
+#side-cart.open {
+  right: 0;
+}
 
-    .product-thumbnails img.active,
-    .product-thumbnails img:hover {
-      border-color: var(--primary);
-    }
+#side-cart header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  color: #0d6efd;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
 
-    /* Main product image */
-    .product-main-image img {
-      width: 100%;
-      max-height: 500px;
-      object-fit: contain;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
+#side-cart header button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #0d6efd;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+}
 
-    /* Product details */
-    .product-title {
-      font-weight: 800;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
+#cart-items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+}
 
-    .product-price {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
+#cart-items .cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  font-size: 0.95rem;
+}
 
-    .product-short-description {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: #444;
-    }
+#cart-items .cart-item:last-child {
+  border-bottom: none;
+}
 
-    /* Add to cart button */
-    .btn-add-cart {
-      font-weight: 700;
-      font-size: 1.15rem;
-      padding: 12px 22px;
-      width: 100%;
-      border-radius: 6px;
-      transition: background-color 0.3s ease;
-    }
+#cart-items .cart-item .item-info {
+  flex: 1;
+  min-width: 0;
+  padding-right: 1rem;
+}
 
-    .btn-add-cart:hover {
-      background-color: var(--secondary);
-      border-color: var(--secondary);
-      color: #fff;
-    }
+#cart-items .cart-item .item-name {
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+}
 
-    /* Specs section */
-    .specs-section {
-      margin-top: 2rem;
-      font-family: 'Nunito', sans-serif;
-    }
+#cart-items .cart-item .item-qty {
+  color: #777;
+  font-size: 0.9rem;
+}
 
-    .specs-section h4 {
-      color: var(--primary);
-      font-weight: 700;
-    }
+#side-cart footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: #0d6efd;
+  color: #fff;
+}
 
-    .specs-highlighted {
-      background-color: var(--light);
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--dark);
-    }
+#side-cart footer button {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+}
 
-    .specs-full {
-      max-width: 700px;
-      margin: 3rem auto 2rem auto;
-      font-size: 1rem;
-      color: #555;
-      border-top: 1px solid #eee;
-      padding-top: 1rem;
-      text-align: center;
-    }
+#side-cart footer button.checkout {
+  background: #fff;
+  color: #0d6efd;
+}
 
-    /* Other products */
-    .other-products-section {
-      margin-bottom: 3rem;
-    }
+#side-cart footer button.continue {
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+}
 
-    .other-products-section h3 {
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+#cart-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1040;
+  display: none;
+  background: rgba(0, 0, 0, 0.4);
+}
 
-    .card-product {
-      border-radius: 16px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: #fff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
+#cart-count-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  display: none;
+  min-width: 22px;
+  min-height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  text-align: center;
+  font-size: 0.7rem;
+  line-height: 22px;
+}
 
-    .card-product:hover,
-    .card-product:focus {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 123, 255, 0.3);
-      outline: none;
-    }
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
 
-    .card-product img {
-      border-radius: 16px 16px 0 0;
-      max-height: 180px;
-      object-fit: cover;
-      width: 100%;
-    }
+.hero-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+}
 
-    .card-product .card-body {
-      padding: 0.75rem 1rem;
-      flex-grow: 1;
-      text-align: center;
-    }
+/* =====================================================
+   NAVBAR
+   ===================================================== */
 
-    .card-product .card-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
-    }
+.hero-section .navbar {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 72px;
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  background: #214f80 !important;
+}
 
-    .card-product .card-price {
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-  </style>
+.hero-section .navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.hero-section .navbar-brand img,
+.hero-section .navbar-logo {
+  width: 60px;
+  height: auto;
+  margin-right: 9px;
+  object-fit: contain;
+}
+
+.hero-section .navbar-brand span {
+  color: #e5b62f !important;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.hero-section .navbar .nav-link {
+  padding: 1.1rem 0.8rem;
+  color: #fff !important;
+  font-size: 0.96rem;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.hero-section .navbar .nav-link:hover,
+.hero-section .navbar .nav-link.active {
+  color: #08a9e0 !important;
+}
+
+.hero-section .navbar .nav-link.active {
+  border-bottom: 3px solid #08a9e0;
+}
+
+.hero-section .navbar .navbar-toggler {
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.hero-section .navbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.hero-section .navbar .btn-outline-light {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-color: rgba(255, 255, 255, 0.75);
+  color: #fff;
+}
+
+.hero-section .navbar .btn-outline-light:hover {
+  background: #fff;
+  color: #214f80;
+}
+
+/* =====================================================
+   PAGE HEADER
+   ===================================================== */
+
+.hero-section .page-header {
+  background: #fff !important;
+  border-bottom: 1px solid #e5e5e5;
+  /* Same vertical size as your working reference */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.hero-section .page-header h1 {
+  color: #071f42;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* =====================================================
+   PRODUCT STYLES (YOUR CUSTOM ONES)
+   ===================================================== */
+
+/* Cart Sidebar */
+#side-cart {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  max-width: 90vw;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nunito', sans-serif;
+}
+
+#side-cart.open {
+  right: 0;
+}
+
+#side-cart header {
+  padding: 1rem 1.5rem;
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#side-cart header button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+#cart-items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+#cart-items .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+
+#cart-items .cart-item:last-child {
+  border-bottom: none;
+}
+
+#side-cart footer {
+  padding: 1rem 1.5rem;
+  background: #0d6efd;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#side-cart footer button {
+  padding: 0.6rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+#side-cart footer button.checkout {
+  background-color: #fff;
+  color: #0d6efd;
+}
+
+#side-cart footer button.checkout:hover {
+  background-color: #cce5ff;
+}
+
+#side-cart footer button.continue {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+#side-cart footer button.continue:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Overlay behind cart */
+#cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1040;
+  display: none;
+}
+
+/* Thumbnails */
+.product-thumbnails {
+  max-width: 80px;
+  user-select: none;
+}
+
+.product-thumbnails img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+.product-thumbnails img.active,
+.product-thumbnails img:hover {
+  border-color: var(--primary);
+}
+
+/* Main product image */
+.product-main-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Product details */
+.product-title {
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.product-short-description {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+/* Add to cart button */
+.btn-add-cart {
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 12px 22px;
+  width: 100%;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-cart:hover {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
+}
+
+/* Specs section */
+.specs-section {
+  margin-top: 2rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.specs-section h4 {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.specs-highlighted {
+  background-color: var(--light);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.specs-full {
+  max-width: 700px;
+  margin: 3rem auto 2rem auto;
+  font-size: 1rem;
+  color: #555;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+/* Other products */
+.other-products-section {
+  margin-bottom: 3rem;
+}
+
+.other-products-section h3 {
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card-product {
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-product:hover,
+.card-product:focus {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.card-product img {
+  border-radius: 16px 16px 0 0;
+  max-height: 180px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-product .card-body {
+  padding: 0.75rem 1rem;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.card-product .card-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.card-product .card-price {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.site-footer {
+  position: relative;
+  margin-top: 3.5rem;
+  padding: 0;
+  background: #071a31;
+  color: #fff;
+}
+
+.site-footer > .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.footer-main-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.footer-main-row > div {
+  display: flex;
+  align-items: stretch;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.footer-main-row > .col-lg-3:first-child {
+  flex: 0 0 32%;
+  max-width: 32%;
+}
+
+.footer-main-row > .col-lg-3:not(:first-child) {
+  flex: 1 1 0;
+  max-width: 23%;
+}
+
+.footer-company-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 330px;
+  margin: 0;
+  padding: 1.5rem;
+  border-radius: 0 0 6px 6px;
+  background: #0d6efd;
+  text-align: center;
+}
+
+.footer-logo {
+  display: block;
+  width: 100%;
+  margin: 0 0 0.5rem;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+.footer-logo img {
+  display: block;
+  width: 240px;
+  max-width: 85%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.footer-description {
+  max-width: 360px;
+  margin: 1.25rem auto 1rem;
+  color: #e1e1e1;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.footer-newsletter {
+  width: 100%;
+  max-width: 380px;
+  margin-top: auto;
+}
+
+.footer-newsletter .input-group {
+  display: flex;
+  width: 100%;
+}
+
+.footer-newsletter .form-control {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #fff;
+  border-radius: 4px 0 0 4px;
+  background: #fff;
+  color: #333;
+  font-size: 0.88rem;
+}
+
+.footer-newsletter .btn {
+  min-width: 90px;
+  height: 46px;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.footer-column {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  text-align: left;
+}
+
+.footer-title {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.footer-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 45px;
+  height: 3px;
+  background: #0d6efd;
+}
+
+.footer-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 8px;
+  height: 8px;
+  background: #08a9e0;
+  animation: footerTitleSquare 2.5s linear infinite;
+}
+
+.footer-title h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+@keyframes footerTitleSquare {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: 37px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  color: #e1e1e1;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.footer-contact-item i {
+  flex: 0 0 22px;
+  color: #0d6efd;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.footer-contact-item span,
+.footer-contact-item a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #e1e1e1;
+  text-decoration: none;
+}
+
+.footer-contact-item a:hover {
+  color: #0d6efd;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  margin-bottom: 0.65rem;
+  color: #e1e1e1;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.footer-link i {
+  color: #0d6efd;
+  font-size: 0.85rem;
+}
+
+.footer-link:hover {
+  padding-left: 5px;
+  color: #0d6efd;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 0;
+  background: #061429;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #d8dee8;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.footer-bottom a,
+.footer-bottom span {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom a:hover {
+  color: #0d6efd;
+}
+
+.footer-social-column {
+  height: 100%;
+  text-align: left;
+}
+
+.footer-social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 260px;
+  min-height: 165px;
+  padding: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(13, 110, 253, 0.16);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.footer-social-card:hover {
+  background: rgba(13, 110, 253, 0.3);
+  transform: translateY(-4px);
+}
+
+.footer-social-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 0.8rem;
+  border-radius: 50%;
+  background: #fff;
+  color: #071a31;
+  font-size: 1.2rem;
+}
+
+.footer-social-card-content {
+  width: 100%;
+  margin-bottom: 0.9rem;
+}
+
+.footer-social-card-content h4 {
+  margin: 0 0 0.3rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.footer-social-card-content p {
+  margin: 0;
+  color: #dce7f5;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.footer-tiktok-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 36px;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  background: #fff;
+  color: #27558d;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-tiktok-button:hover {
+  background: #08a9e0;
+  color: #fff;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 1199px) {
+  .topbar-item {
+    font-size: 0.9rem;
+  }
+
+  .hero-section .navbar {
+    min-height: 68px;
+  }
+
+  .hero-section .navbar-brand img,
+  .hero-section .navbar-logo {
+    width: 55px;
+  }
+
+  .hero-section .navbar-brand span {
+    font-size: 1rem;
+  }
+
+  .hero-section .navbar .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-section .navbar {
+    min-height: 64px;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  .hero-section .navbar-brand img,
+  .hero-section .navbar-logo {
+    width: 52px;
+  }
+
+  .hero-section .navbar-brand span {
+    font-size: 0.95rem;
+  }
+
+  .hero-section .navbar .navbar-collapse {
+    margin-top: 0.7rem;
+    padding: 0.8rem 1rem;
+    background: #214f80;
+  }
+
+  .hero-section .navbar .nav-link {
+    padding: 0.5rem 0;
+    border-bottom: none;
+  }
+
+  .hero-section .navbar .nav-link.active {
+    border-bottom: none;
+  }
+
+  .footer-main-row > .col-lg-3:first-child,
+  .footer-main-row > .col-lg-3:not(:first-child) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .footer-company-box {
+    min-height: 315px;
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar-wrap {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+  }
+
+  .topbar-item {
+    font-size: 0.85rem;
+  }
+
+  .hero-section .navbar {
+    min-height: 60px;
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+  }
+
+  .hero-section .navbar-brand img,
+  .hero-section .navbar-logo {
+    width: 47px;
+  }
+
+  .hero-section .navbar-brand span {
+    font-size: 0.88rem;
+  }
+
+  .footer-main-row {
+    display: block;
+  }
+
+  .footer-main-row > div {
+    display: block;
+  }
+
+  .footer-main-row > .col-lg-3:first-child,
+  .footer-main-row > .col-lg-3:not(:first-child) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .footer-company-box {
+    min-height: 330px;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+  }
+
+  .footer-column {
+    height: auto;
+    max-width: 340px;
+    margin: 1.5rem auto 0;
+    padding: 0;
+  }
+
+  .footer-social-column {
+    max-width: 340px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .footer-newsletter .input-group {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-newsletter .form-control,
+  .footer-newsletter .btn {
+    width: 100%;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section .navbar {
+    min-height: 56px;
+  }
+
+  .hero-section .navbar-brand img,
+  .hero-section .navbar-logo {
+    width: 42px;
+  }
+
+  .hero-section .navbar-brand span {
+    font-size: 0.8rem;
+  }
+
+  .hero-section .page-header h1 {
+    font-size: 1.6rem;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -306,68 +1115,120 @@
   </div>
   <!-- Spinner End -->
 
-  <!-- Topbar -->
-  <div class="container-fluid bg-dark px-5 d-none d-lg-block">
-    <div class="row gx-0">
-      <div class="col-lg-8 text-center text-lg-start">
-        <small class="me-3 text-light">
-          <i class="fa fa-map-marker-alt me-2"></i>Dubai Branch, Mankool, UAE
-        </small>
-        <small class="me-3 text-light">
-          <i class="fa fa-phone-alt me-2"></i>+971 56 656 5880 
-        </small>
-        <small class="text-light">
-          <i class="fa fa-envelope me-2"></i>sales@nextinfosystem.com
-        </small>
-      </div>
-      <div class="col-lg-4 text-center text-lg-end">
-        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i class="fab fa-instagram"></i></a>
-        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </div>
+<!-- Topbar Start -->
+<div class="container-fluid bg-dark px-5 topbar-wrap">
+  <div class="row gx-0">
+    <div class="col-12">
+      <div class="topbar-content d-flex align-items-center justify-content-start flex-nowrap">
 
-  <!-- Navbar -->
-  <div class="container-fluid position-relative p-0">
-  <nav class="navbar navbar-expand-lg navbar-dark px-3 px-lg-5 py-3 py-lg-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center p-0 mb-2 mb-lg-0">
-        <h1 class="m-0">
-          <i class="fa fa-user-tie me-2"></i>Next Info Systems
-        </h1>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="fa fa-bars"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto py-0">
-          <a href="index.html" class="nav-item nav-link">Home</a>
-          <a href="about.html" class="nav-item nav-link">About</a>
-          <a href="service.html" class="nav-item nav-link">Services</a>
-          <a href="product.html" class="nav-item nav-link active">Products</a>
-          <a href="contact.html" class="nav-item nav-link">Contact</a>
-        </div>
-        <div class="d-flex align-items-center ms-3 position-relative">
-          <span id="cart-count-badge" class="badge bg-danger" style="display: none; position: absolute; top: -5px; right: 0;"></span>
-          <button id="cart-btn" class="btn btn-outline-light btn-sm btn-square rounded-circle position-relative" aria-label="Open cart">
-            <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-    </nav>
+        <small class="me-4 text-light topbar-item">
+          <i class="fa fa-map-marker-alt me-2"></i>
+          Dubai Branch Building, Mankhool, Dubai, United Arab Emirates
+        </small>
 
-    <!-- Hero -->
-<div class="container-fluid bg-primary bg-header" 
-     style="margin-bottom: 80px; padding-top: 120px; padding-bottom: 15px;">
-  <div class="row">
-    <div class="col text-center">
-      <h1 class="display-4 text-white animated zoomIn">Laptop Category</h1>
+        <small class="me-4 text-light topbar-item">
+          <i class="fa fa-phone-alt me-2"></i>
+          +971 54 995 4914
+        </small>
+
+        <small class="me-4 text-light topbar-item">
+          <i class="fa fa-envelope-open me-2"></i>
+          <a
+            href="mailto:sales@nextinfosystem.com"
+            class="text-light text-decoration-none"
+          >
+            sales@nextinfosystem.com
+          </a>
+        </small>
+
+        <a
+          href="https://www.tiktok.com/@next.info.systems"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2 tiktok-button"
+          aria-label="Next Info Systems on TikTok"
+        >
+          <i class="fab fa-tiktok"></i>
+        </a>
+
+      </div>
     </div>
   </div>
 </div>
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+<div class="hero-section">
+
+  <nav class="navbar navbar-expand-lg navbar-dark px-3 px-lg-5 py-3 py-lg-0">
+    <a
+      href="index.html"
+      class="navbar-brand d-flex align-items-center p-0"
+    >
+      <img
+        src="img/NIS Icon2.png"
+        alt="Next Info Systems Logo"
+        class="navbar-logo"
+      />
+
+      <span class="fw-bold gradient-gold">
+        Next Info Systems
+      </span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="fa fa-bars"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-0">
+        <a href="index.html" class="nav-item nav-link">Home</a>
+        <a href="about.html" class="nav-item nav-link">About</a>
+        <a href="service.html" class="nav-item nav-link">Services</a>
+        <a href="product.html" class="nav-item nav-link active">Products</a>
+        <a href="contact.html" class="nav-item nav-link">Contact</a>
+      </div>
+
+      <div class="d-flex align-items-center ms-3 position-relative">
+        <button
+          id="cart-btn"
+          class="btn btn-outline-light btn-sm btn-sm-square rounded-circle"
+          aria-label="Open cart"
+        >
+          <i class="fa fa-shopping-cart"></i>
+
+          <span
+            id="cart-count-badge"
+            class="badge bg-danger"
+          >0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <h1 class="h3 fw-bold mb-0" style="color: #071f42;">
+            Laptop Category
+          </h1>
+        </div>
+      </div>
+    </div>
   </div>
+
+</div>
+<!-- Navbar End -->
 
   
 
@@ -571,149 +1432,172 @@ jQuery(function($) {
 
 
 <!-- Footer Start -->
-<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
-  <div class="container">
-    <div class="row gx-5">
+<footer class="site-footer wow fadeInUp" data-wow-delay="0.1s">
 
-      <!-- Company Info column with blue background only on inner box -->
-      <div class="col-lg-4 col-md-6 footer-about">
-        <div 
-          class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4 rounded"
-          style="min-height: 365px; max-height: 365px; overflow: hidden; box-sizing: border-box;"
-        >
-          <a href="index.html" class="navbar-brand mb-3">
-            <!-- Replace Startup text with your company logo and name -->
-            <img src="img/NIS Logo.png" alt="Next Info Systems Logo" style="width:150px; height:auto;" />
-            <!-- Optionally add a company name next to or below if you want text -->
-            <!-- <h1 class="m-0 text-white">Next Info Systems</h1> -->
+  <div class="container">
+    <div class="row footer-main-row">
+
+      <!-- Company Information -->
+      <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+        <div class="footer-company-box">
+
+          <a href="index.html" class="footer-logo">
+            <img
+              src="img/NIS Logo2.png"
+              alt="Next Info Systems Logo"
+            />
           </a>
-          <p class="mb-4 px-lg-3" style="color: #e1e1e1; font-size: 0.95rem;">
-            We provide innovative IT solutions and outstanding service with over decades of experience to help your business grow.
+
+          <p class="footer-description">
+            We provide innovative IT solutions and outstanding service with
+            over decades of experience to help your business grow.
           </p>
-          <form action="" class="w-100" style="max-width: 400px;">
+
+          <form action="" class="footer-newsletter">
+            <label for="footer-email" class="visually-hidden">
+              Your Email
+            </label>
+
             <div class="input-group">
               <input
+                id="footer-email"
                 type="email"
-                class="form-control border-white p-3"
+                class="form-control"
                 placeholder="Your Email"
-                aria-label="Email"
+                aria-label="Your Email"
                 required
               />
+
               <button class="btn btn-dark" type="submit">
                 Sign Up
               </button>
             </div>
           </form>
+
         </div>
       </div>
 
-      <!-- Contact Info Section -->
-      <div class="col-lg-8 col-md-6">
-        <div class="row gx-5">
-          <!-- Get In Touch -->
-          <div class="col-lg-4 col-md-12 pt-5 mb-5">
-            <div class="section-title section-title-sm position-relative pb-3 mb-4">
-              <h3 class="text-light mb-0">Get In Touch</h3>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-geo-alt text-primary me-3 fs-4"></i>
-              <p class="mb-0">Dubai Branch Building, Mankhool, Dubai, UAE</p>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-envelope-open text-primary me-3 fs-4"></i>
-              <p class="mb-0">sales@nextinfosystem.com</p>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-telephone text-primary me-3 fs-4"></i>
-              <p class="mb-0">+971 54 995 4914</p>
-            </div>
-            <div class="d-flex mt-4">
-              <a class="btn btn-primary btn-square me-2" href="#" aria-label="Twitter">
-                <i class="fab fa-twitter fw-normal"></i>
-              </a>
-              <a class="btn btn-primary btn-square me-2" href="#" aria-label="Facebook">
-                <i class="fab fa-facebook-f fw-normal"></i>
-              </a>
-              <a class="btn btn-primary btn-square me-2" href="#" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in fw-normal"></i>
-              </a>
-              <a class="btn btn-primary btn-square" href="#" aria-label="Instagram">
-                <i class="fab fa-instagram fw-normal"></i>
-              </a>
-            </div>
+      <!-- Get In Touch -->
+      <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+        <div class="footer-column">
+
+          <div class="footer-title">
+            <h3>Get In Touch</h3>
           </div>
 
-          <!-- Quick Links -->
-          <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-            <div class="section-title section-title-sm position-relative pb-3 mb-4">
-              <h3 class="text-light mb-0">Quick Links</h3>
-            </div>
-            <div class="d-flex flex-column link-animated">
-              <a class="text-light mb-2" href="index.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Home
-              </a>
-              <a class="text-light mb-2" href="about.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>About
-              </a>
-              <a class="text-light mb-2" href="service.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Services
-              </a>
-              <a class="text-light mb-2" href="product.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Products
-              </a>
-              <a class="text-light" href="contact.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Contact
-              </a>
-            </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-geo-alt"></i>
+            <span>
+              Dubai Branch Building, Mankhool, Dubai, UAE
+            </span>
           </div>
 
-          <!-- Popular Links (same as Quick Links for UX consistency) -->
-          <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-            <div class="section-title section-title-sm position-relative pb-3 mb-4">
-              <h3 class="text-light mb-0">Popular Links</h3>
-            </div>
-            <div class="d-flex flex-column link-animated">
-              <a class="text-light mb-2" href="index.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Home
-              </a>
-              <a class="text-light mb-2" href="about.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>About
-              </a>
-              <a class="text-light mb-2" href="service.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Services
-              </a>
-              <a class="text-light mb-2" href="product.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Products
-              </a>
-              <a class="text-light" href="contact.html">
-                <i class="bi bi-arrow-right text-primary me-2"></i>Contact
-              </a>
-            </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-envelope-open"></i>
+            <a href="mailto:sales@nextinfosystem.com">
+              sales@nextinfosystem.com
+            </a>
           </div>
+
+          <div class="footer-contact-item">
+            <i class="bi bi-telephone"></i>
+            <a href="tel:+971549954914">
+              +971 54 995 4914
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+        <div class="footer-column">
+
+          <div class="footer-title">
+            <h3>Quick Links</h3>
+          </div>
+
+          <a class="footer-link" href="index.html">
+            <i class="bi bi-arrow-right"></i>
+            Home
+          </a>
+
+          <a class="footer-link" href="about.html">
+            <i class="bi bi-arrow-right"></i>
+            About
+          </a>
+
+          <a class="footer-link" href="service.html">
+            <i class="bi bi-arrow-right"></i>
+            Services
+          </a>
+
+          <a class="footer-link" href="product.html">
+            <i class="bi bi-arrow-right"></i>
+            Products
+          </a>
+
+          <a class="footer-link" href="contact.html">
+            <i class="bi bi-arrow-right"></i>
+            Contact
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+        <div class="footer-column footer-social-column">
+
+          <div class="footer-title">
+            <h3>Follow Us</h3>
+          </div>
+
+          <div class="footer-social-card">
+
+            <div class="footer-social-card-icon">
+              <i class="fab fa-tiktok"></i>
+            </div>
+
+            <div class="footer-social-card-content">
+              <h4>Next Info Systems</h4>
+              <p>Follow us for updates, technology, and business solutions.</p>
+            </div>
+
+            <a
+              href="https://www.tiktok.com/@next.info.systems"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-tiktok-button"
+              aria-label="Follow Next Info Systems on TikTok"
+            >
+              <i class="fab fa-tiktok"></i>
+              Follow on TikTok
+            </a>
+
+          </div>
+
         </div>
       </div>
 
     </div>
   </div>
-</div>
+
+</footer>
+<!-- Footer End -->
 
 <!-- Footer Bottom Bar -->
-<div class="container-fluid text-white" style="background: #061429;">
+<div class="footer-bottom">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 col-md-10 text-center py-3">
-        <p class="mb-0 small">
-          &copy; <span id="year"></span>
-          <a class="text-white border-bottom" href="index.html">nextinfosystem.com</a>. All Rights Reserved.
-          Designed by
-          <span class="text-white border-bottom">UMBRA</span>.
-          Distributed by
-          <span class="text-white border-bottom">UMBRA</span>.
-        </p>
-      </div>
-    </div>
+    <p class="mb-0">
+      &copy; <span id="year"></span>
+      <a href="index.html">nextinfosystem.com</a>.
+      All Rights Reserved.
+      Designed by <span>UMBRA</span>.
+    </p>
   </div>
 </div>
+<!-- Footer Bottom Bar End -->
 
 
 <script>
